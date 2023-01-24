@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+html, body{
+    background-color: #F3F1F1;
+}
+
+.active--icon > svg > path{
+    stroke: #029834;
+}
+
+.not--active--icon:hover > svg > path {
+    stroke: #029834;
+    transition: all 500ms ease-in-out;
+}
+
+
