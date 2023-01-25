@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 
 
 const useDocTitle = title => {
   const [doctitle, setDocTitle] = useState(title);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     document.title = doctitle;
   }, [doctitle]);
 

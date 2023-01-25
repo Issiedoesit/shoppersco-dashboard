@@ -9,6 +9,8 @@ import BrandManager from './components/BrandManager/BrandManager'
 import CampaignManager from './components/CampaignManager/CampaignManager'
 import EcoBagProducer from './components/EcoBagProducer/EcoBagProducer'
 import Impact from './components/Impact/Impact'
+import TemplatePage from './components/Template'
+
 
 
 
@@ -19,8 +21,8 @@ function App() {
   const navRef = useRef('')
 
   return (
-    <div ref={navRef} className="App flex gap-10 2xl:gap-14 bg-brandGray28x min-h-screen text-brandBlack1x font-avenirRegular">
-    <div className='fixed top-0 h-screen left-0 z-30 -translate-x-oneFiftyPercent xl:-translate-x-0 transition-transform duration-500 ease-in-out xl:static lg:col-span-3 2xl:col-span-2 w-64'>
+    <div className="App relative flex gap-10 2xl:gap-14 bg-brandGray28x min-h-screen text-brandBlack1x font-avenirRegular">
+    <div ref={navRef} className='fixed top-0 h-screen left-0 z-30 -translate-x-oneFiftyPercent xl:-translate-x-0 transition-transform duration-500 ease-in-out xl:static lg:col-span-3 2xl:col-span-2 w-64'>
       <NavBar />
     </div>
 
@@ -33,6 +35,7 @@ function App() {
         <Route path='/campaign-manager' element={<CampaignManager />}></Route>
         <Route path='/eco-bag-producer' element={<EcoBagProducer />}></Route>
         <Route path='/impact' element={<Impact />}></Route>
+        <Route path='/template' element={<TemplatePage />}></Route>
       </Routes>
     </div>
 

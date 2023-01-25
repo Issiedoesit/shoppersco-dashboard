@@ -9,9 +9,12 @@ const Header = ({page}) => {
             <div className='flex flex-row items-center font-avenirHeavy gap-3 w-fit'>
                 <img src={avatar} alt="avatar" className='h-10 w-10'/>
                 <h2>Etia Nwaenang</h2>
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M13.28 5.96655L8.93333 10.3132C8.42 10.8266 7.58 10.8266 7.06667 10.3132L2.72 5.96655" stroke="#1E1E1E" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
+                <button type='button'>
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M13.28 5.96655L8.93333 10.3132C8.42 10.8266 7.58 10.8266 7.06667 10.3132L2.72 5.96655" stroke="#1E1E1E" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  <p className="hidden">Dropdown</p>
+                </button>
 
             </div>
         </div>
