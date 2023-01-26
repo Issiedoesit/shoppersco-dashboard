@@ -18,29 +18,29 @@ const UserInsightRow = (props) => {
     }, [props.status, tag])
     
   return (
-    <tr id={props.id} key={props.key} className='even:bg-brandGray28x'>
-        <td className="py-3 px-1">
+    <tr id={props.id} key={props.keyProp} className='even:bg-brandGray28x'>
+        <td className="py-3 px-1 whitespace-nowrap">
             <input type="checkbox" name="check-user-insight" id="checkUserInsight" className="accent-brandGreen4x focus:outline-none focus:ring-none"  />
         </td>
-        <td className="py-3 px-1">
+        <td className="py-3 px-1 whitespace-nowrap">
         <img src={dummyAvatar} alt="avatar" className='h-8 w-8' />
         </td>
-        <td className="py-3 px-1">
+        <td className="py-3 px-1 whitespace-nowrap">
             <div>
                 <h5 className="text-xs">{props.name}</h5>
                 <p className='text-xxs text-brandGray27x'>Points: {props.points} . Rate: {props.rate}</p>
             </div>
         </td>
-        <td className="py-3 px-1">
+        <td className="py-3 px-1 whitespace-nowrap">
             {tag}
         </td>
-        <td className="py-3 px-1">
+        <td className="py-3 px-1 whitespace-nowrap">
             <p className='text-xs'>{props.location}</p>
         </td>
-        <td className="py-3 px-1">
+        <td className="py-3 px-1 whitespace-nowrap">
             <p className="text-brandGray29x text-xs">{props.date}</p>
         </td>
-        <td className="py-3 px-1">
+        <td className="py-3 px-1 whitespace-nowrap">
             <button type='button'>
             <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M14 4.48665C11.78 4.26665 9.54667 4.15332 7.32 4.15332C6 4.15332 4.68 4.21999 3.36 4.35332L2 4.48665" stroke="#3992CC" stroke-linecap="round" stroke-linejoin="round"/>
@@ -52,7 +52,7 @@ const UserInsightRow = (props) => {
             <p className='hidden'>Delete</p>
             </button>
         </td>
-        <td className="py-3 px-1">
+        <td className="py-3 px-1 whitespace-nowrap">
             <button type='button'>
                 <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path opacity="0.4" d="M7.33333 1.83325H5.99999C2.66666 1.83325 1.33333 3.16659 1.33333 6.49992V10.4999C1.33333 13.8333 2.66666 15.1666 5.99999 15.1666H9.99999C13.3333 15.1666 14.6667 13.8333 14.6667 10.4999V9.16658" stroke="#3992CC" stroke-linecap="round" stroke-linejoin="round"/>

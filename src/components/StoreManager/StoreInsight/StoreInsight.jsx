@@ -1,7 +1,9 @@
-import React, { useMemo, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import StoreInsightData from '../../../data/StoreManager/StoreInsightData'
 import StoreInsightTable from './storeInsightTable'
 import $ from 'jquery'
+import useStoreInsightStore from '../../../customHooks/Stores/storeInsightStore'
+
 
 
 
@@ -12,6 +14,9 @@ const StoreInsight = () => {
   const [rows, setRows] = useState(8)
   const [query, setQuery] = useState('')
   const [listLength] = useState(StoreInsightData.length)
+  // const [storeId, setStoreId] = useState('')
+  // const [storeDetail, setStoreDetail] = useState([])
+  const storeId = useStoreInsightStore(state => state.storeId)
 
 
   const moreRows = (add) =>{
@@ -31,13 +36,28 @@ const StoreInsight = () => {
     }
   }
 
+  // useMemo(() => 
+  // StoreInsightData.filter(data => {
+  //   if(data.id == storeId){
+  //       setStoreDetail(data)
+  //   }
+  // })
+  // , 
+  // [storeId])
 
+  // const handleStore = (id) => {
+  //   setStoreId(id)
+  //   console.log(storeId);
+  //   console.log(storeDetail);
+  // }
 
   useMemo(() => {
     return $('.store-insight-row').filter(function(){
         $(this).toggle($(this).text().toLowerCase().indexOf(query.toLowerCase()) > -1)
     })
-}, [query])
+  }, [query])
+
+
   
   return (
     <div className='col-span-3 bg-white rounded-ten p-7'>
@@ -51,8 +71,9 @@ const StoreInsight = () => {
                 <input onChange={handleSearch} onBlur={handleBlur} type="search" name="user-insight-search" id="userInsightSearch" placeholder='Search by name. date, location or status' className='placeholder:text-xs w-full focus:outline-none focus:ring-none text-sm'/>
             </label>
       </div>
-
-      <StoreInsightTable rows={rows} />
+      <div className='overflow-x-auto w-full'>
+        <StoreInsightTable rows={rows} />
+      </div>
       <div className='w-full pt-5 flex justify-center'>
         <button onClick={()=>moreRows(5)} type='button' className={`mx-auto w-fit font-avenirMedium text-sm text-brandBlue1x ${rows < listLength ? 'cursor-pointer' : 'cursor-not-allowed'}`} title={`${rows < listLength ? 'show more rows' : 'no more rows'}`}>
           See more

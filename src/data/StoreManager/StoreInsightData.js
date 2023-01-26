@@ -1,5 +1,6 @@
 const StoreInsightData = [
     {
+        id:'storeInsight1',
         name:'Angelique Jewelries',
         points:'140pts',
         rate:'0.05g',
@@ -12,6 +13,7 @@ const StoreInsightData = [
         orders:'25758'
     },
     {
+        id:'storeInsight2',
         name:'Angelique Jewelries',
         points:'140pts',
         rate:'0.05g',
@@ -24,6 +26,7 @@ const StoreInsightData = [
         orders:'59'
     },
     {
+        id:'storeInsight3',
         name:'Angelique Jewelries',
         points:'140pts',
         rate:'0.05g',
@@ -36,6 +39,7 @@ const StoreInsightData = [
         orders:'5358'
     },
     {
+        id:'storeInsight4',
         name:'Angelique Jewelries',
         points:'140pts',
         rate:'0.05g',
@@ -48,6 +52,7 @@ const StoreInsightData = [
         orders:'4003'
     },
     {
+        id:'storeInsight5',
         name:'Angelique Jewelries',
         points:'140pts',
         rate:'0.05g',
@@ -60,6 +65,7 @@ const StoreInsightData = [
         orders:'832'
     },
     {
+        id:'storeInsight6',
         name:'Angelique Jewelries',
         points:'140pts',
         rate:'0.05g',
@@ -72,6 +78,7 @@ const StoreInsightData = [
         orders:'102'
     },
     {
+        id:'storeInsight7',
         name:'Angelique Jewelries',
         points:'140pts',
         rate:'0.05g',
@@ -84,6 +91,7 @@ const StoreInsightData = [
         orders:'636'
     },
     {
+        id:'storeInsight8',
         name:'Angelique Jewelries',
         points:'140pts',
         rate:'0.05g',
@@ -96,6 +104,7 @@ const StoreInsightData = [
         orders:'234'
     },
     {
+        id:'storeInsight9',
         name:'Angelique Jewelries',
         points:'140pts',
         rate:'0.05g',

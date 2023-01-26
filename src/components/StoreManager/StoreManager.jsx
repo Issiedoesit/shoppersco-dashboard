@@ -11,8 +11,11 @@ import UserPopUp from '../PopUps/UserPopUp'
 
 
 
+
+
 const StoreManager = () => {
   useDocTitle('ShoppersBag | Store Manager')
+ 
 
   return (
     <div className='pb-7 h-screen overflow-hidden'>
@@ -24,7 +27,7 @@ const StoreManager = () => {
            
           
           {StoreMetricsData.map((data, index)=>{
-            return <NumbersCards id={'storeMetric'+(index+1)} key={index} header={data.header} metric={data.metric} amount={data.amount} trend={data.trend} percent={data.percent} link={data.link} linkText={data.linkText} />
+            return <NumbersCards id={'storeMetric'+(index+1)} keyProp={index} header={data.header} metric={data.metric} amount={data.amount} trend={data.trend} percent={data.percent} link={data.link} linkText={data.linkText} />
           })}
 
          </div>
@@ -34,6 +37,7 @@ const StoreManager = () => {
             <ButtonIcon text={'Add Store'} textColor={'white'} bgColor={'brandGreen4x'} fontSize={'xxs'} paddingX={'tenPixel'} font={'avenirMedium'}/>
          </div>
 
+          
          <section className=''>
             <StoreInsight />
          </section>

@@ -5,67 +5,94 @@ import InactiveTag from '../../StatusTags/InactiveTag'
 import BannedTag from '../../StatusTags/BannedTag'
 import VerifiedTag from '../../StatusTags/VerifiedTag'
 import EcoFriendlyTag from '../../StatusTags/EcoFriendlyTag'
+import useStoreInsightStore from '../../../customHooks/Stores/storeInsightStore'
+import useModalStore from '../../../customHooks/Stores/modalStore'
+
+
 
 const StoreInsightRow = (props) => {
     const [tag, setTag] = useState('')
     const [kyc, setKyc] = useState('')
     const [badge, setBadge] = useState('')
-    
+    const setStoreId = useStoreInsightStore(state => state.setStoreId)
+    const setModalStoreState = useModalStore(state => state.changeIsModalOpen)
+
+
+  useEffect(() => {
+    if(props.status.toLowerCase() === 'active'){
+        setTag(<ActiveTag />)
+    }else if(props.status.toLowerCase() === 'inactive'){
+        setTag(<InactiveTag />)
+    }else if(props.status.toLowerCase() === 'banned'){
+        setTag(<BannedTag />)
+    }
+  }, [props.status])
+
+  useEffect(() => {
+    if(props.kyc.toLowerCase() === 'verified'){
+        setKyc(<VerifiedTag />)
+    }else if(props.kyc.toLowerCase() === 'inactive'){
+        setKyc(<InactiveTag />)
+    }
+  }, [props.kyc])
+  
+  
+
     useEffect(() => {
-        if(props.status.toLowerCase() === 'active'){
-            setTag(<ActiveTag />)
-        }else if(props.status.toLowerCase() === 'inactive'){
-            setTag(<InactiveTag />)
-        }else if(props.status.toLowerCase() === 'banned'){
-            setTag(<BannedTag />)
-        }
-
-        if(props.kyc.toLowerCase() === 'verified'){
-            setKyc(<VerifiedTag />)
-        }else if(props.kyc.toLowerCase() === 'inactive'){
-            setKyc(<InactiveTag />)
-        }
-
         if(props.badge.toLowerCase() === 'eco-friendly'){
             setBadge(<EcoFriendlyTag />)
         }else{
             setBadge('')
         }
-    }, [props.status, tag, kyc, badge])
-    
+    }, [props.badge])
+
+    const handleStoreId = (id) => {
+        setStoreId(id)
+    }
+    const handleModal = () => {
+        setModalStoreState()
+    }
+
+    const handleBtnClick = (id) => {
+        handleStoreId(id)
+        handleModal()
+    }
+
+
+
   return (
-    <tr id={props.id} key={props.key} className='even:bg-brandGray28x store-insight-row'>
-        <td className="py-3 px-1">
+    <tr id={props.id} key={props.keyProp} className=' even:bg-brandGray28x store-insight-row'>
+        <td className="py-3 px-1 whitespace-nowrap">
             <input type="checkbox" name="check-user-insight" id="checkUserInsight" className="accent-brandGreen4x focus:outline-none focus:ring-none"  />
         </td>
-        <td className="py-3 px-1">
-        <img src={dummyAvatar} alt="avatar" className='h-8 w-8' />
+        <td className="py-3 px-1 whitespace-nowrap">
+        <img src={dummyAvatar} alt="avatar" className='h-8 w-8 min-w-[32px] aspect-square min-h-[32px]' />
         </td>
-        <td className="py-3 px-1">
+        <td className="py-3 px-1 whitespace-nowrap">
             <div>
-                <h5 className="text-xs">{props.name}</h5>
+                <button type='button' onClick={()=>handleBtnClick(props.id)} className="text-xs hover:text-brandBlue1x transition-color duration-300 ease-in-out">{props.name}</button>
                 <p className='text-xxs text-brandGray27x'>Points: {props.points} . Rate: {props.rate}</p>
             </div>
         </td>
-        <td className="py-3 px-1">
+        <td className="py-3 px-1 whitespace-nowrap">
             {tag}
         </td>
-        <td className="py-3 px-1">
+        <td className="py-3 px-1 whitespace-nowrap">
             {kyc}
         </td>
-        <td className="py-3 px-1">
+        <td className="py-3 px-1 whitespace-nowrap">
             {badge}
         </td>
-        <td className="py-3 px-1">
+        <td className="py-3 px-1 whitespace-nowrap">
             <p className='text-xs'>{props.location}</p>
         </td>
-        <td className="py-3 px-1">
+        <td className="py-3 px-1 whitespace-nowrap">
             <p className="text-brandGray29x text-xs">{props.date}</p>
         </td>
-        <td className="py-3 px-1">
+        <td className="py-3 px-1 whitespace-nowrap">
             <p className="text-xs font-avenirLight">{props.orders}</p>
         </td>
-        <td className="py-3 px-1">
+        <td className="py-3 px-1 whitespace-nowrap">
             {
                 props.approval.toLowerCase() === 'approved'
                 ?
@@ -74,7 +101,7 @@ const StoreInsightRow = (props) => {
                 <p className="text-xs text-brandGray31x capitalize">{props.approval}</p>
             }
         </td>
-        <td className="py-3 px-1">
+        <td className="py-3 px-1 whitespace-nowrap">
             <button type='button'>
             <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M14 4.48665C11.78 4.26665 9.54667 4.15332 7.32 4.15332C6 4.15332 4.68 4.21999 3.36 4.35332L2 4.48665" stroke="#3992CC" stroke-linecap="round" stroke-linejoin="round"/>
@@ -86,7 +113,7 @@ const StoreInsightRow = (props) => {
             <p className='hidden'>Delete</p>
             </button>
         </td>
-        <td className="py-3 px-1">
+        <td className="py-3 px-1 whitespace-nowrap">
             <button type='button'>
                 <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path opacity="0.4" d="M7.33333 1.83325H5.99999C2.66666 1.83325 1.33333 3.16659 1.33333 6.49992V10.4999C1.33333 13.8333 2.66666 15.1666 5.99999 15.1666H9.99999C13.3333 15.1666 14.6667 13.8333 14.6667 10.4999V9.16658" stroke="#3992CC" stroke-linecap="round" stroke-linejoin="round"/>

@@ -27,7 +27,7 @@ const Overview = () => {
             <div className='grid grid-cols-5 pb-5 gap-2 2xl:gap-5'>
               
               {CardMetricsData.map((item, index)=>{
-                return <NumbersCards key={index} id={"metricCard"+(index+1)} header={item.header} metric={item.metric} amount={item.amount} trend={item.trend} percent={item.percent}/>
+                return <NumbersCards keyProp={index} id={"metricCard"+(index+1)} header={item.header} metric={item.metric} amount={item.amount} trend={item.trend} percent={item.percent}/>
               }) }
 
             </div>

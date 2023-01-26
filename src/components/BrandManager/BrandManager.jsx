@@ -24,7 +24,7 @@ const BrandManager = () => {
           
         
         {BrandMetricsData.map((data, index)=>{
-          return <NumbersCards id={'brandMetric'+(index+1)} key={index} header={data.header} metric={data.metric} amount={data.amount} trend={data.trend} percent={data.percent} link={data.link} linkText={data.linkText} />
+          return <NumbersCards id={'brandMetric'+(index+1)} keyProp={index} header={data.header} metric={data.metric} amount={data.amount} trend={data.trend} percent={data.percent} link={data.link} linkText={data.linkText} />
         })}
 
         </div>

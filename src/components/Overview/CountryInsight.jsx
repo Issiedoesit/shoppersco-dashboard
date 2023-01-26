@@ -31,7 +31,7 @@ const CountryInsight = () => {
         </div>
         <div className='text-xxs pt-8'>
             {CountryInsightData.map((data, index)=>{
-              return <div key={index} id={'countryInsight'+(index+1)} className='border-b-0.5 border-b-brandGray28x last:border-b-0 py-2 flex justify-between items-end gap-5'>
+              return <div keyProp={index} id={'countryInsight'+(index+1)} className='border-b-0.5 border-b-brandGray28x last:border-b-0 py-2 flex justify-between items-end gap-5'>
                   <p>{data.insight}</p>
                   <p className='text-brandBlue1x font-avenirBlack w-twentyPercent'>{data.num}</p>
               </div>

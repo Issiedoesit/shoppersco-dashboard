@@ -22,7 +22,7 @@ const Greeting = ({headBtns}) => {
                 <ButtonIcon text={'New Campaign'} textColor={'white'} paddingX={'8'} bgColor={'brandGreen4x'} flexDirection={'row'} fontSize={'base'} />
             </div>
             :
-            null
+            ''
             }
         </div>
     </div>
