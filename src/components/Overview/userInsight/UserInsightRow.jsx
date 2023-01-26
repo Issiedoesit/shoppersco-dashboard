@@ -5,11 +5,11 @@ import InactiveTag from '../../StatusTags/InactiveTag'
 import BannedTag from '../../StatusTags/BannedTag'
 
 const UserInsightRow = (props) => {
-    const [tag, setTag] = useState(<ActiveTag />)
+    const [tag, setTag] = useState(<ActiveTag borderRadius={'forty'}  bgColor={'brandLightGreen1x'} />)
     
     useEffect(() => {
         if(props.status.toLowerCase() === 'active'){
-            setTag(<ActiveTag />)
+            setTag(<ActiveTag borderRadius={'forty'}  bgColor={'brandLightGreen1x'} />)
         }else if(props.status.toLowerCase() === 'inactive'){
             setTag(<InactiveTag />)
         }else if(props.status.toLowerCase() === 'banned'){
@@ -23,7 +23,7 @@ const UserInsightRow = (props) => {
             <input type="checkbox" name="check-user-insight" id="checkUserInsight" className="accent-brandGreen4x focus:outline-none focus:ring-none"  />
         </td>
         <td className="py-3 px-1 whitespace-nowrap">
-        <img src={dummyAvatar} alt="avatar" className='h-8 w-8' />
+        <img src={dummyAvatar} alt="avatar" className='h-8 w-8 min-w-8 aspect-square min-h-8' />
         </td>
         <td className="py-3 px-1 whitespace-nowrap">
             <div>

@@ -17,9 +17,9 @@ const Greeting = ({headBtns}) => {
             {useHeadBtns === true
             ?
             <div className='flex flex-row items-center gap-3'>
-                <ButtonNoIcon text={'Generate Tag'} textColor={'white'} paddingX={'8'} bgColor={'brandOrange1x'} font={'avenirMedium'} fontSize={'base'}/>
-                <ButtonNoIcon text={'Start a raffle draw'} textColor={'white'} paddingX={'8'} bgColor={'brandBlue1x'} font={'avenirMedium'} fontSize={'base'}/>
-                <ButtonIcon text={'New Campaign'} textColor={'white'} paddingX={'8'} bgColor={'brandGreen4x'} flexDirection={'row'} fontSize={'base'} />
+                <ButtonNoIcon text={'Generate Tag'} textColor={'text-white'} paddingX={'px-8'} bgColor={'bg-brandOrange1x'} font={'font-avenirMedium'} fontSize={'text-base'}/>
+                <ButtonNoIcon text={'Start a raffle draw'} textColor={'text-white'} paddingX={'px-8'} bgColor={'bg-brandBlue1x'} font={'font-avenirMedium'} fontSize={'text-base'}/>
+                <ButtonIcon text={'New Campaign'} textColor={'text-white'} paddingX={'px-8'} bgColor={'bg-brandGreen4x'} flexDirection={'flex-row'} fontSize={'text-base'} />
             </div>
             :
             ''

@@ -23,7 +23,7 @@ const BrandInsightRow = (props) => {
             <input type="checkbox" name="check-user-insight" id="checkUserInsight" className="accent-brandGreen4x focus:outline-none focus:ring-none"  />
         </td>
         <td className="py-3 px-1 whitespace-nowrap">
-        <img src={dummyAvatar} alt="avatar" className='h-8 w-8' />
+        <img src={dummyAvatar} alt="avatar" className='h-8 w-8 min-w-8 aspect-square min-h-8' />
         </td>
         <td className="py-3 px-1 whitespace-nowrap">
             <div>

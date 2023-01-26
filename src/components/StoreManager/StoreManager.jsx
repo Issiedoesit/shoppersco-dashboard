@@ -6,7 +6,8 @@ import ButtonIcon from './../Buttons/ButtonIcon'
 import ButtonNoIcon from './../Buttons/ButtonNoIcon'
 import StoreInsight from './StoreInsight/StoreInsight'
 import {useDocTitle} from './../../customHooks/DocumentTitle'
-import UserPopUp from '../PopUps/UserPopUp'
+import UserPopUp from '../PopUps/User/UserPopUp'
+
 
 
 
@@ -33,8 +34,8 @@ const StoreManager = () => {
          </div>
 
          <div className='flex flex-row gap-5 pb-5 items-center justify-end'>
-            <ButtonNoIcon text={'Download CSV'} fontSize={'xxs'} textColor={'brandGray35x'} border={'border'} borderColor={'brandGray32x'} paddingX={'tenPixel'}/>
-            <ButtonIcon text={'Add Store'} textColor={'white'} bgColor={'brandGreen4x'} fontSize={'xxs'} paddingX={'tenPixel'} font={'avenirMedium'}/>
+            <ButtonNoIcon text={'Download CSV'} fontSize={'text-xxs'} textColor={'text-brandGray35x'} border={'border'} borderColor={'border-brandGray32x'} paddingX={'px-tenPixel'}/>
+            <ButtonIcon text={'Add Store'} textColor={'text-white'} bgColor={'bg-brandGreen4x'} fontSize={'text-xxs'} paddingX={'px-tenPixel'} font={'font-avenirMedium'}/>
          </div>
 
           
@@ -43,9 +44,6 @@ const StoreManager = () => {
          </section>
 
 
-
-         {/* to make sure tailwind loads dynamic classes, can be removed in build version ** I THINK??? */}
-          <div className='px-tenPixel hidden text-brandGray35x bg-brandGreen4x text-white border border-brandGray32x'></div>
        </div>
     </div>
 

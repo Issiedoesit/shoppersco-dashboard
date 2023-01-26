@@ -16,6 +16,7 @@ import TemplatePage from './components/Template'
 
 
 
+
 function App() {
 
   const navRef = useRef('')
@@ -38,7 +39,6 @@ function App() {
         <Route path='/template' element={<TemplatePage />}></Route>
       </Routes>
     </div>
-
     </div>
   )
 }

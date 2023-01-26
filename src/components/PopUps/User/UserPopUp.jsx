@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react'
-import useModalStore from '../../customHooks/Stores/modalStore';
-import useStoreInsightStore from '../../customHooks/Stores/storeInsightStore';
-import StoreInsightData from '../../data/StoreManager/StoreInsightData';
+import useModalStore from '../../../customHooks/Stores/modalStore';
+import useStoreInsightStore from '../../../customHooks/Stores/storeInsightStore';
+import StoreInsightData from '../../../data/StoreManager/StoreInsightData';
 import UserPopUpInner from './UserPopUpInner';
 
 

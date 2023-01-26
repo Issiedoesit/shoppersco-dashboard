@@ -20,7 +20,7 @@ const StoreInsightRow = (props) => {
 
   useEffect(() => {
     if(props.status.toLowerCase() === 'active'){
-        setTag(<ActiveTag />)
+        setTag(<ActiveTag borderRadius={'forty'}  bgColor={'brandLightGreen1x'} />)
     }else if(props.status.toLowerCase() === 'inactive'){
         setTag(<InactiveTag />)
     }else if(props.status.toLowerCase() === 'banned'){
@@ -66,7 +66,7 @@ const StoreInsightRow = (props) => {
             <input type="checkbox" name="check-user-insight" id="checkUserInsight" className="accent-brandGreen4x focus:outline-none focus:ring-none"  />
         </td>
         <td className="py-3 px-1 whitespace-nowrap">
-        <img src={dummyAvatar} alt="avatar" className='h-8 w-8 min-w-[32px] aspect-square min-h-[32px]' />
+        <img src={dummyAvatar} alt="avatar" className='h-8 w-8 min-w-8 aspect-square min-h-8' />
         </td>
         <td className="py-3 px-1 whitespace-nowrap">
             <div>

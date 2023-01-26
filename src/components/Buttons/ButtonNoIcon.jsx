@@ -5,7 +5,7 @@ const ButtonNoIcon = ({text, bgColor, paddingX, font, border, borderColor, textC
     const [first, setFirst] = useState('')
 
   return (
-    <button type='button' className={`py-2 px-${paddingX} ${border} border-${borderColor} bg-${bgColor} hover:shadow-md transition-shadow duration-500 ease-in-out rounded-five text-${textColor} font-${font} text-${fontSize}`}>{text}</button>
+    <button type='button' className={`py-2 ${paddingX} ${border} ${borderColor} ${bgColor} hover:shadow-md transition-shadow duration-500 ease-in-out rounded-five ${textColor} ${font} ${fontSize}`}>{text}</button>
   )
 }
 

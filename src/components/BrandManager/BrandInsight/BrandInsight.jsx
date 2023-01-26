@@ -54,7 +54,9 @@ const BrandInsight = () => {
             </label>
       </div>
 
-      <BrandInsightTable rows={rows} />
+      <div className='overflow-x-auto w-full'>
+        <BrandInsightTable rows={rows} />
+      </div>
       <div className='w-full pt-5 flex justify-center'>
         <button onClick={()=>moreRows(5)} type='button' className={`mx-auto w-fit font-avenirMedium text-sm text-brandBlue1x ${rows < listLength ? 'cursor-pointer' : 'cursor-not-allowed'}`} title={`${rows < listLength ? 'show more rows' : 'no more rows'}`}>
           See more

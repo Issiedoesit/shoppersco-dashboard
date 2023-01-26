@@ -3,9 +3,9 @@ import avatar from './../../assets/images/avatars/avatar-1.png'
 
 const Header = ({page}) => {
   return (
-    <div className='bg-brandGray28x w-full py-7 sticky top-0 right-10'>
+    <div className='bg-brandGray28x w-full py-7 sticky top-0 right-10 z-30'>
         <div className='rounded-ten py-3.5 px-8 bg-white flex flex-row w-full items-center justify-between'>
-            <h1 className='font-avenirHeavy text-xl'>{page}</h1>
+            <h1 className='font-avenirHeavy text-xl uppercase'>{page}</h1>
             <div className='flex flex-row items-center font-avenirHeavy gap-3 w-fit'>
                 <img src={avatar} alt="avatar" className='h-10 w-10'/>
                 <h2>Etia Nwaenang</h2>

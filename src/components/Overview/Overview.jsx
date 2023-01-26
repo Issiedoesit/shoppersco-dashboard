@@ -32,7 +32,7 @@ const Overview = () => {
 
             </div>
 
-            <section className='grid grid-cols-5 gap-5'>
+            <section className='flex flex-col-reverse lg:grid grid-cols-5 gap-5'>
                 <UserInsight />
                 <CountryInsight />
             </section>
@@ -40,10 +40,6 @@ const Overview = () => {
           </div>
        </div>
 
-
-
-      {/* to make sure tailwind loads dynamic classes, can be removed in build version ** I THINK??? */}
-       <div className="hidden bg-brandOrange1x"></div>
     </div>
   )
 }
