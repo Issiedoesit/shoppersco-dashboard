@@ -12,8 +12,9 @@ const useStoreInsightStore = create(devtools(
         return data.id.indexOf(id) > -1
     })
     }),
-    increasePopulation: () => set((state) => ({ bears: state.bears + 1 })),
-    removeAllBears: () => set({ bears: 0 }),
+    // moveModalDetails : (dataSet, id) => set({modalDetails: 
+    //   dataSet.map(function(x){return x.id;}).indexOf(id)
+    // }),
   })
 ))
 

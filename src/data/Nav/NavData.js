@@ -2,7 +2,7 @@ const NavItems = [
     {
         title:'Overview',
         path:'/',
-        icon:'./src/assets/images/icons/vuesax/home-2.svg'
+        icon:'/src/assets/images/icons/vuesax/home-2.svg'
     },
     {
         title:'Insight',

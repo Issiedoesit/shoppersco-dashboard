@@ -1,8 +1,10 @@
 import React from 'react'
+import { Outlet } from 'react-router-dom'
 import { useDocTitle } from '../../customHooks/DocumentTitle'
 import Header from './../Header/Header'
 import CampaignAside from './CampaignAside/CampaignAside'
-import CampaignMain from './CampaignMain/CampaignMain'
+import CampaignMain from './CampaignMain/InsightCampaign/InsightCampaign'
+
 
 const CampaignManager = () => {
   useDocTitle('ShoppersBag | Campaign Manager')
@@ -21,6 +23,7 @@ const CampaignManager = () => {
 
         </div>
       </div>
+      <Outlet />
     </div>
   )
 }

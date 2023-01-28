@@ -16,10 +16,10 @@ const Greeting = ({headBtns}) => {
 
             {useHeadBtns === true
             ?
-            <div className='flex flex-row items-center gap-3'>
-                <ButtonNoIcon text={'Generate Tag'} textColor={'text-white'} paddingX={'px-8'} bgColor={'bg-brandOrange1x'} font={'font-avenirMedium'} fontSize={'text-base'}/>
-                <ButtonNoIcon text={'Start a raffle draw'} textColor={'text-white'} paddingX={'px-8'} bgColor={'bg-brandBlue1x'} font={'font-avenirMedium'} fontSize={'text-base'}/>
-                <ButtonIcon text={'New Campaign'} textColor={'text-white'} paddingX={'px-8'} bgColor={'bg-brandGreen4x'} flexDirection={'flex-row'} fontSize={'text-base'} />
+            <div className='flex flex-wrap flex-row items-center gap-3 justify-end'>
+                <ButtonNoIcon text={'Generate Tag'} textColor={'text-white'} paddingX={'px-2 sm:px-5 lg:px-8'} bgColor={'bg-brandOrange1x'} font={'font-avenirMedium'} fontSize={'text-sm md:text-base'}/>
+                <ButtonNoIcon text={'Start a raffle draw'} textColor={'text-white'} paddingX={'px-2 sm:px-5 lg:px-8'} bgColor={'bg-brandBlue1x'} font={'font-avenirMedium'} fontSize={'text-sm md:text-base'}/>
+                <ButtonIcon text={'New Campaign'} textColor={'text-white'} paddingX={'px-2 sm:px-5 lg:px-8'} bgColor={'bg-brandGreen4x'} flexDirection={'flex-row'} fontSize={'text-sm md:text-base'} />
             </div>
             :
             ''

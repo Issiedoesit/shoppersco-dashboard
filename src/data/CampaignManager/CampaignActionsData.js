@@ -2,7 +2,7 @@ const CampaignActionsData = [
     {
         id:'CaAction1',
         text: 'Start an eco campaign',
-        img: './src/assets/images/illustrations/startEcoCampaign.png',
+        img: '/src/assets/images/illustrations/startEcoCampaign.png',
         altImg:'',
         bgColor:'bg-brandBlue1x',
         textColor: 'text-white',
@@ -12,8 +12,8 @@ const CampaignActionsData = [
     {
         id:'CaAction2',
         text: 'Discount Vouchers',
-        img: './src/assets/images/illustrations/coupons.png',
-        altImg:'./src/assets/images/logos/logo.png',
+        img: '/src/assets/images/illustrations/coupons.png',
+        altImg:'/src/assets/images/logos/logo.png',
         bgColor:'',
         textColor: '',
         fontSize: '',
@@ -23,7 +23,7 @@ const CampaignActionsData = [
     {
         id:'CaAction3',
         text: 'Raffle Draw',
-        img: './src/assets/images/illustrations/raffle.png',
+        img: '/src/assets/images/illustrations/raffle.png',
         altImg:'',
         bgColor:'',
         fontSize: 'text-xl',

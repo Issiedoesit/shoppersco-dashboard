@@ -1,15 +1,15 @@
 import React from 'react'
 
-const NumbersCards = ({keyProp, id, header, metric, amount, link, linkText, percent, trend}) => {
+const NumbersCards = ({keyprop, id, header, metric, amount, link, linkText, percent, trend, extraClasses}) => {
   return (
-    <div key={keyProp} id={id} className='bg-white py-3 rounded-eight pl-18px pr-3 flex flex-col justify-between'>
+    <div key={keyprop} id={id} className={`bg-white py-3 rounded-eight ${extraClasses} pl-18px pr-3 flex flex-col justify-between`}>
         <div>
-            <p className='text-xs'>{header}</p>
-            <h3 className='font-avenirHeavy text-sm'>{metric}</h3>
+            <p className='text-xxs sm:text-xs'>{header}</p>
+            <h3 className='font-avenirHeavy text-xs sm:text-sm'>{metric}</h3>
         </div>
 
         <div className='pt-3 flex flex-row items-end justify-between text-brandGreen4x'>
-            <h4 className='font-avenirBlack text-xl'>{amount}</h4>
+            <h4 className='font-avenirBlack sm:text-xl'>{amount}</h4>
            
            {trend 
            ?  
@@ -23,10 +23,10 @@ const NumbersCards = ({keyProp, id, header, metric, amount, link, linkText, perc
                         <path d="M7.82397 3.49998H6.26647C4.33564 3.49998 3.54231 4.87081 4.51064 6.54498L5.29231 7.89248L6.07397 9.23998C7.04231 10.9141 8.62314 10.9141 9.59147 9.23998L10.3731 7.89248L11.1548 6.54498C12.1231 4.87081 11.3298 3.49998 9.39897 3.49998H7.82397Z" stroke="#FF3A44" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 }
-                <p className={`${trend.toLowerCase() === 'up' ? 'text-brandGreen4x' : 'text-brandRed1x'} text-xs`}>{percent}</p>
+                <p className={`${trend.toLowerCase() === 'up' ? 'text-brandGreen4x' : 'text-brandRed1x'} text-xxs sm:text-xs`}>{percent}</p>
             </div>
             :
-            <a href={link} className='text-sm text-brandBlue1x'>{linkText}</a>}
+            <a href={link} className='text-xs sm:text-sm text-brandBlue1x'>{linkText}</a>}
         </div>
     </div>
   )

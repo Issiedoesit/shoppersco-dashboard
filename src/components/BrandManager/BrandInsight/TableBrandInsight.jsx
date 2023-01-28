@@ -1,20 +1,19 @@
 import React from 'react'
-import StoreInsightData from '../../../data/StoreManager/StoreInsightData'
-import StoreInsightRow from './StoreInsightRow'
+import BrandInsightData from '../../../data/BrandManager/BrandInsightData'
+import BrandInsightRow from './RowBrandInsight'
 
 
-const StoreInsightTable = ({rows}) => {
+const BrandInsightTable = ({rows}) => {
 
-    let slicedRows = StoreInsightData.slice(0, rows)
-    
+    let slicedRows = BrandInsightData.slice(0, rows)
 
   return (
-    <table id='storeInsightTable' className='table table-auto w-full text-left'>
+    <table id='brandInsightTable' key={'brandInsightTable'} className='table table-auto w-full text-left'>
         <thead className='text-sm font-avenirMedium border-b border-b-brandGray30x'>
-           <tr>
-           <td className='py-2 px-2 whitespace-nowrap'>
+            <tr>
+            <td className='py-2 px-2 whitespace-nowrap'>
 
-                <input type="checkbox" name="master-check-store-insight" id="masterCheckStoreInsight" className="accent-brandGreen4x focus:outline-none focus:ring-none"  />
+                <input type="checkbox" name="master-check-brand-insight" id="masterCheckBrandInsight" className="accent-brandGreen4x focus:outline-none focus:ring-none"  />
             </td>
             <td className='py-2 px-2 whitespace-nowrap'>
 
@@ -25,11 +24,6 @@ const StoreInsightTable = ({rows}) => {
             </td>
             <td className='py-2 px-2 whitespace-nowrap'>
 
-            Status
-            </td>
-            <td className='py-2 px-2 whitespace-nowrap'>
-
-            KYC Status
             </td>
             <td className='py-2 px-2 whitespace-nowrap'>
 
@@ -45,7 +39,7 @@ const StoreInsightTable = ({rows}) => {
             </td>
             <td className='py-2 px-2 whitespace-nowrap'>
 
-            Orders
+            Order QTY
             </td>
             <td className='py-2 px-2 whitespace-nowrap'>
 
@@ -53,12 +47,12 @@ const StoreInsightTable = ({rows}) => {
             <td className='py-2 px-2 whitespace-nowrap'>
 
             </td>
-           </tr>
+            </tr>
         </thead>
         <tbody>
 
             {slicedRows.map((data, index)=>{
-                return <StoreInsightRow id={data.id} keyprop={data.id} name={data.name} points={data.points} rate={data.rate} status={data.status} kyc={data.kyc} badge={data.badge} location={data.location} date={data.date} orders={data.orders} approval={data.approval} />
+                return <BrandInsightRow id={`brandInsight${index+1}`} keyprop={`brandSight${index+1}`} name={data.name} owner={data.owner} badge={data.badge} location={data.location} date={data.date} orders={data.orders} />
             })}
             
         </tbody>
@@ -66,4 +60,4 @@ const StoreInsightTable = ({rows}) => {
   )
 }
 
-export default StoreInsightTable
+export default BrandInsightTable

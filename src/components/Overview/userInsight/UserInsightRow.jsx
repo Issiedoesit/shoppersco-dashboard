@@ -1,24 +1,27 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import dummyAvatar from './../../../assets/images/avatars/avatar-1.png'
 import ActiveTag from '../../StatusTags/ActiveTag'
 import InactiveTag from '../../StatusTags/InactiveTag'
 import BannedTag from '../../StatusTags/BannedTag'
 
 const UserInsightRow = (props) => {
-    const [tag, setTag] = useState(<ActiveTag borderRadius={'forty'}  bgColor={'brandLightGreen1x'} />)
+    // const [tag, setTag] = useState(<ActiveTag borderRadius={'forty'}  bgColor={'brandLightGreen1x'} />)
     
-    useEffect(() => {
-        if(props.status.toLowerCase() === 'active'){
-            setTag(<ActiveTag borderRadius={'forty'}  bgColor={'brandLightGreen1x'} />)
-        }else if(props.status.toLowerCase() === 'inactive'){
-            setTag(<InactiveTag />)
-        }else if(props.status.toLowerCase() === 'banned'){
-            setTag(<BannedTag />)
-        }
-    }, [props.status, tag])
+    // useEffect(() => {
+      
+    // }, [props.status, tag])
+    let tag;
+
+    if(props.status.toLowerCase() === 'active'){
+        tag = <ActiveTag borderRadius={'rounded-forty'}  bgColor={'bg-brandLightGreen1x'} />
+    }else if(props.status.toLowerCase() === 'inactive'){
+        tag = <InactiveTag />
+    }else if(props.status.toLowerCase() === 'banned'){
+        tag = <BannedTag />
+    }
     
   return (
-    <tr id={props.id} key={props.keyProp} className='even:bg-brandGray28x'>
+    <tr id={props.id} key={props.keyprop} className='even:bg-brandGray28x user-insight-row'>
         <td className="py-3 px-1 whitespace-nowrap">
             <input type="checkbox" name="check-user-insight" id="checkUserInsight" className="accent-brandGreen4x focus:outline-none focus:ring-none"  />
         </td>

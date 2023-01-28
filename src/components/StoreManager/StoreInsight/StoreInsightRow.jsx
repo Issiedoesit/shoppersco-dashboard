@@ -11,40 +11,36 @@ import useModalStore from '../../../customHooks/Stores/modalStore'
 
 
 const StoreInsightRow = (props) => {
-    const [tag, setTag] = useState('')
-    const [kyc, setKyc] = useState('')
-    const [badge, setBadge] = useState('')
+    // const [tag, setTag] = useState('')
+    // const [kyc, setKyc] = useState('')
+    // const [badge, setBadge] = useState('')
     const setStoreId = useStoreInsightStore(state => state.setStoreId)
     const setModalStoreState = useModalStore(state => state.changeIsModalOpen)
 
+    let tag;
 
-  useEffect(() => {
     if(props.status.toLowerCase() === 'active'){
-        setTag(<ActiveTag borderRadius={'forty'}  bgColor={'brandLightGreen1x'} />)
+       tag =  <ActiveTag borderRadius={'rounded-forty'}  bgColor={'bg-brandLightGreen1x'} />
     }else if(props.status.toLowerCase() === 'inactive'){
-        setTag(<InactiveTag />)
+       tag =  <InactiveTag />
     }else if(props.status.toLowerCase() === 'banned'){
-        setTag(<BannedTag />)
+       tag =  <BannedTag />
     }
-  }, [props.status])
 
-  useEffect(() => {
+    let kyc;
     if(props.kyc.toLowerCase() === 'verified'){
-        setKyc(<VerifiedTag />)
+       kyc =  <VerifiedTag />
     }else if(props.kyc.toLowerCase() === 'inactive'){
-        setKyc(<InactiveTag />)
+       kyc =  <InactiveTag />
     }
-  }, [props.kyc])
   
-  
+    let badge;
 
-    useEffect(() => {
-        if(props.badge.toLowerCase() === 'eco-friendly'){
-            setBadge(<EcoFriendlyTag />)
-        }else{
-            setBadge('')
-        }
-    }, [props.badge])
+    if(props.badge.toLowerCase() === 'eco-friendly'){
+        badge = <EcoFriendlyTag />
+     }else{
+        badge = ''
+     }
 
     const handleStoreId = (id) => {
         setStoreId(id)
@@ -61,12 +57,12 @@ const StoreInsightRow = (props) => {
 
 
   return (
-    <tr id={props.id} key={props.keyProp} className=' even:bg-brandGray28x store-insight-row'>
+    <tr id={props.id} key={props.keyprop} className=' even:bg-brandGray28x store-insight-row'>
         <td className="py-3 px-1 whitespace-nowrap">
-            <input type="checkbox" name="check-user-insight" id="checkUserInsight" className="accent-brandGreen4x focus:outline-none focus:ring-none"  />
+            <input type="checkbox" name="check-store-insight" id="checkStoreInsight" className="accent-brandGreen4x focus:outline-none focus:ring-none"  />
         </td>
         <td className="py-3 px-1 whitespace-nowrap">
-        <img src={dummyAvatar} alt="avatar" className='h-8 w-8 min-w-8 aspect-square min-h-8' />
+            <img src={dummyAvatar} alt="avatar" className='h-8 w-8 min-w-8 aspect-square min-h-8' />
         </td>
         <td className="py-3 px-1 whitespace-nowrap">
             <div>

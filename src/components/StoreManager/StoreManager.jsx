@@ -19,16 +19,15 @@ const StoreManager = () => {
  
 
   return (
-    <div className='pb-7 h-screen overflow-hidden'>
-    <div className='overflow-y-auto h-full px-5 sm:px-10 xl:pl-0 xl:pr-10'>
+    <div className='pb-7 h-screen overflow-hidden bg-brandGray28x'>
+    <div className='overflow-y-auto bg-brandGray28x h-full px-5 sm:px-10 xl:pl-0 xl:pr-10'>
      <Header page="Store Manager"/>
        <div className='pb-10 overflow-y-auto'>
 
-         <div className='grid grid-cols-5 pb-5 gap-2 2xl:gap-5'>
-           
-          
+       <div className='grid xs:grid-cols-1 grid-cols-2 md:grid-cols-3 lg:grid-cols-5 pb-5 gap-2 2xl:gap-5 auto-cols-fr auto-rows-fr'>
+      
           {StoreMetricsData.map((data, index)=>{
-            return <NumbersCards id={'storeMetric'+(index+1)} keyProp={index} header={data.header} metric={data.metric} amount={data.amount} trend={data.trend} percent={data.percent} link={data.link} linkText={data.linkText} />
+            return <NumbersCards id={`storeMetric${index}`} keyprop={`storeMetric${index}`} header={data.header} metric={data.metric} amount={data.amount} trend={data.trend} percent={data.percent} link={data.link} linkText={data.linkText} />
           })}
 
          </div>

@@ -1,31 +1,47 @@
-import React, { useRef } from 'react'
-import { NavLink } from 'react-router-dom'
+import React, { useEffect, useRef, useState } from 'react'
+import { NavLink, useLocation } from 'react-router-dom'
+import useMobileNav from '../../customHooks/Stores/useMobileNav'
 import Logo from './../../assets/images/logos/logo.png'
-// import NavItems from './../../data/Nav/NavData'
-// import NavLinks from './NavLinks'
+
 
 
 const NavBar = () => {
+  const navState = useMobileNav(state => state.showMobileNav)
+  const closeNav = useMobileNav(state => state.closeMobileNav)
+  const toggleNav = useMobileNav(state => state.toggleMobileNav)
+  const location = useLocation()
+  const navRef = useRef()
 
-  const navRef = useRef('')
+  const handleNavToggle = () =>{
+    closeNav()
+  }
 
+  // console.log(navState ? 'Shown' : 'Hidden');
+ 
+  useEffect(() => {
+    handleNavToggle()
+  }, [location])
+
+  
+
+  
 
   return (
-    <div ref={navRef} className='fixed top-0 h-screen left-0 z-30 -translate-x-oneFiftyPercent xl:-translate-x-0 transition-transform duration-500 ease-in-out xl:static lg:col-span-3 2xl:col-span-2 w-64'>
-      <div  className='transition-transform duration-500 ease-in-out bg-white h-full font-avenirRegular max-w-sm flex flex-col justify-between'>
-          <NavLink to="/" className='px-9 pt-10'>
-            <img src={Logo} alt='logo' className='w-44' />
+    <div ref={navRef} id="navBar" className={`fixed top-0 h-screen left-0 z-50 ${navState ? '' : '-translate-x-oneFiftyPercent'} shadow-md xl:shadow-none xl:-translate-x-0 transition-transform duration-500 ease-in-out xl:static lg:col-span-3 2xl:col-span-2 xs:max-w-171px w-64`}>
+      <div  className='transition-transform duration-500 ease-in-out bg-white h-screen font-avenirRegular max-w-sm flex flex-col w-full'>
+          <NavLink to="/" className='xs:px-4 px-9 pt-10'>
+            <img src={Logo} alt='logo' className='xs:w-32 w-44' />
           </NavLink>
-          <div className='h-eightyPercent pt-10 pb-10'>
-            <div className='flex flex-col gap-5 h-full pt-10  px-4 overflow-y-auto'>
-                <NavLink exact end={true} to='/' className={({isActive}) =>(isActive ? 'font-avenirBlack text-brandGreen4x active--icon bg-brandGray15x flex flex-row gap-tenPixel items-center px-6 py-sixPixel' : 'font-satoshi-regular hover:text-brandGreen4x/80 hover:bg-brandGray15x/80 not--active--icon flex flex-row gap-tenPixel items-center px-6 py-sixPixel text-brandGray27x transition ease-in-out duration-400')}>
+          <div className='h-full flex flex-col justify-between pb-5 xs:pt-5 pt-10 overflow-y-auto xs:text-xs'>
+            <div className='flex flex-col gap-5 h-fit xs:pt-5 pt-10 xs:px-2 px-4 overflow-y-auto'>
+                <NavLink exact end={true} to='/' className={({isActive}) =>(isActive ? 'font-avenirBlack text-brandGreen4x active--icon bg-brandGray15x flex flex-row gap-tenPixel items-center xs:px-2 px-6 py-sixPixel' : 'font-satoshi-regular hover:text-brandGreen4x/80 hover:bg-brandGray15x/80 not--active--icon flex flex-row gap-tenPixel items-center xs:px-2 px-6 py-sixPixel text-brandGray27x transition ease-in-out duration-400')}>
                   <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M6.765 2.13012L2.7225 5.28012C2.0475 5.80512 1.5 6.92262 1.5 7.77012V13.3276C1.5 15.0676 2.9175 16.4926 4.6575 16.4926H13.3425C15.0825 16.4926 16.5 15.0676 16.5 13.3351V7.87512C16.5 6.96762 15.8925 5.80512 15.15 5.28762L10.515 2.04012C9.465 1.30512 7.7775 1.34262 6.765 2.13012Z" stroke="#AFAFAF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                     <path opacity="0.34" d="M9 13.4924V11.2424" stroke="#AFAFAF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                   </svg>
                   <p className='whitespace-nowrap'>Overview</p>
                 </NavLink>
-                <NavLink exact to='/insight' className={({isActive}) =>(isActive ? 'font-avenirBlack text-brandGreen4x active--icon bg-brandGray15x px-6 py-sixPixel flex flex-row gap-tenPixel items-center' : 'font-satoshi-regular hover:text-brandGreen4x/80 hover:bg-brandGray15x/80 not--active--icon flex flex-row gap-tenPixel items-center px-6 py-sixPixel text-brandGray27x transition ease-in-out duration-400')}>
+                <NavLink exact to='/insight' className={({isActive}) =>(isActive ? 'font-avenirBlack text-brandGreen4x active--icon bg-brandGray15x xs:px-2 px-6 py-sixPixel flex flex-row gap-tenPixel items-center' : 'font-satoshi-regular hover:text-brandGreen4x/80 hover:bg-brandGray15x/80 not--active--icon flex flex-row gap-tenPixel items-center xs:px-2 px-6 py-sixPixel text-brandGray27x transition ease-in-out duration-400')}>
                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M6.75 16.5H11.25C15 16.5 16.5 15 16.5 11.25V6.75C16.5 3 15 1.5 11.25 1.5H6.75C3 1.5 1.5 3 1.5 6.75V11.25C1.5 15 3 16.5 6.75 16.5Z" stroke="#AFAFAF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                     <path opacity="0.4" d="M11.625 13.875C12.45 13.875 13.125 13.2 13.125 12.375V5.625C13.125 4.8 12.45 4.125 11.625 4.125C10.8 4.125 10.125 4.8 10.125 5.625V12.375C10.125 13.2 10.7925 13.875 11.625 13.875Z" stroke="#AFAFAF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -34,7 +50,7 @@ const NavBar = () => {
                   <p className='whitespace-nowrap'>Insight</p>
 
                 </NavLink>
-                <NavLink exact to='/store-manager' className={({isActive}) =>(isActive ? 'font-avenirBlack text-brandGreen4x active--icon bg-brandGray15x px-6 py-sixPixel flex flex-row gap-tenPixel items-center' : 'font-satoshi-regular hover:text-brandGreen4x/80 hover:bg-brandGray15x/80 not--active--icon flex flex-row gap-tenPixel items-center px-6 py-sixPixel text-brandGray27x transition ease-in-out duration-400')}>
+                <NavLink exact to='/store-manager' className={({isActive}) =>(isActive ? 'font-avenirBlack text-brandGreen4x active--icon bg-brandGray15x xs:px-2 px-6 py-sixPixel flex flex-row gap-tenPixel items-center' : 'font-satoshi-regular hover:text-brandGreen4x/80 hover:bg-brandGray15x/80 not--active--icon flex flex-row gap-tenPixel items-center xs:px-2 px-6 py-sixPixel text-brandGray27x transition ease-in-out duration-400')}>
                   <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M6.87004 8.1525C6.79504 8.145 6.70504 8.145 6.62254 8.1525C4.83754 8.0925 3.42004 6.63 3.42004 4.83C3.42004 2.9925 4.90504 1.5 6.75004 1.5C8.58754 1.5 10.08 2.9925 10.08 4.83C10.0725 6.63 8.65504 8.0925 6.87004 8.1525Z" stroke="#AFAFAF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                     <path opacity="0.4" d="M12.3075 3C13.7625 3 14.9325 4.1775 14.9325 5.625C14.9325 7.0425 13.8075 8.1975 12.405 8.25C12.345 8.2425 12.2775 8.2425 12.21 8.25" stroke="#AFAFAF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -43,7 +59,7 @@ const NavBar = () => {
                   </svg>
                   <p className='whitespace-nowrap'>Store  Manager</p>
                   </NavLink>
-                <NavLink exact to='/brand-manager'  className={({isActive}) =>(isActive ? 'font-avenirBlack text-brandGreen4x active--icon bg-brandGray15x px-6 py-sixPixel flex flex-row gap-tenPixel items-center' : 'font-satoshi-regular hover:text-brandGreen4x/80 hover:bg-brandGray15x/80 not--active--icon flex flex-row gap-tenPixel items-center px-6 py-sixPixel text-brandGray27x transition ease-in-out duration-400')}>
+                <NavLink exact to='/brand-manager'  className={({isActive}) =>(isActive ? 'font-avenirBlack text-brandGreen4x active--icon bg-brandGray15x xs:px-2 px-6 py-sixPixel flex flex-row gap-tenPixel items-center' : 'font-satoshi-regular hover:text-brandGreen4x/80 hover:bg-brandGray15x/80 not--active--icon flex flex-row gap-tenPixel items-center xs:px-2 px-6 py-sixPixel text-brandGray27x transition ease-in-out duration-400')}>
                   <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path opacity="0.4" d="M9.27747 6.65991H13.215" stroke="#AFAFAF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                     <path opacity="0.4" d="M4.78503 6.65991L5.34753 7.22241L7.03503 5.53491" stroke="#AFAFAF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -53,7 +69,7 @@ const NavBar = () => {
                   </svg>
                   <p className='whitespace-nowrap'>Brand  Manager</p>
                 </NavLink>
-                <NavLink exact to='/campaign-manager'  className={({isActive}) =>(isActive ? 'font-avenirBlack text-brandGreen4x active--icon bg-brandGray15x px-6 py-sixPixel flex flex-row gap-tenPixel items-center' : 'font-satoshi-regular hover:text-brandGreen4x/80 hover:bg-brandGray15x/80 not--active--icon flex flex-row gap-tenPixel items-center px-6 py-sixPixel text-brandGray27x transition ease-in-out duration-400')}>
+                <NavLink exact to='/campaign-manager'  className={({isActive}) =>(isActive ? 'font-avenirBlack text-brandGreen4x active--icon bg-brandGray15x xs:px-2 px-6 py-sixPixel flex flex-row gap-tenPixel items-center' : 'font-satoshi-regular hover:text-brandGreen4x/80 hover:bg-brandGray15x/80 not--active--icon flex flex-row gap-tenPixel items-center xs:px-2 px-6 py-sixPixel text-brandGray27x transition ease-in-out duration-400')}>
                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M9.37479 16.5003H3.05979C2.18979 16.5003 1.47729 15.8028 1.47729 14.9478V3.81776C1.47729 1.85276 2.93979 0.960262 4.7323 1.83776L8.06229 3.47276C8.78229 3.82526 9.37479 4.76276 9.37479 5.55776V16.5003Z" stroke="#AFAFAF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                   <path d="M16.4773 11.2952V14.1302C16.4773 15.7502 15.7273 16.5002 14.1073 16.5002H9.37476V7.81519L9.72726 7.89019L13.1023 8.64769L14.6248 8.98519C15.6148 9.20269 16.4248 9.71269 16.4698 11.1527C16.4773 11.1977 16.4773 11.2427 16.4773 11.2952Z" stroke="#AFAFAF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -65,7 +81,7 @@ const NavBar = () => {
 
                   <p className='whitespace-nowrap'>Campaign Manager</p>
                   </NavLink>
-                <NavLink exact to='/eco-bag-producer' className={({isActive}) =>(isActive ? 'font-avenirBlack text-brandGreen4x active--icon bg-brandGray15x px-6 py-sixPixel flex flex-row gap-tenPixel items-center' : 'font-satoshi-regular hover:text-brandGreen4x/80 hover:bg-brandGray15x/80 not--active--icon flex flex-row gap-tenPixel items-center px-6 py-sixPixel text-brandGray27x transition ease-in-out duration-400')}>
+                <NavLink exact to='/eco-bag-producer' className={({isActive}) =>(isActive ? 'font-avenirBlack text-brandGreen4x active--icon bg-brandGray15x xs:px-2 px-6 py-sixPixel flex flex-row gap-tenPixel items-center' : 'font-satoshi-regular hover:text-brandGreen4x/80 hover:bg-brandGray15x/80 not--active--icon flex flex-row gap-tenPixel items-center xs:px-2 px-6 py-sixPixel text-brandGray27x transition ease-in-out duration-400')}>
                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path opacity="0.34" d="M9.11255 12.375V13.95" stroke="#AFAFAF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                   <path d="M5.36255 16.5H12.8625V15.75C12.8625 14.925 12.1875 14.25 11.3625 14.25H6.86255C6.03755 14.25 5.36255 14.925 5.36255 15.75V16.5V16.5Z" stroke="#AFAFAF" stroke-width="1.5" stroke-miterlimit="10"/>
@@ -77,7 +93,7 @@ const NavBar = () => {
 
                   <p className='whitespace-nowrap'>Eco-bag Producer</p>
                   </NavLink>
-                <NavLink exact to='/impact' className={({isActive}) =>(isActive ? 'font-avenirBlack text-brandGreen4x active--icon bg-brandGray15x px-6 py-sixPixel flex flex-row gap-tenPixel items-center' : 'font-satoshi-regular hover:text-brandGreen4x/80 hover:bg-brandGray15x/80 not--active--icon flex flex-row gap-tenPixel items-center px-6 py-sixPixel text-brandGray27x transition ease-in-out duration-400')}>
+                <NavLink exact to='/impact' className={({isActive}) =>(isActive ? 'font-avenirBlack text-brandGreen4x active--icon bg-brandGray15x xs:px-2 px-6 py-sixPixel flex flex-row gap-tenPixel items-center' : 'font-satoshi-regular hover:text-brandGreen4x/80 hover:bg-brandGray15x/80 not--active--icon flex flex-row gap-tenPixel items-center xs:px-2 px-6 py-sixPixel text-brandGray27x transition ease-in-out duration-400')}>
                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path opacity="0.34" d="M9.11255 12.375V13.95" stroke="#AFAFAF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                   <path d="M5.36255 16.5H12.8625V15.75C12.8625 14.925 12.1875 14.25 11.3625 14.25H6.86255C6.03755 14.25 5.36255 14.925 5.36255 15.75V16.5V16.5Z" stroke="#AFAFAF" stroke-width="1.5" stroke-miterlimit="10"/>
@@ -90,8 +106,10 @@ const NavBar = () => {
                 </NavLink>
 
             </div>
+
+          
           </div>
-          <div className='bg-brandLightRed1x text-brandRed1x pl-16 pr-9 2xl:pl-12 py-5'>
+          <div className='bg-brandLightRed1x text-brandRed1x xs:pl-4 pl-16 pr-9 2xl:pl-12 xs:py-2 py-5 justify-self-end'>
             <NavLink to="/logout" className="flex flex-row gap-10 items-center">
               <p>Logout</p>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

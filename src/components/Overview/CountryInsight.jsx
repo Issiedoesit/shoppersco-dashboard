@@ -13,7 +13,7 @@ const CountryInsight = () => {
         <div className="flex items-center justify-between gap-5">
         <h4 className='font-avenirHeavy'>ShoppersBag Country Insight</h4>
           <label htmlFor="countryInsight">
-            <select name="country-insight" id="countryInsight" className='rounded-fifty bg-brandWhite1x text-sm text-brandGray34x py-2.5 border-0.5 pl-2 border-brandGray34x'>
+            <select name="country-insight" id="countryInsight" className='rounded-fifty pr-2 sm:pr-5 lg:pr-10 focus:ring-inset focus:ring-2 focus:ring-offset-2 focus:ring-brandGreen4x focus:outline-none bg-brandWhite1x text-xs sm:text-sm text-brandGray34x py-2 md:py-2.5 border-0.5 pl-2 border-brandGray34x'>
               <option value="Select country" selected disabled>Select country</option>
             </select>
           </label>
@@ -31,7 +31,7 @@ const CountryInsight = () => {
           </div>
           <div className='text-xxs pt-8'>
               {CountryInsightData.map((data, index)=>{
-                return <div keyProp={index} id={'countryInsight'+(index+1)} className='border-b-0.5 border-b-brandGray28x last:border-b-0 py-2 flex justify-between items-end gap-5'>
+                return <div key={`countryInsight${index}`} id={`countryInsight${index}`} className='border-b-0.5 border-b-brandGray28x last:border-b-0 py-2 flex justify-between items-end gap-5'>
                     <p>{data.insight}</p>
                     <p className='text-brandBlue1x font-avenirBlack w-twentyPercent'>{data.num}</p>
                 </div>
