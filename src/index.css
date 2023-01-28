@@ -16,4 +16,28 @@ html, body{
     transition: all 500ms ease-in-out;
 }
 
+.authPassword::-ms-reveal{
+    display: none;
+}
+
+.marquee .marquee-content{
+    padding-left: 10%;
+    -moz-animation: marquee 15s linear infinite;
+    -webkit-animation: marquee 15s linear infinite;
+    animation: marquee 15s linear infinite;
+
+}
+
+@-moz-keyframes marquee {
+    0%   { transform: translate(0, 0); }
+    100% { transform: translate(-100%, 0); }
+}
+@-webkit-keyframes marquee {
+    0%   { transform: translate(0, 0); }
+    100% { transform: translate(-100%, 0); }
+}
+@keyframes marquee {
+    0%   { transform: translate(0, 0); }
+    100% { transform: translate(-100%, 0); }
+}
 

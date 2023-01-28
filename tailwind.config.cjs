@@ -17,6 +17,7 @@ module.exports = {
         brandGreen4x: '#029834',
         brandGreen5x: '#1FAD66',
         brandGreen6x: '#01BA3E',
+        brandGreen7x: '#28A952',
         brandLightGreen1x: '#B7EFD0',
         brandBlack1x: '#1E1E1E',
         brandRed1x: '#FF3A44',
@@ -76,6 +77,7 @@ module.exports = {
         brandGray38x: '#F9F9F9', 
         brandGray39x: '#878787', 
         brandGray40x: '#ACACAC', 
+        brandGray41x: '#263238', 
         brandPurple1x: '#845CA7',
         brandPurple2x: '#8D8CFF33',
         brandPurple3x: '#8D8CFF',
@@ -126,6 +128,12 @@ module.exports = {
       },
       borderWidth: {
         '0.5': '0.5px',
+        '10': '10px',
+        '12': '12px',
+      },
+      outlineWidth:{
+        '0.5': '0.5px',
+        '1': '1px',
         '10': '10px',
         '12': '12px',
       },
