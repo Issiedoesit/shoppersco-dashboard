@@ -14,12 +14,12 @@ const AuthForm = ({ handleSubmit, authHeaderText, authPageType }) => {
     
 
   return (
-    <form onSubmit={handleSubmit} className={`z-20 mx-auto md:mx-0 h-fit w-ninetyFivePercent sm:w-eightyPercent rounded-ten md:rounded-none md:w-auto md:static bg-white col-span-8 lg:col-span-4 px-4 sm:px-9 py-12 md:h-full`}>
+    <form onSubmit={handleSubmit} className={`z-20 m-auto max-w-lg md:max-w-none md:m-0 h-fit w-ninetyFivePercent sm:w-eightyPercent rounded-ten md:rounded-none md:w-auto md:static bg-white col-span-8 lg:col-span-5 xl:col-span-4 px-4 sm:px-9 py-12 md:h-full`}>
         <div className='w-full pb-12 md:pb-20'>
             <img src={logo} alt="logo" className='w-44' />
         </div>
       
-        <section className='text-sm sm:text-base md:w-fit mx-auto sm:px-5 space-y-6 sm:space-y-8'>
+        <section className='text-sm sm:text-base max-w-sm md:max-w-none md:w-fit mx-auto sm:px-5 space-y-6 sm:space-y-8'>
             <div className='md:pb-5'>
                 <h1 className='text-center text-2xl font-avenirBlack'>{authHeaderText}</h1>
             </div>
