@@ -1,7 +1,7 @@
 import React from 'react'
 import CampaignActionsData from '../../../data/CampaignManager/CampaignActionsData'
 import ActionWithImage from '../../Cards/ActionWithImage'
-import CampainLeaderBoard from './CampainLeaderBoard'
+import CampaignLeaderBoard from './CampaignLeaderBoard'
 
 const CampaignAside = () => {
   return (
@@ -11,7 +11,7 @@ const CampaignAside = () => {
                 return <ActionWithImage id={data.id} key={index} text={data.text} bgColor={data.bgColor} textColor={data.textColor} fontSize={data.fontSize} fontWeight={data.fontWeight} img={data.img} altImg={data.altImg} />
             })}
         </div>
-        <CampainLeaderBoard />
+        <CampaignLeaderBoard />
     </section>
   )
 }

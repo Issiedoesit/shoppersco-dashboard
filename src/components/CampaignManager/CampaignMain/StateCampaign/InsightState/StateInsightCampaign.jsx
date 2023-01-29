@@ -1,4 +1,5 @@
 import React from 'react'
+import CampaignPopUp from '../../../../PopUps/Campaign/CampaignPop'
 import CampaignStateTable from './StateTableCampaign'
 
 
@@ -23,6 +24,8 @@ const CampaignStateMain = () => {
               <CampaignStateTable />
             </div>
         </section>
+
+        <CampaignPopUp />
     </div>
   )
 }

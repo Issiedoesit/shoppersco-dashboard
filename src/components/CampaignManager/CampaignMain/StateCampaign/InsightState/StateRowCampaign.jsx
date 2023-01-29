@@ -1,7 +1,16 @@
 import React from 'react'
+import useCampaignStore from '../../../../../customHooks/Stores/campaignStateStore'
 import dummyAvatar from './../../../../../assets/images/avatars/avatar-1.png'
 
 const StateRows = (props) => {
+
+    const setIsCampaignModalOpen = useCampaignStore(state => state.changeCampaignModalState)
+
+    const handleCampaignModal = () =>{
+        setIsCampaignModalOpen()
+    }
+
+
   return (
     <tr id={props.id} key={props.keyprop} className='even:bg-brandGray28x font-avenirLight text-sm state-insight-row'>
         <td className="py-3 px-1 whitespace-nowrap">
@@ -12,7 +21,7 @@ const StateRows = (props) => {
         </td>
         <td className="py-3 px-1 whitespace-nowrap">
             <div className=''>
-                <h5 className="text-xs underline">Mother Earth Campaign</h5>
+                <button onClick={handleCampaignModal} type='button' className="text-xs underline hover:text-brandGreen7x">Mother Earth Campaign</button>
                 <p className='text-xxs text-brandBlue1x'>{props.state}</p>
             </div>
         </td>

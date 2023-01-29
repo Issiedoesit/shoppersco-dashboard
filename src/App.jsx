@@ -10,12 +10,16 @@ import CampaignManager from './components/CampaignManager/CampaignManager'
 import EcoBagProducer from './components/EcoBagProducer/EcoBagProducer'
 import Impact from './components/Impact/Impact'
 import TemplatePage from './components/Template'
-import WrapCampaigns from './components/CampaignManager/WrapCampaigns'
 import useCampaignStore from './customHooks/Stores/campaignStateStore'
 import StateCampaign from './components/CampaignManager/CampaignMain/StateCampaign/StateCampaign'
 import Login from './components/Auth/Login'
 import useIsAuthPage from './customHooks/Stores/useIsAuthPage'
 import SignUp from './components/Auth/SignUp'
+import StateImpact from './components/Impact/StateImpact/StateImpact'
+import NoMatchPage from './components/NoMatchPage'
+import CampaignActivity from './components/CampaignManager/CampaignMain/Activity/CampaignActivity'
+
+
 
 
 
@@ -39,16 +43,28 @@ function App() {
         <Route path='/insight' element={<Insight />}></Route>
         <Route path='/store-manager' element={<StoreManager />}></Route>
         <Route path='/brand-manager' element={<BrandManager />}></Route>
-        <Route path='/campaign-manager' element={<WrapCampaigns />}>
+
+        <Route path='/campaign-manager'>
           <Route index element={<CampaignManager />}/>
           <Route path='' element={<CampaignManager />}/>
-          <Route path={`state/${campaignState}`} element={<StateCampaign />} />
+          <Route path='campaign-activity' element={<CampaignActivity />}/>
+          <Route path={`state/abuja`} element={<StateCampaign />} />
+          {/* <Route path={`state/${campaignState}`} element={<StateCampaign />} /> */}
         </Route>
+
         <Route path='/eco-bag-producer' element={<EcoBagProducer />}></Route>
-        <Route path='/impact' element={<Impact />}></Route>
+
+        <Route path='/impact'>
+          <Route index element={<Impact />}/>
+          <Route path='' element={<Impact />}></Route>
+          <Route path={`state/delta`} element={<StateImpact />} />
+          {/* <Route path={`state/${campaignState}`} element={<StateCampaign />} /> */}
+        </Route>
+
         <Route path='/template' element={<TemplatePage />}></Route>
         <Route path='/login' element={<Login />}></Route>
         <Route path='/sign-up' element={<SignUp />}></Route>
+        <Route path='*' element={<NoMatchPage />}></Route>
       </Routes>
     </div>
     </div>

@@ -4,7 +4,7 @@ import dummyUserAvatar2 from './../../../assets/images/avatars/userAvatar2.png'
 import dummyUserAvatar3 from './../../../assets/images/avatars/userAvatar3.png'
 import dummyUserAvatar4 from './../../../assets/images/avatars/userAvatar4.png'
 
-const CampainLeaderBoard = () => {
+const CampaignLeaderBoard = () => {
   return (
     <div className='rounded-ten bg-white p-5'>
         <div className='pb-3'>
@@ -74,4 +74,4 @@ const CampainLeaderBoard = () => {
   )
 }
 
-export default CampainLeaderBoard
+export default CampaignLeaderBoard
