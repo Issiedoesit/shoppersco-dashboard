@@ -10,7 +10,7 @@ const BrandInsightTable = ({rows}) => {
   return (
     <table id='brandInsightTable' key={'brandInsightTable'} className='table table-auto w-full text-left'>
         <thead className='text-sm font-avenirMedium border-b border-b-brandGray30x'>
-            <tr>
+            <tr className='border-b-0.5 border-b-brandGray27x'>
             <td className='py-2 px-2 whitespace-nowrap'>
 
                 <input type="checkbox" name="master-check-brand-insight" id="masterCheckBrandInsight" className="accent-brandGreen4x focus:outline-none focus:ring-none"  />
@@ -47,6 +47,9 @@ const BrandInsightTable = ({rows}) => {
             <td className='py-2 px-2 whitespace-nowrap'>
 
             </td>
+            </tr>
+            <tr className=''>
+                <td className='py-2'></td>
             </tr>
         </thead>
         <tbody>

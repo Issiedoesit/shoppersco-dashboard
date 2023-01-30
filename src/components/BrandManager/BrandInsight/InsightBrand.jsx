@@ -1,8 +1,9 @@
-import React, { useMemo, useState } from 'react'
+import React, { useState } from 'react'
 import BrandInsightTable from './TableBrandInsight'
-import $ from 'jquery'
 import {useDocTitle} from '../../../customHooks/DocumentTitle'
 import BrandInsightData from '../../../data/BrandManager/BrandInsightData'
+import { useSearchTables } from '../../../customHooks/SearchTables'
+
 
 
 
@@ -12,8 +13,8 @@ const BrandInsight = () => {
   useDocTitle('ShoppersBag | Brand Manager')
 
   const [rows, setRows] = useState(8)
-  const [query, setQuery] = useState('')
   const [listLength] = useState(BrandInsightData.length)
+  const [ handleSearch, handleBlur ] = useSearchTables('', 'brand-insight-row')
 
 
   const moreRows = (add) =>{
@@ -21,25 +22,13 @@ const BrandInsight = () => {
 
   }
 
-  const handleSearch = (e) => {
-    setQuery(e.target.value)
-    setRows(listLength)
+  // const handleSearch = (e) => {
+  //   setSearchQuery(e.target.value)
+  //   setRows(listLength)
     
-  }
+  // }
 
-  const handleBlur = () =>{
-    if(query === ''){
-      setRows(8)
-    }
-  }
-
-
-
-  useMemo(() => {
-    return $('.brand-insight-row').filter(function(){
-        $(this).toggle($(this).text().toLowerCase().indexOf(query.toLowerCase()) > -1)
-    })
-}, [query])
+ 
   
   return (
     <div className='col-span-3 bg-white rounded-ten p-7'>

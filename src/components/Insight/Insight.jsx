@@ -5,21 +5,13 @@ import NumbersCards from '../Cards/NumbersCards'
 import Greeting from '../Header/Greeting'
 import Header from '../Header/Header'
 import {useDocTitle} from './../../customHooks/DocumentTitle'
+import { useSearchTables } from '../../customHooks/SearchTables'
 
 
 const Insight = () => {
   useDocTitle('ShoppersBag | Insight')
-  const [query, setQuery] = useState('')
+  const [ handleSearch, handleBlur ] = useSearchTables('', 'insight-cards')
 
-  const handleSearch = (e) => {
-    setQuery(e.target.value)
-  }
-
-  useMemo(() => {
-    return $('.insight-cards').filter(function(){
-        $(this).toggle($(this).text().toLowerCase().indexOf(query.toLowerCase()) > -1)
-    })
-  }, [query])
 
   return (
     <div className='pb-7 h-screen overflow-hidden'>

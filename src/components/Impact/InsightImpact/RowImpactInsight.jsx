@@ -10,7 +10,7 @@ const RowImpactInsight = (props) => {
         setImpactState(val)
     }
   return (
-    <tr id={props.id} key={props.keyprop} className='text-sm font-avenirLight even:bg-brandGray28x campaign-insight-row'>
+    <tr id={props.id} key={props.keyprop} className='text-sm font-avenirLight odd:bg-brandGray28x impact-insight-row'>
         <td className="py-3 px-1 whitespace-nowrap">
             <input type="checkbox" name="check-impact-insight" id="checkImpactInsight" className="accent-brandGreen4x focus:outline-none focus:ring-none"  />
         </td>

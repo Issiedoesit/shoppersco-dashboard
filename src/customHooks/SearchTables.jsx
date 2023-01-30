@@ -1,13 +1,15 @@
 import {useMemo, useState} from 'react'
+import $ from 'jquery'
 
 const useSearchTables = (query, search) => {
   const [searchQuery, setSearchQuery] = useState(query)
 
+  const handleSearch = (e) =>{
+    setSearchQuery(e.target.value)
+  }
 
-  
-
-  const handleBlur = () =>{
-    if(searchQuery === ''){
+  const handleBlur = () => {
+    if(query === ''){
       setRows(8)
     }
   }
@@ -18,7 +20,8 @@ const useSearchTables = (query, search) => {
     })
 }, [searchQuery])
 
-  return searchQuery
+return[handleSearch, handleBlur]
+
 }
 
 export {useSearchTables}

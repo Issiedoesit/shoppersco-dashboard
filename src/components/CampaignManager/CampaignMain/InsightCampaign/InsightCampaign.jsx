@@ -1,37 +1,11 @@
-import React, {useState, useMemo} from 'react'
+import React from 'react'
+import { useSearchTables } from '../../../../customHooks/SearchTables'
 import ButtonIcon from '../../../Buttons/ButtonIcon'
 import CampaignInsightTable from './TableCampaignInsight'
 
 const CampaignMain = () => {
+  const [ handleSearch, handleBlur ] = useSearchTables('', 'campaign-insight-row')
 
-  const [query, setQuery] = useState('')
-  // const [listLength] = useState(BrandInsightData.length)
-
-
-  // const moreRows = (add) =>{
-  //   setRows((prevRows) => prevRows + add)
-
-  // }
-
-  const handleSearch = (e) => {
-    setQuery(e.target.value)
-    
-  }
-
-  const handleBlur = () =>{
-    // if(query === ''){
-    //   // setRows(8)
-    // }
-  }
-
-
-
-  //   useMemo(() => {
-  //     return $('.brand-insight-row').filter(function(){
-  //         $(this).toggle($(this).text().toLowerCase().indexOf(query.toLowerCase()) > -1)
-  //     })
-  // }, [query])
-  
 
   return (
     <div className='rounded-ten bg-white col-span-4 py-9 px-6'>

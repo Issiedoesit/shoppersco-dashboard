@@ -2,6 +2,7 @@ import React, { useState, useMemo } from 'react'
 import UserInsightData from '../../../data/Overview/UserInsightData'
 import UserInsightTable from './userInsightTable'
 import $ from 'jquery'
+import { useSearchTables } from '../../../customHooks/SearchTables'
 
 
 
@@ -11,22 +12,14 @@ const UserInsight = () => {
   
   const [rows, setRows] = useState(8)
   const [listLength] = useState(UserInsightData.length)
+  const [ handleSearch, handleBlur ] = useSearchTables('', 'user-insight-row')
+
 
   const moreRows = (add) =>{
     setRows((prevRows) => prevRows + add)
   }
 
-  const [query, setQuery] = useState('')
 
-  const handleSearch = (e) => {
-    setQuery(e.target.value)
-  }
-
-  useMemo(() => {
-    return $('.user-insight-row').filter(function(){
-        $(this).toggle($(this).text().toLowerCase().indexOf(query.toLowerCase()) > -1)
-    })
-  }, [query])
 
   
   return (

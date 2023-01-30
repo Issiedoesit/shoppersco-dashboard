@@ -1,7 +1,7 @@
-import React, { useMemo, useState } from 'react'
-import $ from 'jquery'
+import React, { useState } from 'react'
 import {useDocTitle} from '../../../customHooks/DocumentTitle'
 import TableEcoBagProducerInsight from './TableEcoBagProducerInsight'
+import { useSearchTables } from '../../../customHooks/SearchTables'
 
 
 
@@ -9,36 +9,9 @@ import TableEcoBagProducerInsight from './TableEcoBagProducerInsight'
 
 const EcoBagProducerInsight = () => {
   useDocTitle('ShoppersBag | Brand Manager')
+  const [isAdmin, setIsAdmin] = useState(true)
+  const [ handleSearch, handleBlur ] = useSearchTables('', 'ecobag-insight-row')
 
-  // const [rows, setRows] = useState(8)
-  const [query, setQuery] = useState('')
-  // const [listLength] = useState(EcoBagProducerInsightData.length)
-
-
-  // const moreRows = (add) =>{
-  //   setRows((prevRows) => prevRows + add)
-
-  // }
-
-  const handleSearch = (e) => {
-    setQuery(e.target.value)
-    // setRows(listLength)
-    
-  }
-
-  const handleBlur = () =>{
-    // if(query === ''){
-    //   setRows(8)
-    // }
-  }
-
-
-
-//   useMemo(() => {
-//     return $('.brand-insight-row').filter(function(){
-//         $(this).toggle($(this).text().toLowerCase().indexOf(query.toLowerCase()) > -1)
-//     })
-// }, [query])
   
   return (
     <div className='col-span-3 min-h-screen bg-white rounded-ten p-7'>
@@ -53,8 +26,9 @@ const EcoBagProducerInsight = () => {
             </label>
       </div>
 
-      <div className='overflow-x-auto w-full'>
-        <TableEcoBagProducerInsight />
+
+      <div className='overflow-x-auto w-full pb-40'>
+        <TableEcoBagProducerInsight isAdmin={isAdmin}/>
       </div>
     </div>
   )

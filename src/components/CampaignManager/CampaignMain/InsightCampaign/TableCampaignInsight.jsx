@@ -6,7 +6,7 @@ const CampaignInsightTable = () => {
   return (
     <table id='campaignInsightTable' className='table table-auto w-full text-left'>
         <thead className='text-sm font-avenirMedium border-b border-b-brandGray30x'>
-            <tr className=''>
+            <tr className='border-b-0.5 border-b-brandGray27x'>
                 <td className='py-2 px-2 whitespace-nowrap'>
                     <input type="checkbox" name="master-check-campaign-insight" id="masterCheckCampaignInsight" className="accent-brandGreen4x focus:outline-none focus:ring-none"  />
                 </td>
@@ -25,6 +25,9 @@ const CampaignInsightTable = () => {
                 <td className='py-2 px-2 whitespace-nowrap'>
                     End Date
                 </td>
+            </tr>
+            <tr className=''>
+                <td className='py-2'></td>
             </tr>
         </thead>
         <tbody>

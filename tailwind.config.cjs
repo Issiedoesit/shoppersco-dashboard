@@ -4,6 +4,7 @@ module.exports = {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
     "./src/components/Nav/Navbar.jsx",
+    "./src/components/store/**/*.{js, ts,tsx, jsx}",
     "./src/components/App.jsx",
   ],
   theme: {
@@ -80,6 +81,7 @@ module.exports = {
         brandGray41x: '#263238', 
         brandGray42x: '#E6E6E6', 
         brandGray43x: '#EEEEEE', 
+        brandGray44x: '#DCDCDC', 
         brandPurple1x: '#845CA7',
         brandPurple2x: '#8D8CFF33',
         brandPurple3x: '#8D8CFF',

@@ -7,28 +7,15 @@ import Logo from './../../assets/images/logos/logo.png'
 
 const NavBar = ({ isAuthPage }) => {
   const navState = useMobileNav(state => state.showMobileNav)
-  const closeNav = useMobileNav(state => state.closeMobileNav)
   const [visibility, setVisibility] = useState(true)
-  const location = useLocation()
   const navRef = useRef()
 
-  const handleNavToggle = () =>{
-    closeNav()
-  }
-
-  // console.log(navState ? 'Shown' : 'Hidden');
- 
-  useEffect(() => {
-    handleNavToggle()
-  }, [location])
 
   useLayoutEffect(() => {
     setVisibility(isAuthPage)
   }, [isAuthPage])
 
-  
-
-  
+ 
 
   return (
     <div ref={navRef} id="navBar" className={`fixed top-0 ${visibility && 'hidden'} h-screen left-0 z-50 ${navState ? '' : '-translate-x-oneFiftyPercent'} shadow-md xl:shadow-none xl:-translate-x-0 transition-transform duration-500 ease-in-out xl:static lg:col-span-3 2xl:col-span-2 xs:max-w-171px w-64`}>

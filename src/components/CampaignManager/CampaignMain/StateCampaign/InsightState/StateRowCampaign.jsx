@@ -12,7 +12,7 @@ const StateRows = (props) => {
 
 
   return (
-    <tr id={props.id} key={props.keyprop} className='even:bg-brandGray28x font-avenirLight text-sm state-insight-row'>
+    <tr id={props.id} key={props.keyprop} className='odd:bg-brandGray28x font-avenirLight text-sm state-insight-row'>
         <td className="py-3 px-1 whitespace-nowrap">
             <input type="checkbox" name="check-state-insight" id="checkStateInsight" className="accent-brandGreen4x focus:outline-none focus:ring-none"  />
         </td>

@@ -10,8 +10,8 @@ const StoreInsightTable = ({rows}) => {
 
   return (
     <table id='storeInsightTable' className='table table-auto w-full text-left'>
-        <thead className='text-sm font-avenirMedium border-b border-b-brandGray30x'>
-           <tr>
+        <thead className='text-sm font-avenirMedium'>
+        <tr tr className='border-b-0.5 border-b-brandGray27x'>
            <td className='py-2 px-2 whitespace-nowrap'>
 
                 <input type="checkbox" name="master-check-store-insight" id="masterCheckStoreInsight" className="accent-brandGreen4x focus:outline-none focus:ring-none"  />
@@ -36,16 +36,13 @@ const StoreInsightTable = ({rows}) => {
             Badge
             </td>
             <td className='py-2 px-2 whitespace-nowrap'>
-
-            Location
+              Location
             </td>
             <td className='py-2 px-2 whitespace-nowrap'>
-
-            Date
+              Date
             </td>
             <td className='py-2 px-2 whitespace-nowrap'>
-
-            Orders
+              Orders
             </td>
             <td className='py-2 px-2 whitespace-nowrap'>
 
@@ -54,6 +51,9 @@ const StoreInsightTable = ({rows}) => {
 
             </td>
            </tr>
+          <tr className=''>
+            <td className='py-2'></td>
+          </tr>
         </thead>
         <tbody>
 

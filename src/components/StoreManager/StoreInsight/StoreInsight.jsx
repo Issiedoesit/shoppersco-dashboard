@@ -3,6 +3,7 @@ import StoreInsightData from '../../../data/StoreManager/StoreInsightData'
 import StoreInsightTable from './storeInsightTable'
 import $ from 'jquery'
 import useStoreInsightStore from '../../../customHooks/Stores/storeInsightStore'
+import { useSearchTables } from '../../../customHooks/SearchTables'
 
 
 
@@ -12,11 +13,12 @@ import useStoreInsightStore from '../../../customHooks/Stores/storeInsightStore'
 const StoreInsight = () => {
 
   const [rows, setRows] = useState(8)
-  const [query, setQuery] = useState('')
   const [listLength] = useState(StoreInsightData.length)
   // const [storeId, setStoreId] = useState('')
   // const [storeDetail, setStoreDetail] = useState([])
   const storeId = useStoreInsightStore(state => state.storeId)
+  const [ handleSearch, handleBlur ] = useSearchTables('', 'store-insight-row')
+
 
 
   const moreRows = (add) =>{
@@ -24,17 +26,6 @@ const StoreInsight = () => {
 
   }
 
-  const handleSearch = (e) => {
-    setQuery(e.target.value)
-    setRows(listLength)
-    
-  }
-
-  const handleBlur = () =>{
-    if(query === ''){
-      setRows(8)
-    }
-  }
 
   // useMemo(() => 
   // StoreInsightData.filter(data => {
@@ -51,11 +42,7 @@ const StoreInsight = () => {
   //   console.log(storeDetail);
   // }
 
-  useMemo(() => {
-    return $('.store-insight-row').filter(function(){
-        $(this).toggle($(this).text().toLowerCase().indexOf(query.toLowerCase()) > -1)
-    })
-  }, [query])
+  
 
 
   

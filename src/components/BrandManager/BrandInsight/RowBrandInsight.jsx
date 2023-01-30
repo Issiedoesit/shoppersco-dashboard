@@ -14,7 +14,7 @@ const BrandInsightRow = (props) => {
      }
     
   return (
-    <tr id={props.id} key={props.keyprop} className='even:bg-brandGray28x brand-insight-row'>
+    <tr id={props.id} key={props.keyprop} className='odd:bg-brandGray28x brand-insight-row'>
         <td className="py-3 px-1 whitespace-nowrap">
             <input type="checkbox" name="check-brand-insight" id="checkBrandInsight" className="accent-brandGreen4x focus:outline-none focus:ring-none"  />
         </td>

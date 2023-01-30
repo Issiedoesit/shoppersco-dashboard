@@ -1,23 +1,14 @@
 import React, { useState } from 'react'
+import { useSearchTables } from '../../../customHooks/SearchTables'
 import ButtonIcon from './../../Buttons/ButtonIcon'
 import TableImpactInsight from './TableImpactInsight'
 
 const InsightImpact = () => {
 
-  const [query, setQuery] = useState('')
-
-  const handleSearch = (e) => {
-    setQuery(e.target.value)
-    
-  }
-
-  const handleBlur = () =>{
-    // if(query === ''){
-    //   // setRows(8)
-    // }
-  }
+  const [ handleSearch, handleBlur ] = useSearchTables('', 'impact-insight-row')
 
 
+  
   return (
     <div className='rounded-ten bg-white col-span-4 py-9 px-6 min-h-screen lg:min-h-0'>
       
