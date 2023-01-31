@@ -2,7 +2,7 @@ import React from 'react'
 
 const NumbersCards = ({keyprop, id, header, metric, amount, link, linkText, percent, trend, extraClasses}) => {
   return (
-    <div key={keyprop} id={id} className={`bg-white py-3 rounded-eight ${extraClasses} pl-18px pr-3 flex flex-col justify-between`}>
+    <div key={keyprop} id={id} className={`bg-white py-3 rounded-eight ${extraClasses} pl-18px pr-3 flex flex-col justify-between h-full lg:h-auto`}>
         <div>
             <p className='text-xxs sm:text-xs'>{header}</p>
             <h3 className='font-avenirHeavy text-xs sm:text-sm'>{metric}</h3>
@@ -13,7 +13,7 @@ const NumbersCards = ({keyprop, id, header, metric, amount, link, linkText, perc
            
            {trend 
            ?  
-           <div className='flex items-center gap-2'>
+           <div className='flex items-end gap-2'>
                 {trend.toLowerCase() === 'up' ?
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M6.99998 10.5H5.44248C3.51164 10.5 2.71831 9.12919 3.68664 7.45502L4.46831 6.10752L5.24998 4.76002C6.21831 3.08585 7.79914 3.08585 8.76747 4.76002L9.54914 6.10752L10.3308 7.45502C11.2991 9.12919 10.5058 10.5 8.57497 10.5H6.99998Z" stroke="#029834" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>

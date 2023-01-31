@@ -14,7 +14,7 @@ const EcoBagProducer = () => {
       <div className='overflow-y-auto bg-brandGray28x h-full px-5 sm:px-10 xl:pl-0 xl:pr-10'>
       <Header page="Eco-bag Producers"/>
 
-        <div className='pb-10 overflow-y-auto'>
+        <div className='pb-10 overflow-y-auto pt-3.5'>
 
         <EcoBagProducerInsight />
 

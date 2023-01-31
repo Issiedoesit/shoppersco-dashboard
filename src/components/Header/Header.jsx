@@ -30,7 +30,7 @@ const Header = ({page}) => {
   }, []);
 
   return (
-    <div className='bg-brandGray28x flex gap-2 items-center xl:block w-full py-7 sticky top-0 right-10 z-30'>
+    <div className='bg-brandGray28x flex gap-2 items-center xl:block w-full pt-7 pb-3.5 sticky top-0 right-10 z-30'>
         <div className='rounded-ten py-3.5 xs:px-2 px-4 md:px-8 bg-white flex flex-row w-full items-center justify-between'>
             <h1 className='font-avenirHeavy xs:text-sm sm:text-lg md:text-xl uppercase'>{page}</h1>
             

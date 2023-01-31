@@ -6,7 +6,7 @@ const CampaignActionsData = [
         altImg:'',
         bgColor:'bg-brandBlue1x',
         textColor: 'text-white',
-        fontSize: 'text-2xl',
+        fontSize: 'text-2xl sm:text-3xl md:text-2xl',
         fontWeight: 'font-avenirBlack'
     },
     {
@@ -26,7 +26,7 @@ const CampaignActionsData = [
         img: '/src/assets/images/illustrations/raffle.png',
         altImg:'',
         bgColor:'',
-        fontSize: 'text-xl',
+        fontSize: 'text-2xl sm:text-3xl md:text-2xl',
         fontWeight: 'font-avenirBlack'
 
     }
