@@ -31,7 +31,7 @@ const BrandManager = () => {
 
         {/* to swipe cards on mobile  */}
 
-          <NumberCardsSwiper cardDataSet={BrandMetricsData} />
+          <NumberCardsSwiper cardDataSet={BrandMetricsData} cardType={'brandMetric'} />
 
         {/* to swipe cards on mobile  */}
 

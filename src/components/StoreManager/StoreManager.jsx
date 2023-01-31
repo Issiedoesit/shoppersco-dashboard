@@ -35,7 +35,7 @@ const StoreManager = () => {
 
          {/* to swipe cards on mobile  */}
 
-          <NumberCardsSwiper cardDataSet={StoreMetricsData} />
+          <NumberCardsSwiper cardDataSet={StoreMetricsData} cardType={'storeMetric'} />
 
         {/* to swipe cards on mobile  */}
 

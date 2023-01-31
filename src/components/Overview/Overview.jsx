@@ -29,14 +29,14 @@ const Overview = () => {
             <div className='hidden lg:grid xs:grid-cols-1 grid-cols-2 md:grid-cols-3 lg:grid-cols-5 pb-5 gap-2 2xl:gap-5 auto-cols-fr auto-rows-fr'>
               
               {CardMetricsData.map((item, index)=>{
-                return <NumbersCards keyprop={`metricCard${index+1}`} id={`metricCard${index+1}`} header={item.header} metric={item.metric} amount={item.amount} trend={item.trend} percent={item.percent}/>
+                return <NumbersCards keyprop={`overviewMetric${index+1}`} id={`overviewMetric${index+1}`} header={item.header} metric={item.metric} amount={item.amount} trend={item.trend} percent={item.percent}/>
               }) }
 
             </div>
 
             {/* to swipe cards on mobile  */}
 
-            <NumberCardsSwiper cardDataSet={CardMetricsData} />
+            <NumberCardsSwiper cardDataSet={CardMetricsData} cardType={'overviewMetric'} />
 
             {/* to swipe cards on mobile  */}
 
