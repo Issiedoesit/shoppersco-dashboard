@@ -4,7 +4,8 @@ import { devtools } from 'zustand/middleware'
 
 const useIsAuthPage = create(devtools((set)=>({
     isAuthPage: false,
-    authLevel: 'user' ,
+    // options for authLevel == {user, superAdmin}
+    authLevel: 'superAdmin' ,
     setIsAuthPage: () => set({isAuthPage: true})
 })))
 

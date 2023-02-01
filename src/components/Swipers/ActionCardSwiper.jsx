@@ -1,16 +1,17 @@
 import React from 'react'
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+import 'swiper/css/autoplay';
 import ActionWithImage from '../Cards/ActionWithImage';
 
 const ActionCardSwiper = ({cardDataSet}) => {
   return (
     <Swiper
-        modules={[Navigation, Pagination, Scrollbar, A11y]}
+        modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
         spaceBetween = {50}
         breakpoints = {{
           320: {
@@ -21,7 +22,9 @@ const ActionCardSwiper = ({cardDataSet}) => {
             slidesPerView: 2
           }
         }}
-       pagination={{ clickable: true }}
+        loop
+        autoplay={{ delay:4000, disableOnInteraction: false }}
+        pagination={{ clickable: true }}
         onSlideChange={() => console.log('slide change')}
         onSwiper={(swiper) => console.log(swiper)}
         className="lg:hidden pb-12"

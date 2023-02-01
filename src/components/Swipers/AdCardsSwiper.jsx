@@ -24,7 +24,7 @@ const AdCardsSwiper = ({cardDataSet}) => {
         }}
         loop
         autoplay={{delay: 4000, disableOnInteraction: false}}
-       pagination={{ clickable: true }}
+        pagination={{ clickable: true }}
         onSlideChange={() => console.log('slide change')}
         onSwiper={(swiper) => console.log(swiper)}
         className="xl:hidden pb-12 grid"
