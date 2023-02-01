@@ -9,6 +9,7 @@ const NavLinks = ({index, path, icon, title}) => {
         <p className='whitespace-nowrap'>{title}</p>
   </NavLink>
   )
+  
 }
 
 export default NavLinks

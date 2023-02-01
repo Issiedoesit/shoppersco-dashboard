@@ -8,7 +8,7 @@ import CampaignLeaderBoard from './CampaignLeaderBoard'
 
 const CampaignAside = () => {
   return (
-    <section className='col-span-2 space-y-5'>
+    <div className='col-span-2 space-y-5'>
 
 
         <div className='hidden lg:grid grid-cols-1 sm:grid-cols-2 pt-0 md:grid-cols-3 lg:grid-rows-3 lg:grid-cols-1 gap-5 auto-rows-fr auto-cols-fr'>
@@ -25,7 +25,7 @@ const CampaignAside = () => {
 
 
         <CampaignLeaderBoard />
-    </section>
+    </div>
   )
 }
 

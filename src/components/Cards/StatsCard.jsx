@@ -1,8 +1,8 @@
 import React from 'react'
 
-const StatsCard = ({bgColor, header, stat, statTextColor}) => {
+const StatsCard = ({id, bgColor, header, stat, statTextColor, paddingX, paddingY}) => {
   return (
-    <div className={`${bgColor ? bgColor : 'bg-white'} rounded-ten space-y-1 px-7 sm:px-4 lg:px-7 py-2.5`}>
+    <div id={id} className={`${bgColor ? bgColor : 'bg-white'} rounded-ten space-y-1 px-7 sm:px-4 lg:px-7 ${ paddingY ? paddingY : 'py-2.5'} max-w-sm`}>
         <h4 className='text-sm lg:text-base'>{header}</h4>
         <p className={`font-avenirBlack text-xl md:text-2xl lg:text-3xl ${statTextColor ? statTextColor : 'text-brandGreen4x '} break-words`}>{stat}</p>
     </div>

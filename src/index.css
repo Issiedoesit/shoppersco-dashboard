@@ -3,6 +3,8 @@
 @tailwind utilities;
 
 
+
+
 html, body{
     background-color: #F3F1F1;
 }
@@ -57,6 +59,40 @@ html, body{
     animation: marquee 15s linear infinite;
 
 }
+
+.see--more{
+    background: url('./assets/images/patterns/half-circle.png');
+    background-size: cover;
+}
+.bubble-span {
+    opacity: 1;
+    z-index: 99;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    height: 90%;
+    border-radius: 100%;
+    background: radial-gradient(
+      50% 50% at 50% 50%,
+      rgba(255, 255, 255, 0) 0%,
+      #d36868b2 100%
+    );
+  }
+  
+  .bubble-motion {
+    animation: bubbleMotion 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    /* animation: bubbleMotion 5s linear; */
+  }
+  @keyframes bubbleMotion {
+    to {
+      /* transform: scale(2.6); */
+      width: 250%;
+      height: 250%;
+      opacity: 0;
+    }
+  }
 
 @-moz-keyframes marquee {
     0%   { transform: translate(0, 0); }

@@ -16,10 +16,10 @@ const CampaignManager = () => {
       <Header page="Campaign"/>
         <div className='pb-10 overflow-y-auto pt-3.5'>
 
-          <section className='flex flex-col-reverse lg:grid grid-cols-6 gap-5 rounded-ten'>
-          <CampaignMain />
-          <CampaignAside />
-          </section>
+          <div className='flex flex-col-reverse lg:grid grid-cols-6 gap-5 rounded-ten'>
+            <CampaignMain />
+            <CampaignAside />
+          </div>
 
         </div>
       </div>
