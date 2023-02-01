@@ -1,6 +1,7 @@
 import React from 'react'
 import StatsCard from '../../Cards/StatsCard'
 import Greeting from '../../Header/Greeting'
+import StatCardSwiper from '../../Swipers/StatCardSwiper'
 import Header from './../../Header/Header'
 import HomeAside from './HomeAside/HomeAside'
 import HomeMain from './HomeMain/HomeMain'
@@ -36,11 +37,12 @@ const Home = () => {
             {/* main content here */}
             <Greeting headBtns={false} salutation={'Welcome to Shoppersbag'} />
 
-            <div className='grid grid-cols-3 gap-5'>
+            <div className='hidden lg:grid grid-cols-3 gap-5'>
               {stats.map((data, index)=>{
                 return <StatsCard id={data.id} key={index} paddingY={'py-9'} stat={data.stat} header={data.header} />
               })}
             </div>
+            <StatCardSwiper cardDataSet={stats} />
 
             <div className='py-10 flex flex-col-reverse lg:grid grid-cols-6 gap-5 rounded-ten auto-cols-fr auto-rows-fr'>
               <HomeMain />
