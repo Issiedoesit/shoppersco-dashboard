@@ -1,16 +1,15 @@
 import React from 'react'
-import AdImg1 from './../../assets/images/pngs/adBag.png'
 
-const AdCards = () => {
+const AdCards = ( {img, header, text, index, id} ) => {
   return (
-    <div className='py-5 px-6 bg-white rounded-ten w-full flex gap-4'>
+    <div id={id} key={index} className='py-5 px-6 bg-white rounded-ten w-full flex items-center sm:items-start gap-4 h-full lg:h-auto lg:max-w-md xl:max-w-none'>
         <div>
-            <img src={AdImg1} alt="ad" className='h-28 w-28 min-w-[112px] rounded-five' />
+            <img src={img} alt="ad" className='h-20 w-20 min-w-[80px] sm:h-28 sm:w-28 sm:min-w-[112px] rounded-five' />
         </div>
 
         <div className='space-y-2'>
-            <h2 className='text-lg font-avenirBlack'>New bag design on Jumia</h2>
-            <p className='text-xs text-brandGray45x'>I made an online order a few days ago and it came in this new biodegradable bag from Jumia, I love what shoppersbag.co is trying to do about our environment...</p>
+            <h2 className='text-base lg:text-lg font-avenirBlack'>{header}</h2>
+            <p className='text-xxs lg:text-xs text-brandGray45x'>{text}</p>
         </div>
     </div>
   )

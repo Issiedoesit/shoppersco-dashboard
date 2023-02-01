@@ -6,34 +6,34 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import 'swiper/css/autoplay';
-import StatsCard from './../Cards/StatsCard'
+import AdCards from '../Cards/AdCards';
 
-const StatCardSwiper = ( {cardDataSet} ) => {
+const AdCardsSwiper = ({cardDataSet}) => {
   return (
     <Swiper
         modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
-        spaceBetween = {50}
+        spaceBetween = {20}
         breakpoints = {{
           320: {
             slidesPerView: 1
           },
           // when window width is >= 480px
-          480: {
+          800: {
             slidesPerView: 2
           }
         }}
         loop
-        autoplay={{ delay: 4000, disableOnInteraction: false }}
-        pagination={{ clickable: true }}
+        autoplay={{delay: 4000, disableOnInteraction: false}}
+       pagination={{ clickable: true }}
         onSlideChange={() => console.log('slide change')}
         onSwiper={(swiper) => console.log(swiper)}
-        className="lg:hidden pb-12"
+        className="xl:hidden pb-12 grid"
     >
-      {cardDataSet.map((data, index)=>{
-        return  <SwiperSlide><StatsCard id={data.id} key={index} paddingY={'py-9'} stat={data.stat} header={data.header} /></SwiperSlide>
+      {cardDataSet.map((ad, index)=>{
+        return  <SwiperSlide className='col-span-1'><AdCards id={ad.id} img={ad.img} header={ad.header} text={ad.text} index={index} /> </SwiperSlide>
             })}
     </Swiper>
   )
 }
 
-export default StatCardSwiper
+export default AdCardsSwiper
