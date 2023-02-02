@@ -45,7 +45,7 @@ const UserPopUpInner = ({keyprop, user, location}) => {
                 </div>
 
                 <div>
-                    <Request reqName={'Requesting account verification'} actionBtnText={'Approve'} secBtnText={'Reject'} />
+                    <Request buttons={true} reqName={'Requesting account verification'} actionBtnText={'Approve'} secBtnText={'Reject'} />
                 </div>
                 
                 <div className='py-5 border-b-0.5 border-b-brandGray27x overflow-x-auto'>

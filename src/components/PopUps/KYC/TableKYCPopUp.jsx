@@ -25,7 +25,7 @@ const KYCPopUpTable = () => {
                     <h4>Utility Bill</h4>
                 </td>
                 <td className='py-2 pl-7 font-avenirLight'>
-                    <button type='button' className='underline text-brandBlue6x hover:text-brandBlue6x/80'>view pdf</button>
+                    <a href="#" className='underline text-brandBlue6x hover:text-brandBlue6x/80'>view pdf</a>
                 </td>
             </tr>
             <tr>
@@ -33,7 +33,7 @@ const KYCPopUpTable = () => {
                     <h4>Business Registration Doc</h4>
                 </td>
                 <td className='py-2 pl-7 font-avenirLight'>
-                    <button type='button' className='underline text-brandBlue6x hover:text-brandBlue6x/80'>view pdf</button>
+                    <a href="#" className='underline text-brandBlue6x hover:text-brandBlue6x/80'>view pdf</a>
                 </td>
             </tr>
             <tr>

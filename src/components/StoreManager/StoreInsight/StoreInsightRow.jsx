@@ -42,13 +42,17 @@ const StoreInsightRow = (props) => {
         badge = ''
      }
 
+    //  fetches the store details based on the id
     const handleStoreId = (id) => {
         setStoreId(id)
     }
+
+    // sets the modal to open or close
     const handleModal = () => {
         setModalStoreState()
     }
 
+    // uses the handleStoreId and handleModal functions on btn click
     const handleBtnClick = (id) => {
         handleStoreId(id)
         handleModal()

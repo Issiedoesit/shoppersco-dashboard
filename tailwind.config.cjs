@@ -86,6 +86,7 @@ module.exports = {
         brandGray44x: '#DCDCDC', 
         brandGray45x: '#777777', 
         brandGray46x: '#EAEAEA', 
+        brandGray47x: '#959595', 
         brandPurple1x: '#845CA7',
         brandPurple2x: '#8D8CFF33',
         brandPurple3x: '#8D8CFF',

@@ -71,7 +71,7 @@ const KYCPopUpInner = ({keyprop, user, location}) => {
                     <KYCPopUpTable />
                 </div>
                 
-                <Request paddingB={'pb-16'} reqName={'Eco-friendly bag production request'} actionBtnText={'Approve KYC'} secBtnText={'Reject'} secBtnTextColor={'text-brandRed1x'} actionBtnBgColor={'bg-brandGreen6x'} />
+                <Request buttons={true} paddingB={'pb-16'} reqName={'Eco-friendly bag production request'} actionBtnText={'Approve KYC'} secBtnText={'Reject'} secBtnTextColor={'text-brandRed1x'} actionBtnBgColor={'bg-brandGreen6x'} />
                 
 
                 <div className='pt-5'>

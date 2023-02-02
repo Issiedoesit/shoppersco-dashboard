@@ -4,6 +4,7 @@ import BrandMetricsData from '../../data/BrandManager/BrandCardsMetricsData'
 import ButtonIcon from '../Buttons/ButtonIcon'
 import NumbersCards from '../Cards/NumbersCards'
 import Header from '../Header/Header'
+import PrRequestPop from '../PopUps/ProductionRequest/PrRequestPop'
 import UserPopUp from '../PopUps/User/UserPopUp'
 import NumberCardsSwiper from '../Swipers/NumberCardsSwiper'
 import BrandInsight from './BrandInsight/InsightBrand'
@@ -51,6 +52,7 @@ const BrandManager = () => {
         
         </div>
       </div>
+      <PrRequestPop />
   </div>
   )
 }

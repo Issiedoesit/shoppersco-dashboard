@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import dummyAvatar from './../../../assets/images/avatars/avatar-1.png'
 import EcoFriendlyTag from '../../StatusTags/EcoFriendlyTag'
+import usePrRequestStore from './../../../customHooks/Stores/PRequestModalStore'
 
 const BrandInsightRow = (props) => {
-    // const [badge, setBadge] = useState('')
+    const setIsPrRequestModalOpen = usePrRequestStore(state => state.changeIsPrRequestModalOpen)
+
 
     let badge;
     
@@ -11,7 +13,12 @@ const BrandInsightRow = (props) => {
         badge =  <EcoFriendlyTag />
      }else{
         badge = ''
+    }
+
+    const handlePrModalOpen =() => { 
+        setIsPrRequestModalOpen()
      }
+
     
   return (
     <tr id={props.id} key={props.keyprop} className='odd:bg-brandGray28x brand-insight-row'>
@@ -28,7 +35,7 @@ const BrandInsightRow = (props) => {
             </div>
         </td>
         <td className="py-3 px-1 whitespace-nowrap">
-            <p className="text-xs text-brandBlue1x font-avenirLight">Production Request</p>
+            <button type='button' onClick={handlePrModalOpen} className="text-xs text-brandBlue1x hover:text-brandBlue2x font-avenirLight">Production Request</button>
         </td>
         <td className="py-3 px-1 whitespace-nowrap">
             {badge}
