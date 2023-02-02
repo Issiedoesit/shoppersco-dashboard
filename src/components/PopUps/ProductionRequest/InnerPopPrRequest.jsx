@@ -24,13 +24,13 @@ const InnerPopPrRequest = ({keyprop, user, location}) => {
     </defs>
     </svg>
 
-    let agentName = 'Babatunde Fashola'
 
   useEffect(() => {
     $('.agent-list-item').each(function(){
-        if($(this).children('p').text() === agentName){
+        $(this).on('change', function(){
+            $('.agent-list-item').children('input').not(this).prop('checked', false)
             $(this).children('input').prop('checked', true)
-        }
+        })
     })
   }, [])
   
@@ -99,37 +99,37 @@ return (
                         <div className='space-y-2.5 text-brandGray47x text-xs'>
                             <label htmlFor="agent1" className='flex flex-row agent-list-item items-center gap-5 md:gap-20'>
                                 <input type="checkbox" name="" id="agent1" className='peer hidden' />
-                                <p className='peer-checked:text-brandBlack1x peer-checked:text-sm w-eightyPercent'>Babatunde Fashola</p>
+                                <p className='peer-checked:text-brandBlack1x cursor-pointer peer-checked:text-sm w-eightyPercent'>Babatunde Fashola</p>
                                 <span className='hidden peer-checked:block'>{checkMark}</span>
                             </label>
                             <label htmlFor="agent2" className='flex flex-row agent-list-item items-center gap-5 md:gap-20'>
                                 <input type="checkbox" name="" id="agent2" className='peer hidden' />
-                                <p className='peer-checked:text-brandBlack1x peer-checked:text-sm w-eightyPercent'>Precious Tom</p>
+                                <p className='peer-checked:text-brandBlack1x cursor-pointer peer-checked:text-sm w-eightyPercent'>Precious Tom</p>
                                 <span className='hidden peer-checked:block'>{checkMark}</span>
                             </label>
                             <label htmlFor="agent3" className='flex flex-row agent-list-item items-center gap-5 md:gap-20'>
                                 <input type="checkbox" name="" id="agent3" className='peer hidden' />
-                                <p className='peer-checked:text-brandBlack1x peer-checked:text-sm w-eightyPercent'>Uko Johnny</p>
+                                <p className='peer-checked:text-brandBlack1x cursor-pointer peer-checked:text-sm w-eightyPercent'>Uko Johnny</p>
                                 <span className='hidden peer-checked:block'>{checkMark}</span>
                             </label>
                             <label htmlFor="agent4" className='flex flex-row agent-list-item items-center gap-5 md:gap-20'>
                                 <input type="checkbox" name="" id="agent4" className='peer hidden' />
-                                <p className='peer-checked:text-brandBlack1x peer-checked:text-sm w-eightyPercent'>Kingsley Ekpe</p>
+                                <p className='peer-checked:text-brandBlack1x cursor-pointer peer-checked:text-sm w-eightyPercent'>Kingsley Ekpe</p>
                                 <span className='hidden peer-checked:block'>{checkMark}</span>
                             </label>
                             <label htmlFor="agent5" className='flex flex-row agent-list-item items-center gap-5 md:gap-20'>
                                 <input type="checkbox" name="" id="agent5" className='peer hidden' />
-                                <p className='peer-checked:text-brandBlack1x peer-checked:text-sm w-eightyPercent'>Princess Ekpa</p>
+                                <p className='peer-checked:text-brandBlack1x cursor-pointer peer-checked:text-sm w-eightyPercent'>Princess Ekpa</p>
                                 <span className='hidden peer-checked:block'>{checkMark}</span>
                             </label>
                             <label htmlFor="agent6" className='flex flex-row agent-list-item items-center gap-5 md:gap-20'>
                                 <input type="checkbox" name="" id="agent6" className='peer hidden' />
-                                <p className='peer-checked:text-brandBlack1x peer-checked:text-sm w-eightyPercent'>Simon Daniel</p>
+                                <p className='peer-checked:text-brandBlack1x cursor-pointer peer-checked:text-sm w-eightyPercent'>Simon Daniel</p>
                                 <span className='hidden peer-checked:block'>{checkMark}</span>
                             </label>
                             <label htmlFor="agent7" className='flex flex-row agent-list-item items-center gap-5 md:gap-20'>
                                 <input type="checkbox" name="" id="agent7" className='peer hidden' />
-                                <p className='peer-checked:text-brandBlack1x peer-checked:text-sm w-eightyPercent'>Kain James</p>
+                                <p className='peer-checked:text-brandBlack1x cursor-pointer peer-checked:text-sm w-eightyPercent'>Kain James</p>
                                 <span className='hidden peer-checked:block'>{checkMark}</span>
                             </label>
                         </div>
