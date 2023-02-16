@@ -18,8 +18,8 @@ const NavBar = ({ isAuthPage }) => {
  
 
   return (
-    <div ref={navRef} id="navBar" className={`fixed top-0 ${visibility && 'hidden'} h-screen left-0 z-50 ${navState ? '' : '-translate-x-oneFiftyPercent'} shadow-md xl:shadow-none xl:-translate-x-0 transition-transform duration-500 ease-in-out xl:static lg:col-span-3 2xl:col-span-2 xs:max-w-171px w-64`}>
-      <div  className='transition-transform duration-500 ease-in-out bg-white h-screen font-avenirRegular max-w-sm flex flex-col w-full'>
+    <div ref={navRef} id="navBar" className={`fixed top-0 ${visibility && 'hidden'} h-full max-h-screen left-0 z-50 ${navState ? '' : '-translate-x-oneFiftyPercent'} shadow-md xl:shadow-none xl:-translate-x-0 transition-transform duration-500 ease-in-out xl:static lg:col-span-3 2xl:col-span-2 xs:max-w-171px w-64`}>
+      <div  className='transition-transform duration-500 ease-in-out bg-white h-full max-h-screen font-avenirRegular max-w-sm flex flex-col w-full'>
           <NavLink to="/" className='xs:px-4 px-9 pt-10'>
             <img src={Logo} alt='logo' className='xs:w-32 w-44' />
           </NavLink>
