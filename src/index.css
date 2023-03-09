@@ -1,3 +1,109 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+
+
+html, body{
+    background-color: #F3F1F1;
+}
+
+.custom--scroll::-webkit-scrollbar{
+    width: 5px;
+    height: 10px;
+    box-shadow: 2px 2px 4px #ECECEC;
+    
+}
+.custom--scroll::-webkit-scrollbar:hover{
+    width: 10px;
+    transition: 10ms ease-in-out;
+    
+}
+.custom--scroll::-webkit-scrollbar-track{
+    background-color: #ECECEC;
+    /* box-shadow:  0px 2px 4px rgb(74, 75, 74); */
+    
+}
+.custom--scroll::-webkit-scrollbar-thumb{
+    background-color: #3992CC;
+    border-radius: 0px;
+    border-left: solid 5px transparent;
+    border-right: solid 5px transparent;
+    border-top: solid 2px transparent;
+    border-bottom: solid 2px transparent;
+    width: 10px;
+}
+.custom--scroll::-webkit-scrollbar-thumb:hover{
+    background-color: #41a4e6;
+    transition: 10ms ease-in-out;
+}
+
+.active--icon > svg > path{
+    stroke: #029834;
+}
+
+.not--active--icon:hover > svg > path {
+    stroke: #029834;
+    transition: all 500ms ease-in-out;
+}
+
+.authPassword::-ms-reveal{
+    display: none;
+}
+
+.marquee .marquee-content{
+    padding-left: 10%;
+    -moz-animation: marquee 15s linear infinite;
+    -webkit-animation: marquee 15s linear infinite;
+    animation: marquee 15s linear infinite;
+
+}
+
+.see--more{
+    background: url('./assets/images/patterns/half-circle.png');
+    background-size: cover;
+}
+.bubble-span {
+    opacity: 1;
+    z-index: 99;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    height: 90%;
+    border-radius: 100%;
+    background: radial-gradient(
+      50% 50% at 50% 50%,
+      rgba(255, 255, 255, 0) 0%,
+      #d36868b2 100%
+    );
+  }
+  
+  .bubble-motion {
+    animation: bubbleMotion 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    /* animation: bubbleMotion 5s linear; */
+  }
+  @keyframes bubbleMotion {
+    to {
+      /* transform: scale(2.6); */
+      width: 250%;
+      height: 250%;
+      opacity: 0;
+    }
+  }
+
+@-moz-keyframes marquee {
+    0%   { transform: translate(0, 0); }
+    100% { transform: translate(-100%, 0); }
+}
+@-webkit-keyframes marquee {
+    0%   { transform: translate(0, 0); }
+    100% { transform: translate(-100%, 0); }
+}
+@keyframes marquee {
+    0%   { transform: translate(0, 0); }
+    100% { transform: translate(-100%, 0); }
+}
+
