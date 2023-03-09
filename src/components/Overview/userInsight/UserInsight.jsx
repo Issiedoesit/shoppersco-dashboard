@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react'
 import UserInsightData from '../../../data/Overview/UserInsightData'
-import UserInsightTable from './userInsightTable'
+import UserInsightTable from './UserInsightTable'
 import $ from 'jquery'
 import { useSearchTables } from '../../../customHooks/SearchTables'
 
