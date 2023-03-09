@@ -13,16 +13,16 @@ const TableImpactInsight = () => {
                    
                 </td>
                 <td className='py-2 px-2 whitespace-nowrap'>
-                    Downloads
+                    Total App <br></br> Download
                 </td>
                 <td className='py-2 px-2 whitespace-nowrap'>
-                    Circulation
+                    No of ShoppersBag <br></br> in Circulation
                 </td>
                 <td className='py-2 px-2 whitespace-nowrap'>
-                    Recollection
+                    Recollection Rate
                 </td>
                 <td className='py-2 px-2 whitespace-nowrap'>
-                    Single-use
+                    Plastic Reduction <br></br> Matrix
                 </td>
             </tr>
             <tr className=''>

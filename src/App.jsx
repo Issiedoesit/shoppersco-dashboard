@@ -25,16 +25,6 @@ import Activities from './components/User/Activities/Activities'
 import Store from './components/User/Store/Store'
 import Inventory from './components/User/Inventory/Inventory'
 
-
-
-
-
-
-
-
-
-
-
 function App() {
   const campaignState = useCampaignStore(state => state.currentCampaignState)
   const isAuthPage = useIsAuthPage(state => state.isAuthPage)
