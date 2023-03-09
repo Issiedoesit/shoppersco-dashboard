@@ -18,12 +18,14 @@ import SignUp from './components/Auth/SignUp'
 import StateImpact from './components/Impact/StateImpact/StateImpact'
 import NoMatchPage from './components/NoMatchPage'
 import CampaignActivity from './components/CampaignManager/CampaignMain/Activity/CampaignActivity'
-import UserNavBar from './components/User/UserNav'
 import Home from './components/User/Home/Home'
 import Community from './components/User/Community/Community'
 import Activities from './components/User/Activities/Activities'
 import Store from './components/User/Store/Store'
 import Inventory from './components/User/Inventory/Inventory'
+import Campaign from './components/Partner/Campaign/Campaign'
+import PartnerInventory from './components/Partner/PartnerInventory/PartnerInventory'
+import PartnerHome from './components/Partner/PartnerHome/PartnerHome'
 
 function App() {
   const campaignState = useCampaignStore(state => state.currentCampaignState)
@@ -32,57 +34,65 @@ function App() {
 
   return (
     <div className="App relative flex gap-10 2xl:gap-14 bg-brandGray28x min-h-screen text-brandBlack1x font-avenirRegular">
-        {authLevel === 'superAdmin' && <NavBar isAuthPage={isAuthPage}/>}
-        {authLevel === 'user' && <UserNavBar isAuthPage={isAuthPage} />}
-
-        {authLevel === 'superAdmin' && 
-          <div className='w-full'>
-            <Routes>
-              <Route index path='/' element={<Overview />}></Route>
-              <Route path='/insight' element={<Insight />}></Route>
-              <Route path='/store-manager' element={<StoreManager />}></Route>
-              <Route path='/brand-manager' element={<BrandManager />}></Route>
-    
-              <Route path='/campaign-manager'>
-                <Route index element={<CampaignManager />}/>
-                <Route path='' element={<CampaignManager />}/>
-                <Route path='campaign-activity' element={<CampaignActivity />}/>
-                <Route path={`state/abuja`} element={<StateCampaign />} />
-                {/* <Route path={`state/${campaignState}`} element={<StateCampaign />} /> */}
-              </Route>
-    
-              <Route path='/eco-bag-producer' element={<EcoBagProducer />}></Route>
-    
-              <Route path='/impact'>
-                <Route index element={<Impact />}/>
-                <Route path='' element={<Impact />}></Route>
-                <Route path={`state/delta`} element={<StateImpact />} />
-                {/* <Route path={`state/${campaignState}`} element={<StateCampaign />} /> */}
-              </Route>
-    
-              <Route path='/template' element={<TemplatePage />}></Route>
-              <Route path='/login' element={<Login />}></Route>
-              <Route path='/sign-up' element={<SignUp />}></Route>
-              <Route path='*' element={<NoMatchPage />}></Route>
-            </Routes>
-          </div>
-        }
         
-        {authLevel === 'user' && 
-          <div className='w-full'>
-            <Routes>
-              <Route index path='/' element={<Home />}></Route>
-              <Route index path='/community' element={<Community />}></Route>
-              <Route index path='/activities' element={<Activities />}></Route>
-              <Route index path='/store' element={<Store />}></Route>
-              <Route index path='/inventory' element={<Inventory />}></Route>
-              <Route path='/template' element={<TemplatePage />}></Route>
-              <Route path='/login' element={<Login />}></Route>
-              <Route path='/sign-up' element={<SignUp />}></Route>
-              <Route path='*' element={<NoMatchPage />}></Route>
-            </Routes>
-          </div>
-        }
+        <NavBar isAuthPage={isAuthPage} userType={authLevel} />
+
+        <div className='w-full'>
+        <Routes>
+
+            {authLevel === 'superAdmin' && 
+                <>
+                  <Route index path='/' element={<Overview />} />
+                  <Route path='/insight' element={<Insight />} />
+                  <Route path='/store-manager' element={<StoreManager />} />
+                  <Route path='/brand-manager' element={<BrandManager />} />
+
+                  <Route path='/campaign-manager'>
+                    <Route index element={<CampaignManager />}/>
+                    <Route path='' element={<CampaignManager />}/>
+                    <Route path='campaign-activity' element={<CampaignActivity />}/>
+                    <Route path={`state/abuja`} element={<StateCampaign />} />
+                    {/* <Route path={`state/${campaignState}`} element={<StateCampaign />} /> */}
+                  </Route>
+
+                  <Route path='/eco-bag-producer' element={<EcoBagProducer />} />
+
+                  <Route path='/impact'>
+                    <Route index element={<Impact />}/>
+                    <Route path='' element={<Impact />} />
+                    <Route path={`state/delta`} element={<StateImpact />} />
+                    {/* <Route path={`state/${campaignState}`} element={<StateCampaign />} /> */}
+                  </Route>
+                </>
+            }
+
+            {authLevel === 'user' && 
+                  <>
+                    <Route index path='/' element={<Home />} />
+                    <Route index path='/community' element={<Community />} />
+                    <Route index path='/activities' element={<Activities />} />
+                    <Route index path='/store' element={<Store />} />
+                    <Route index path='/inventory' element={<Inventory />} />
+                  </>
+            }
+
+            {authLevel === 'partner' && 
+                <>
+                  <Route index path='/' element={<PartnerHome />} />
+                  <Route index path='/discussion' element={<Community />} />
+                  <Route index path='/campaigns' element={<Campaign />} />
+                  <Route index path='/inventory' element={<PartnerInventory />} />
+                  <Route index path='/impact' element={<Inventory />} />
+                </>
+            }
+
+            <Route path='/login' element={<Login />} />
+            <Route path='/sign-up' element={<SignUp />} />
+            <Route path='*' element={<NoMatchPage />} />
+
+          </Routes>
+        </div>
+
     </div>
   )
 }
