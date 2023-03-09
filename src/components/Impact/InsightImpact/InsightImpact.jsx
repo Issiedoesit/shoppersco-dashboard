@@ -27,7 +27,7 @@ const InsightImpact = () => {
     </div>
 
 
-    <div>
+    <div className='overflow-x-auto w-full'>
       <TableImpactInsight />
     </div>
   </div>

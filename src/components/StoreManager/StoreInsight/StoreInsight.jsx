@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import StoreInsightData from '../../../data/StoreManager/StoreInsightData'
-import StoreInsightTable from './storeInsightTable'
+import StoreInsightTable from './StoreInsightTable'
 import $ from 'jquery'
 import useStoreInsightStore from '../../../customHooks/Stores/storeInsightStore'
 import { useSearchTables } from '../../../customHooks/SearchTables'
