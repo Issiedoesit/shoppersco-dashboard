@@ -1,18 +1,13 @@
 import React from 'react'
-import Header from './../../Header/Header'
+import TemplatePage from '../../Template'
 
 const Inventory = () => {
   return (
-    <div className='pb-7 h-screen overflow-hidden bg-brandGray28x'>
-      <div className='overflow-y-auto bg-brandGray28x h-full px-5 sm:px-10 xl:pl-0 xl:pr-10'>
-      <Header page="Inventory"/>
-        <div className='pb-10 overflow-y-auto pt-3.5'>
+    <TemplatePage headerTitle={'Inventory'}>
+      
+        {/* Main content here */}
 
-              {/* Main content here */}
-
-        </div>
-      </div>
-    </div>
+    </TemplatePage>
   )
 }
 

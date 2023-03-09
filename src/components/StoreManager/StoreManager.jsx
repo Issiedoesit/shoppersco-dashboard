@@ -1,13 +1,13 @@
 import React from 'react'
 import StoreMetricsData from '../../data/StoreManager/StoreCardsMetricData'
 import NumbersCards from '../Cards/NumbersCards'
-import Header from '../Header/Header'
 import ButtonIcon from './../Buttons/ButtonIcon'
 import ButtonNoIcon from './../Buttons/ButtonNoIcon'
 import StoreInsight from './StoreInsight/StoreInsight'
 import {useDocTitle} from './../../customHooks/DocumentTitle'
 import UserPopUp from '../PopUps/User/UserPopUp'
 import NumberCardsSwiper from '../Swipers/NumberCardsSwiper'
+import TemplatePage from '../Template'
 
 
 
@@ -20,10 +20,7 @@ const StoreManager = () => {
  
 
   return (
-    <div className='pb-7 h-screen overflow-hidden bg-brandGray28x'>
-    <div className='overflow-y-auto bg-brandGray28x h-full px-5 sm:px-10 xl:pl-0 xl:pr-10'>
-     <Header page="Store Manager"/>
-       <div className='pb-10 overflow-y-auto pt-3.5'>
+   <TemplatePage headerTitle={'Store Manager'}>
 
         <div className='hidden lg:grid xs:grid-cols-1 grid-cols-2 md:grid-cols-3 lg:grid-cols-5 pb-5 gap-2 2xl:gap-5 auto-cols-fr auto-rows-fr'>
         
@@ -50,12 +47,9 @@ const StoreManager = () => {
          </section>
 
 
-       </div>
-    </div>
-
-    {/* Pop Up */}
-    <UserPopUp />
- </div>
+      {/* Pop Up */}
+      <UserPopUp />
+    </TemplatePage>
   )
 }
 
