@@ -9,7 +9,6 @@ import BrandManager from './components/BrandManager/BrandManager'
 import CampaignManager from './components/CampaignManager/CampaignManager'
 import EcoBagProducer from './components/EcoBagProducer/EcoBagProducer'
 import Impact from './components/Impact/Impact'
-import TemplatePage from './components/Template'
 import useCampaignStore from './customHooks/Stores/campaignStateStore'
 import StateCampaign from './components/CampaignManager/CampaignMain/StateCampaign/StateCampaign'
 import Login from './components/Auth/Login'
@@ -23,9 +22,7 @@ import Community from './components/User/Community/Community'
 import Activities from './components/User/Activities/Activities'
 import Store from './components/User/Store/Store'
 import Inventory from './components/User/Inventory/Inventory'
-import Campaign from './components/Partner/Campaign/Campaign'
-import PartnerInventory from './components/Partner/PartnerInventory/PartnerInventory'
-import PartnerHome from './components/Partner/PartnerHome/PartnerHome'
+import Profile from './components/Profile/Profile'
 
 function App() {
   const campaignState = useCampaignStore(state => state.currentCampaignState)
@@ -76,19 +73,10 @@ function App() {
                   </>
             }
 
-            {authLevel === 'partner' && 
-                <>
-                  <Route index path='/' element={<PartnerHome />} />
-                  <Route index path='/discussion' element={<Community />} />
-                  <Route index path='/campaigns' element={<Campaign />} />
-                  <Route index path='/inventory' element={<PartnerInventory />} />
-                  <Route index path='/impact' element={<Inventory />} />
-                </>
-            }
-
             <Route path='/login' element={<Login />} />
             <Route path='/sign-up' element={<SignUp />} />
             <Route path='*' element={<NoMatchPage />} />
+            <Route path="/profile" element={<Profile />} />
 
           </Routes>
         </div>
