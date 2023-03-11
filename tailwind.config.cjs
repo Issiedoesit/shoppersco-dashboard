@@ -6,6 +6,7 @@ module.exports = {
     "./src/components/Nav/Navbar.jsx",
     "./src/components/store/**/*.{js, ts,tsx, jsx}",
     "./src/components/App.jsx",
+    "./src/components/NoMatchPage.jsx",
   ],
   theme: {
     extend: {

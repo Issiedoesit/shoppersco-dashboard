@@ -30,7 +30,7 @@ const AuthForm = ({ handleSubmit, authHeaderText, authPageType }) => {
 
             <div className='flex items-center gap-2 w-full'>
                 <div className='w-full bg-brandGray28x h-0.5'></div>
-                <div h>or</div>
+                <div>or</div>
                 <div className='w-full bg-brandGray28x h-0.5'></div>
             </div>
 
