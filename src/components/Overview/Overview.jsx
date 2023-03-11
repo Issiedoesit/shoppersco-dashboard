@@ -8,6 +8,7 @@ import TemplatePage from '../Template'
 import {useDocTitle} from "./../../customHooks/DocumentTitle"
 import CountryInsight from './CountryInsight'
 import UserInsight from './userInsight/UserInsight'
+import HeroBtns from './HeroBtns'
 
 
 
@@ -19,7 +20,7 @@ const Overview = () => {
 
   return (
     <TemplatePage headerTitle={'Overview'}>
-        <Greeting headBtns={true} />
+        <Greeting useBtns={true} headBtns={<HeroBtns />} />
 
       <div className='hidden lg:grid xs:grid-cols-1 grid-cols-2 md:grid-cols-3 lg:grid-cols-5 pb-5 gap-2 2xl:gap-5 auto-cols-fr auto-rows-fr'>
         
