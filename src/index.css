@@ -29,7 +29,7 @@
 
 html, body{
     background-color: #F3F1F1;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 .custom--scroll::-webkit-scrollbar{

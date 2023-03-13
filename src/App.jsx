@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import './App.css'
 import NavBar from './components/Nav/NavBar'
@@ -28,6 +28,17 @@ function App() {
   const campaignState = useCampaignStore(state => state.currentCampaignState)
   const isAuthPage = useIsAuthPage(state => state.isAuthPage)
   const authLevel = useIsAuthPage(state => state.authLevel)
+
+
+    useEffect(() => {
+        const currentLocation = window.location.pathname
+        console.log(currentLocation);
+        if(isAuthPage && (currentLocation == '/sign-up' || currentLocation == '/login' || currentLocation == '/signup')) {
+          document.body.style.overflow = 'auto'
+        }else{
+          document.body.style.overflow = 'hidden'
+        }
+    }, [isAuthPage])
 
   return (
     <div className="App relative flex gap-10 2xl:gap-14 bg-brandGray28x min-h-screen text-brandBlack1x font-avenirRegular">
