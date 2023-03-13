@@ -19,16 +19,16 @@ const CountryInsight = () => {
           </label>
         </div>
 
-        <div className='text-xxs uppercase flex xs:flex-col flex-row items-center py-6 gap-4'>
+        {/* <div className='text-xxs uppercase flex xs:flex-col flex-row items-center py-6 gap-4'>
           <div className='flex flex-row items-center gap-2'><div className='w-2 h-2 bg-brandBlue1x rounded-fiftyPercent'></div> Shoppersbag Inactive States  </div>
           <div className='flex flex-row items-center gap-2'><div className='w-2 h-2 bg-brandGreen1x rounded-fiftyPercent'></div> Shoppersbag Active States </div>
-        </div>
+        </div> */}
 
         <section className='sm:flex gap-5 lg:block'>
 
-          <div>
+          {/* <div>
             <img src={map} alt="map" className='w-full'/>
-          </div>
+          </div> */}
           <div className='text-xxs pt-8'>
               {CountryInsightData.map((data, index)=>{
                 return <div key={`countryInsight${index}`} id={`countryInsight${index}`} className='border-b-0.5 border-b-brandGray28x last:border-b-0 py-2 flex xs:gap-2 justify-between items-end gap-5'>

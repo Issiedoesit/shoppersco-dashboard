@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import useMobileNav from '../../customHooks/Stores/useMobileNav'
 import CardMetricsData from '../../data/Overview/CardMetricsData'
 import NumbersCards from '../Cards/NumbersCards'
@@ -9,6 +9,7 @@ import {useDocTitle} from "./../../customHooks/DocumentTitle"
 import CountryInsight from './CountryInsight'
 import UserInsight from './userInsight/UserInsight'
 import HeroBtns from './HeroBtns'
+import NewCampaignModal from '../PopUps/NewCampaign/NewCampaignModal'
 
 
 
@@ -17,10 +18,19 @@ import HeroBtns from './HeroBtns'
 const Overview = () => {
   useDocTitle('ShoppersBag | Overview')
   const mobileNavState = useMobileNav(state => state.showMobileNav)
+  const [openModal, setOpenModal] = useState(false)
+
+  const handleModalOpen = () => {
+    setOpenModal(true)
+  }
+  const handleModalClose = () => {
+    setOpenModal(false)
+  }
+  
 
   return (
     <TemplatePage headerTitle={'Overview'}>
-        <Greeting useBtns={true} headBtns={<HeroBtns />} />
+        <Greeting useBtns={true} headBtns={<HeroBtns btn3Action={handleModalOpen} />} />
 
       <div className='hidden lg:grid xs:grid-cols-1 grid-cols-2 md:grid-cols-3 lg:grid-cols-5 pb-5 gap-2 2xl:gap-5 auto-cols-fr auto-rows-fr'>
         
@@ -40,6 +50,9 @@ const Overview = () => {
           <UserInsight />
           <CountryInsight />
       </section>
+
+      <NewCampaignModal isModalOpen={openModal} closeModal={handleModalClose} />
+
     </TemplatePage>
 
   )
