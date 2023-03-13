@@ -145,6 +145,9 @@ module.exports = {
         '10': '10px',
         '12': '12px',
       },
+      dropShadow: {
+        '1x': '0 0 50px rgba(0, 0, 0, 0.5)',
+      },
       outlineWidth:{
         '0.5': '0.5px',
         '1': '1px',
@@ -160,6 +163,7 @@ module.exports = {
         '14px': '0.875rem',
         '18px': '1.125rem',
         '30px': '1.875rem',
+        '38px': '2.375rem',
         '40px': '2.5rem',
         '45px': '2.8125rem',
         '50px': '3.125rem',
