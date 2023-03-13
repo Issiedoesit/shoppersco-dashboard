@@ -59,7 +59,7 @@ const AuthForm = ({ handleSubmit, authHeaderText, authPageType }) => {
             }
 
             <label htmlFor={`${authPageType === 'signup' ? 'signUpEmail' : 'signInEmail'}`} className='bg-brandGray28x flex flex-col focus-within:outline focus-within:outline-1 focus-within:outline-brandGreen7x px-10 py-3 rounded-thirty'>
-                <p  className='text-brandGray31x'> {authPageType === 'signup' ? 'Enter Your Email Address' : 'Your email'}</p>
+                <p  className='text-brandGray31x'>{authPageType === 'signup' ? 'Enter Your Email Address' : 'Your email'}</p>
                 <div>
                     <input type="email" name="" id={`${authPageType === 'signup' ? 'signUpEmail' : 'signInEmail'}`} placeholder='johndoe@email.com' className='bg-transparent focus:outline-none'/>
                 </div>
@@ -78,7 +78,7 @@ const AuthForm = ({ handleSubmit, authHeaderText, authPageType }) => {
             }
 
             <label htmlFor={`${authPageType === 'signup' ? 'signUpPassword' : 'signInPassword'}`} className='relative bg-brandGray28x flex flex-col focus-within:outline focus-within:outline-1 focus-within:outline-brandGreen7x px-10 py-3 rounded-thirty'>
-                <p  className='text-brandGray31x'>Your password</p>
+                <p  className='text-brandGray31x'>{authPageType === 'signup' ? 'Enter Your Password' : 'Your password'}</p>
                 <input type={`${showPassword ? 'text' : 'password'}`} name="" id={`${authPageType === 'signup' ? 'signUpPassword' : 'signInPassword'}`} placeholder='Enter Password here' className='bg-transparent focus:outline-none w-full pr-8 authPassword'/>
                 <button type='button' onClick={togglePassword} className='absolute right-8 top-fiftyPercent -translate-y-fiftyPercent group'>
                         <svg className='group' width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
