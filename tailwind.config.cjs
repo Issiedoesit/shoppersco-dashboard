@@ -6,6 +6,7 @@ module.exports = {
     "./src/components/Nav/Navbar.jsx",
     "./src/components/store/**/*.{js, ts,tsx, jsx}",
     "./src/components/App.jsx",
+    "./src/components/NoMatchPage.jsx",
   ],
   theme: {
     extend: {
@@ -87,6 +88,9 @@ module.exports = {
         brandGray45x: '#777777', 
         brandGray46x: '#EAEAEA', 
         brandGray47x: '#959595', 
+        brandGray48x: '#D2D2D2', 
+        brandGray49x: '#E9E9E9', 
+        brandGray50x: '#C2C5DC', 
         brandPurple1x: '#845CA7',
         brandPurple2x: '#8D8CFF33',
         brandPurple3x: '#8D8CFF',
@@ -141,6 +145,9 @@ module.exports = {
         '10': '10px',
         '12': '12px',
       },
+      dropShadow: {
+        '1x': '0 0 50px rgba(0, 0, 0, 0.5)',
+      },
       outlineWidth:{
         '0.5': '0.5px',
         '1': '1px',
@@ -156,6 +163,7 @@ module.exports = {
         '14px': '0.875rem',
         '18px': '1.125rem',
         '30px': '1.875rem',
+        '38px': '2.375rem',
         '40px': '2.5rem',
         '45px': '2.8125rem',
         '50px': '3.125rem',

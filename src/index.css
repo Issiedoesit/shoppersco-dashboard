@@ -2,12 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
-
+@layer components {
+    .trans-all-500-ease-in-out{
+      @apply transition-all duration-500 ease-in-out
+    }
+    .text-20{
+      @apply text-sm sm:text-base md:text-lg xl:text-xl
+    }
+    .text-24{
+      @apply text-base sm:text-lg md:text-xl xl:text-2xl
+    }
+    .text-30{
+      @apply text-xl md:text-2xl xl:text-3xl
+    }
+    .text-40{
+      @apply text-2xl md:text-3xl xl:text-4xl
+    }
+    .text-50{
+      @apply text-3xl xl:text-5xl leading-normal
+    }
+    .text-60{
+      @apply text-3xl md:text-4xl lg:text-6xl leading-normal
+    }
+  }
 
 
 html, body{
     background-color: #F3F1F1;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 .custom--scroll::-webkit-scrollbar{
@@ -86,6 +108,37 @@ html, body{
     animation: bubbleMotion 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
     /* animation: bubbleMotion 5s linear; */
   }
+
+
+  .skeleton{
+    overflow: hidden;
+    position: relative;
+    background-color: #8b8b8b7a;
+}
+
+.skeleton::before {
+  content: '';
+  display: block;
+  position: absolute;
+  left: -150px;
+  top: 0;
+  height: 100%;
+  width: 150px;
+  background: linear-gradient(to right, transparent 0%, #dadada 50%, transparent 100%);
+  -webkit-animation: load 1s cubic-bezier(0.4, 0.0, 0.2, 1) infinite;
+  animation: load 1s cubic-bezier(0.4, 0.0, 0.2, 1) infinite;
+}
+
+@keyframes load {
+  from {
+      left: -150px;
+  }
+  to   {
+      left: 100%;
+  }
+}
+
+
   @keyframes bubbleMotion {
     to {
       /* transform: scale(2.6); */

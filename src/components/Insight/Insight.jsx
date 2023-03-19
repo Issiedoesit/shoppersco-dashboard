@@ -1,11 +1,10 @@
 import React, { useState, useMemo } from 'react'
-import $ from 'jquery'
 import InsightMetricsData from '../../data/Insight/InsightCardsMetricData'
 import NumbersCards from '../Cards/NumbersCards'
 import Greeting from '../Header/Greeting'
-import Header from '../Header/Header'
 import {useDocTitle} from './../../customHooks/DocumentTitle'
 import { useSearchTables } from '../../customHooks/SearchTables'
+import TemplatePage from '../Template'
 
 
 const Insight = () => {
@@ -14,10 +13,7 @@ const Insight = () => {
 
 
   return (
-    <div className='pb-7 h-screen overflow-hidden'>
-      <div className='overflow-y-auto h-full px-5 sm:px-10 xl:pl-0 xl:pr-10'>
-      <Header page="Insight"/>
-      <div className='pb-10 overflow-y-auto pt-3.5'>
+    <TemplatePage headerTitle={'Insight'}>
         <Greeting headBtns={false} />
 
         <div>
@@ -38,9 +34,7 @@ const Insight = () => {
             }) }
 
         </div>
-      </div>
-    </div>
-    </div>
+    </TemplatePage>
   )
 }
 

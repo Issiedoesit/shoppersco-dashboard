@@ -1,10 +1,7 @@
-import React, {useState} from 'react'
-import ButtonIcon from './../Buttons/ButtonIcon'
-import ButtonNoIcon from './../Buttons/ButtonNoIcon'
+import React from 'react'
 
 
-const Greeting = ({headBtns, salutation}) => {
-    const [useHeadBtns] = useState(headBtns)
+const Greeting = ({useBtns, headBtns, salutation, salutationFontBigger}) => {
 
     
   
@@ -13,18 +10,16 @@ const Greeting = ({headBtns, salutation}) => {
         <div className='pb-5 flex flex-col xl:flex-row xl:items-end gap-5 justify-between'>
 
             <div className='space-y-1'>
-                <h2 className='text-2xl font-avenirHeavy'>Hi Etia 👋🏽,</h2>
-                <p className='font-avenirLight'>{salutation || 'Welcome to Shoppersbag Admin Panel'}</p>
+                <h2 className={`${salutationFontBigger || 'text-2xl'} font-avenirHeavy`}>Hi Etia 👋🏽,</h2>
+                <p className={`${salutationFontBigger && 'text-2xl'} font-avenirLight`}>{salutation || 'Welcome to Shoppersbag Admin Panel'}</p>
             </div>
 
-            {useHeadBtns === true
-                &&
+            { useBtns &&
                 <div className='flex flex-wrap flex-row items-center gap-3 justify-end'>
-                    <ButtonNoIcon text={'Generate Tag'} textColor={'text-white'} paddingX={'px-2 sm:px-5 lg:px-8'} bgColor={'bg-brandOrange1x'} font={'font-avenirMedium'} fontSize={'text-sm md:text-base'}/>
-                    <ButtonNoIcon text={'Start a raffle draw'} textColor={'text-white'} paddingX={'px-2 sm:px-5 lg:px-8'} bgColor={'bg-brandBlue1x'} font={'font-avenirMedium'} fontSize={'text-sm md:text-base'}/>
-                    <ButtonIcon text={'New Campaign'} textColor={'text-white'} paddingX={'px-2 sm:px-5 lg:px-8'} bgColor={'bg-brandGreen4x'} flexDirection={'flex-row'} fontSize={'text-sm md:text-base'} />
+                    {headBtns}
                 </div>
             }
+            
         </div>
     </div>
   )
