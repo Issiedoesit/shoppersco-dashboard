@@ -9,8 +9,8 @@ const PopUpWrap = ({id, children, modalStoreState, handleModal}) => {
         body.style.overflow = 'hidden';
         body.style.height = '100vh';
       } else {
-        body.style.overflow = '';
-        body.style.height = '';
+        body.style.overflow = 'hidden';
+        body.style.height = '100vh';
       }
       window.scrollTo(0, scrollPosition);
     }, [modalStoreState]);

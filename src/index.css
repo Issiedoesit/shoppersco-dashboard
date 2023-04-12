@@ -110,10 +110,10 @@ html, body{
   }
 
 
-  .skeleton{
-    overflow: hidden;
-    position: relative;
-    background-color: #8b8b8b7a;
+.skeleton{
+  overflow: hidden;
+  position: relative;
+  background-color: #8b8b8b7a;
 }
 
 .skeleton::before {
