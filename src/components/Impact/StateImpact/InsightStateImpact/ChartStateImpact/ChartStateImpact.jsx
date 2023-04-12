@@ -28,7 +28,8 @@ const ChartStateImpact = () => {
 
       const options={
         responsive:true,
-        // maintainAspectRatio: false,  // allows setting height and width of chart element
+        maintainAspectRatio: false,  
+        // allows setting height and width of chart element
         scales: {
             y: {
                 beginAtZero: true,
