@@ -3,7 +3,7 @@ import useIsAuthPage from '../customHooks/Stores/useIsAuthPage'
 import Header from './Header/Header'
 
 
-const TemplatePage = ({ headerTitle, headerLogo, children, levelTwoRef }) => {
+const TemplatePage = ({headerTitle, headerLogo, children, levelTwoRef }) => {
 
   const isAuthPage = useIsAuthPage(state => state.isAuthPage)
 
