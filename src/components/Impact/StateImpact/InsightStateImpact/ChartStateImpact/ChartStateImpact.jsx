@@ -71,7 +71,7 @@ const ChartStateImpact = () => {
     <div className='border-0.5 border-brandGray42x rounded-ten p-5'>
         <h2 className='pb-10 text-black font-avenirMedium'>Transaction Insight</h2>
         <div className=''>
-            <Bar data={data} options={options} />
+            <Bar data={data} options={options} className="h-254 sm:h-307" />
         </div>
     </div>
   )
