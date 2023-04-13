@@ -8,6 +8,7 @@ import $ from 'jquery'
 const SignUp = () => {
 
     const setAuthPage = useIsAuthPage(state => state.setIsAuthPage)
+    const setAuthPageFalse = useIsAuthPage(state => state.changeIsAuthPage)
     const [authPageType] = useState('signup')
     const containerRef = useRef(null)
 
@@ -17,8 +18,13 @@ const SignUp = () => {
   
     useLayoutEffect(() => {
       handleAuth()
+  
+      return(()=>{
+        setAuthPageFalse()
+      })
     }, [])
 
+    
     const handleSkeleton = () => {
       $(this).removeClass('skeleton')
     }

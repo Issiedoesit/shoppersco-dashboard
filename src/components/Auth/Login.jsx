@@ -6,6 +6,7 @@ import $ from 'jquery'
 
 const Login = () => {
   const setAuthPage = useIsAuthPage(state => state.setIsAuthPage)
+  const setAuthPageFalse = useIsAuthPage(state => state.changeIsAuthPage)
   const [authPageType] = useState('login')
 
   const handleAuth = () =>{
@@ -14,6 +15,10 @@ const Login = () => {
 
   useLayoutEffect(() => {
     handleAuth()
+
+    return(()=>{
+      setAuthPageFalse()
+    })
   }, [])
 
   const handleSkeleton = () => {
