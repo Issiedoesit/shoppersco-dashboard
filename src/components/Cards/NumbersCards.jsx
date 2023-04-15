@@ -1,8 +1,8 @@
 import React from 'react'
 
-const NumbersCards = ({keyprop, id, header, metric, amount, link, linkText, percent, trend, extraClasses}) => {
+const NumbersCards = ({ id, header, metric, amount, link, linkText, percent, trend, extraClasses, height}) => {
   return (
-    <div key={keyprop} id={id} className={`bg-white py-3 rounded-eight ${extraClasses} pl-18px pr-3 flex flex-col justify-between h-full lg:h-auto`}>
+    <div id={id} className={`bg-white py-3 rounded-eight ${extraClasses} pl-18px pr-3 flex flex-col justify-between ${height ? height : 'h-full lg:h-auto'}`}>
         <div>
             <p className='text-xxs sm:text-xs'>{header}</p>
             <h3 className='font-avenirHeavy text-xs sm:text-sm'>{metric}</h3>

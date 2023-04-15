@@ -10,8 +10,9 @@ import CountryInsight from './CountryInsight'
 import UserInsight from './userInsight/UserInsight'
 import HeroBtns from './HeroBtns'
 import NewCampaignModal from '../PopUps/NewCampaign/NewCampaignModal'
-
-
+import axios from 'axios'
+import useSWR from 'swr'
+import { FadeLoader, ScaleLoader } from 'react-spinners'
 
 
 
@@ -26,23 +27,31 @@ const Overview = () => {
   const handleModalClose = () => {
     setOpenModal(false)
   }
+
+  const fetcher = async(url) => axios.get(url, {headers : {"Authorization":`Bearer ${import.meta.env.VITE_BEARER_TOKEN}`}})
+  const stats = useSWR(`${import.meta.env.VITE_BASE_URL}admin/overview/stats`, fetcher)
   
+  if (stats.error) return <div>failed to load</div>
+  if (!stats.data) return <div className='h-full flex flex-col items-center justify-center text-center gap-4 text-brandGreen1x font-avenirMedium'><ScaleLoader color="#009933" /> loading...</div>
+
+  stats.data && console.log("stats.data", "=>", stats.data);
+  const statData = stats.data.data.data
 
   return (
     <TemplatePage headerTitle={'Overview'}>
         <Greeting useBtns={true} headBtns={<HeroBtns btn3Action={handleModalOpen} />} />
 
-      <div className='hidden lg:grid xs:grid-cols-1 grid-cols-2 md:grid-cols-3 lg:grid-cols-5 pb-5 gap-2 2xl:gap-5 auto-cols-fr auto-rows-fr'>
+      {stats.data.status == 200 && stats.data && statData && <div className='hidden lg:grid xs:grid-cols-1 grid-cols-2 md:grid-cols-3 lg:grid-cols-5 pb-5 gap-2 2xl:gap-5 auto-cols-fr auto-rows-fr'>
         
         {CardMetricsData.map((item, index)=>{
-          return <NumbersCards keyprop={`overviewMetric${index+1}`} id={`overviewMetric${index+1}`} header={item.header} metric={item.metric} amount={item.amount} trend={item.trend} percent={item.percent}/>
+          return <NumbersCards extraClasses={'h-full'} keyprop={`overviewMetric${index+1}`} id={`overviewMetric${index+1}`} header={item.header} metric={item.metric} amount={statData[item.id]} trend={item.trend} percent={item.percent}/>
         }) }
 
-      </div>
+      </div>}
 
       {/* to swipe cards on mobile  */}
 
-      <NumberCardsSwiper cardDataSet={CardMetricsData} cardType={'overviewMetric'} />
+      {statData && <NumberCardsSwiper cardDataSet={CardMetricsData} fetchedStats={statData} cardType={'overviewMetric'} />}
 
       {/* to swipe cards on mobile  */}
 
