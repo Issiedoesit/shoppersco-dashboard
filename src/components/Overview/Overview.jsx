@@ -13,6 +13,7 @@ import NewCampaignModal from '../PopUps/NewCampaign/NewCampaignModal'
 import axios from 'axios'
 import useSWR from 'swr'
 import { FadeLoader, ScaleLoader } from 'react-spinners'
+import FetchErrorPage from '../Elements/Sections/FetchError/FetchErrorPage'
 
 
 
@@ -30,12 +31,17 @@ const Overview = () => {
 
   const fetcher = async(url) => axios.get(url, {headers : {"Authorization":`Bearer ${import.meta.env.VITE_BEARER_TOKEN}`}})
   const stats = useSWR(`${import.meta.env.VITE_BASE_URL}admin/overview/stats`, fetcher)
+  const userStats = useSWR(`${import.meta.env.VITE_BASE_URL}admin/overview/users`, fetcher)
   
-  if (stats.error) return <div>failed to load</div>
-  if (!stats.data) return <div className='h-full flex flex-col items-center justify-center text-center gap-4 text-brandGreen1x font-avenirMedium'><ScaleLoader color="#009933" /> loading...</div>
+  if (stats.error || userStats.error) return <FetchErrorPage />
+  if (!stats.data || !userStats.data) return <div className='h-full min-h-screen flex flex-col items-center justify-center text-center gap-4 text-brandGreen1x font-avenirMedium'><ScaleLoader color="#009933" /> loading...</div>
 
+  console.error("stats.data", "=>", stats);
+  console.error("userStats.error", "=>", userStats);
   stats.data && console.log("stats.data", "=>", stats.data);
+  userStats.data && console.log("userStats.data", "=>", userStats.data);
   const statData = stats.data.data.data
+  const userStatsData = userStats.data.data.data
 
   return (
     <TemplatePage headerTitle={'Overview'}>
@@ -56,7 +62,7 @@ const Overview = () => {
       {/* to swipe cards on mobile  */}
 
       <section className='flex flex-col-reverse lg:grid grid-cols-5 gap-5'>
-          <UserInsight />
+          <UserInsight data={userStatsData} />
           <CountryInsight />
       </section>
 

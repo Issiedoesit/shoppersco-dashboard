@@ -23,6 +23,7 @@ import Activities from './components/User/Activities/Activities'
 import Store from './components/User/Store/Store'
 import Inventory from './components/User/Inventory/Inventory'
 import Profile from './components/Profile/Profile'
+import PrivateRoute from './utils/PrivateRoute'
 
 function App() {
   const campaignState = useCampaignStore(state => state.currentCampaignState)
@@ -46,16 +47,18 @@ function App() {
         <NavBar isAuthPage={isAuthPage} userType={authLevel} />
 
         <div className='w-full'>
+
+          {/* to access dashboard currently, go to <PrivateRoute /> and set user to true */}
         <Routes>
 
             {authLevel === 'superAdmin' && 
-                <>
-                  <Route index path='/' element={<Overview />} />
-                  <Route path='/insight' element={<Insight />} />
-                  <Route path='/store-manager' element={<StoreManager />} />
-                  <Route path='/brand-manager' element={<BrandManager />} />
+                <Route path='/dashboard' element={<PrivateRoute />}>
+                  <Route index path='' element={<Overview />} />
+                  <Route path='insight' element={<Insight />} />
+                  <Route path='store-manager' element={<StoreManager />} />
+                  <Route path='brand-manager' element={<BrandManager />} />
 
-                  <Route path='/campaign-manager'>
+                  <Route path='campaign-manager'>
                     <Route index element={<CampaignManager />}/>
                     <Route path='' element={<CampaignManager />}/>
                     <Route path='campaign-activity' element={<CampaignActivity />}/>
@@ -63,18 +66,19 @@ function App() {
                     {/* <Route path={`state/${campaignState}`} element={<StateCampaign />} /> */}
                   </Route>
 
-                  <Route path='/eco-bag-producer' element={<EcoBagProducer />} />
+                  <Route path='eco-bag-producer' element={<EcoBagProducer />} />
 
-                  <Route path='/impact'>
+                  <Route path='impact'>
                     <Route index element={<Impact />}/>
                     <Route path='' element={<Impact />} />
                     <Route path={`state/delta`} element={<StateImpact />} />
                     {/* <Route path={`state/${campaignState}`} element={<StateCampaign />} /> */}
                   </Route>
-                </>
+                  <Route path="profile" element={<Profile />} />
+                </Route>
             }
 
-            {authLevel === 'user' && 
+            {/* {authLevel === 'user' && 
                   <>
                     <Route index path='/' element={<Home />} />
                     <Route index path='/community' element={<Community />} />
@@ -82,12 +86,11 @@ function App() {
                     <Route index path='/store' element={<Store />} />
                     <Route index path='/inventory' element={<Inventory />} />
                   </>
-            }
+            } */}
 
             <Route path='/login' element={<Login />} />
             <Route path='/sign-up' element={<SignUp />} />
             <Route path='*' element={<NoMatchPage />} />
-            <Route path="/profile" element={<Profile />} />
 
           </Routes>
         </div>

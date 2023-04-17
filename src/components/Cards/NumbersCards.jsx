@@ -11,7 +11,7 @@ const NumbersCards = ({ id, header, metric, amount, link, linkText, percent, tre
         <div className='pt-3 flex flex-row items-end justify-between text-brandGreen4x'>
             <h4 className='font-avenirBlack sm:text-xl'>{amount}</h4>
            
-           {trend 
+           {/* {trend 
            ?  
            <div className='flex items-end gap-2'>
                 {trend.toLowerCase() === 'up' ?
@@ -26,7 +26,10 @@ const NumbersCards = ({ id, header, metric, amount, link, linkText, percent, tre
                 <p className={`${trend.toLowerCase() === 'up' ? 'text-brandGreen4x' : 'text-brandRed1x'} text-xxs sm:text-xs`}>{percent}</p>
             </div>
             :
-            <a href={link} className='text-xs sm:text-sm text-brandBlue1x'>{linkText}</a>}
+            <a href={link} className='text-xs sm:text-sm text-brandBlue1x'>{linkText}</a>
+            } */}
+            
+            {linkText &&  <a href={link} className='text-xs sm:text-sm text-brandBlue1x'>{linkText}</a> }
         </div>
     </div>
   )

@@ -4,39 +4,39 @@ import ActiveTag from '../../StatusTags/ActiveTag'
 import InactiveTag from '../../StatusTags/InactiveTag'
 import BannedTag from '../../StatusTags/BannedTag'
 
-const UserInsightRow = (props) => {
+const UserInsightRow = ({id, avatar, status, name, points, rate, location, date}) => {
     let tag;
 
-    if(props.status.toLowerCase() === 'active'){
+    if(status.toLowerCase() === 'active'){
         tag = <ActiveTag borderRadius={'rounded-forty'}  bgColor={'bg-brandLightGreen1x'} />
-    }else if(props.status.toLowerCase() === 'inactive'){
+    }else if(status.toLowerCase() === 'inactive'){
         tag = <InactiveTag />
-    }else if(props.status.toLowerCase() === 'banned'){
+    }else if(status.toLowerCase() === 'banned'){
         tag = <BannedTag />
     }
     
   return (
-    <tr id={props.id} key={props.keyprop} className='odd:bg-brandGray28x user-insight-row'>
+    <tr id={id} className='odd:bg-brandGray28x user-insight-row'>
         <td className="py-3 px-1 whitespace-nowrap">
             <input type="checkbox" name="check-user-insight" id="checkUserInsight" className="accent-brandGreen4x focus:outline-none focus:ring-none"  />
         </td>
         <td className="py-3 px-1 whitespace-nowrap">
-        <img src={dummyAvatar} alt="avatar" className='h-8 w-8 min-w-8 aspect-square min-h-8' />
+        <img src={avatar || dummyAvatar} alt="avatar" className='skeleton rounded-full h-8 w-8 min-w-8 aspect-square min-h-8' />
         </td>
         <td className="py-3 px-1 whitespace-nowrap">
             <div>
-                <h5 className="text-xs">{props.name}</h5>
-                <p className='text-xxs text-brandGray27x'>Points: {props.points} . Rate: {props.rate}</p>
+                <h5 className="text-xs">{name}</h5>
+                <p className='text-xxs text-brandGray27x'>Points: {points} . Rate: {rate}</p>
             </div>
         </td>
         <td className="py-3 px-1 whitespace-nowrap">
             {tag}
         </td>
         <td className="py-3 px-1 whitespace-nowrap">
-            <p className='text-xs'>{props.location}</p>
+            <p className='text-xs'>{location}</p>
         </td>
         <td className="py-3 px-1 whitespace-nowrap">
-            <p className="text-brandGray29x text-xs">{props.date}</p>
+            <p className="text-brandGray29x text-xs">{date}</p>
         </td>
         <td className="py-3 px-1 whitespace-nowrap">
             <button type='button'>

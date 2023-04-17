@@ -8,10 +8,10 @@ import { useSearchTables } from '../../../customHooks/SearchTables'
 
 
 
-const UserInsight = () => {
+const UserInsight = ({data}) => {
   
   const [rows, setRows] = useState(8)
-  const [listLength] = useState(UserInsightData.length)
+  const [listLength] = useState(data.length)
   const [ handleSearch, handleBlur ] = useSearchTables('', 'user-insight-row')
 
 
@@ -34,9 +34,9 @@ const UserInsight = () => {
                 <input onChange={handleSearch} type="search" name="user-insight-search" id="userInsightSearch" placeholder='Search by name. date, location or status' className='placeholder:text-xs w-full focus:outline-none focus:ring-none text-sm'/>
             </label>
       </div>
-      
+      {/* {listLength} */}
       <div className='overflow-x-auto w-full'>
-      <UserInsightTable rows={rows} />
+      <UserInsightTable data={data} rows={rows} />
       </div>
       
       <div className='w-full pt-5 flex justify-center'>
