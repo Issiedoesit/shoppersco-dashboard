@@ -8,6 +8,10 @@ import {useDocTitle} from './../../customHooks/DocumentTitle'
 import UserPopUp from '../PopUps/User/UserPopUp'
 import NumberCardsSwiper from '../Swipers/NumberCardsSwiper'
 import TemplatePage from '../Template'
+import axios from 'axios'
+import useSWR from 'swr'
+import Loading from '../Elements/Loaders/Loading'
+import FetchErrorPage from '../Elements/Sections/FetchError/FetchErrorPage'
 
 
 
@@ -19,20 +23,33 @@ const StoreManager = () => {
   useDocTitle('ShoppersBag | Store Manager')
  
 
+  const fetcher = async(url) => axios.get(url, {headers : {"Authorization":`Bearer ${import.meta.env.VITE_BEARER_TOKEN}`}})
+  const fetchedStoreStats = useSWR(`${import.meta.env.VITE_BASE_URL}admin/stores/stats`, fetcher)
+  const fetchedStoreInsights = useSWR(`${import.meta.env.VITE_BASE_URL}admin/stores/insights`, fetcher)
+
+  if (fetchedStoreStats.error || fetchedStoreInsights.error) return <FetchErrorPage />
+  if (!fetchedStoreStats.data  || !fetchedStoreInsights.data) return <Loading />
+  console.log("StoreStats  => ", fetchedStoreStats.data);
+  console.log("fetchedStoreInsights  => ", fetchedStoreInsights.data);
+
+  const storeStatsData = fetchedStoreStats.data.data.data
+  const storeInsightsData = fetchedStoreInsights.data.data.data
+  console.log(storeInsightsData);
+
   return (
    <TemplatePage headerTitle={'Store Manager'}>
 
         <div className='hidden lg:grid xs:grid-cols-1 grid-cols-2 md:grid-cols-3 lg:grid-cols-5 pb-5 gap-2 2xl:gap-5 auto-cols-fr auto-rows-fr'>
         
             {StoreMetricsData.map((data, index)=>{
-              return <NumbersCards id={`storeMetric${index}`} keyprop={`storeMetric${index}`} header={data.header} metric={data.metric} amount={data.amount} trend={data.trend} percent={data.percent} link={data.link} linkText={data.linkText} />
+              return <NumbersCards id={`storeMetric${index}`} key={`storeMetric${index}`} header={data.header} metric={data.metric} amount={storeStatsData ? storeStatsData[data.id] : data.amount} trend={data.trend} percent={data.percent} link={data.link} linkText={data.linkText} />
             })}
 
          </div>
 
          {/* to swipe cards on mobile  */}
 
-          <NumberCardsSwiper cardDataSet={StoreMetricsData} cardType={'storeMetric'} />
+          <NumberCardsSwiper cardDataSet={StoreMetricsData} fetchedStats={storeStatsData} cardType={'storeMetric'} />
 
         {/* to swipe cards on mobile  */}
 
@@ -43,12 +60,10 @@ const StoreManager = () => {
 
           
          <section className=''>
-            <StoreInsight />
+            <StoreInsight data={storeInsightsData} />
          </section>
 
 
-      {/* Pop Up */}
-      <UserPopUp />
     </TemplatePage>
   )
 }

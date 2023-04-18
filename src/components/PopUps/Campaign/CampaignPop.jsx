@@ -32,7 +32,7 @@ const CampaignPopUp = () => {
     <div id='CampaignPopUp' className={`z-50 ${isCampaignModalOpen ? 'flex' : 'hidden'} flex-col fixed top-0 col-span-12 left-0 w-full h-screen py-20 overflow-y-auto items-center `}>
         <div onClick={handleCampaignModal} className='overlay cursor-pointer pop-up-closer bg-black/30 w-full h-full z-20 backdrop-blur-sm fixed top-0 left-0 '></div>
         {modalDetailState.map((data, index)=>{
-            return <CampaignPopUpInner keyprop={'campaignModalDetail'+index} />
+            return <CampaignPopUpInner key={'campaignModalDetail'+index} />
         })}
     </div>
   )

@@ -1,36 +1,28 @@
-import React, {useEffect} from 'react'
-import usePrRequestStore from '../../../customHooks/Stores/PRequestModalStore'
-import useStoreInsightStore from '../../../customHooks/Stores/storeInsightStore'
-import StoreInsightData from '../../../data/StoreManager/StoreInsightData'
+import React, { useState } from 'react'
+import PopUpWrap from '../Wraps/PopUpWrap'
 import InnerPopPrRequest from './InnerPopPrRequest'
 
 
-const PrRequestPop = () => {
-    const modalDetailState = useStoreInsightStore(state => state.modalDetails)
-    const storeId = useStoreInsightStore(state => state.storeId)
-    const setModalDetailState = useStoreInsightStore(state => state.setModalDetails)
-    const PrRequestModalStoreState = usePrRequestStore(state => state.isPrRequestModalOpen)
-    const setIsPrRequestModalOpen = usePrRequestStore(state => state.changeIsPrRequestModalOpen)
-
-    const handlePrRequestModal = () =>{
-        setIsPrRequestModalOpen()
-        console.warn(modalDetailState);
-    }
-  
-    useEffect(() =>         
-        setModalDetailState(StoreInsightData, 'storeInsight1')
-    , [])
-
-    
+const PrRequestPop = ({modalState, allRequests, closeModal, modalData, dataLength, currentIndex, setCurrentIndex, moveToModal}) => {
+   
+    const [ecoBagProducer, setEcoBagProducer] = useState(false)
 
   return (
-    // <div id='PrRequestPopUp' className={`z-50 flex flex-col fixed top-0 col-span-12 left-0 w-full h-screen py-20 overflow-y-auto items-center`}>
-    <div id='PrRequestPopUp' className={`z-50  ${PrRequestModalStoreState ? 'flex' : 'hidden'} flex-col fixed top-0 bg-black/30 backdrop-blur-sm col-span-12 left-0 w-full h-screen py-20 overflow-y-auto items-center `}>
-        <div onClick={handlePrRequestModal} className='overlay cursor-pointer pop-up-closer  w-full h-full z-20  fixed top-0 left-0 '></div>
-        {modalDetailState.map((data, index)=>{
-            return <InnerPopPrRequest keyprop={'modalDetail'+index} user={data.name} location={data.location}/>
-        })}
-    </div>
+    <PopUpWrap id={'PrRequestPopUp'} modalState={modalState} closeModal={closeModal}>
+        {ecoBagProducer ? 
+            <>
+                {modalData && modalData.map((data, index)=>{
+                    return <InnerPopPrRequest id={data.id} index={currentIndex} setCurrentIndex={setCurrentIndex} allRequests={allRequests} moveToModal={moveToModal} dataLength={dataLength} key={'prModalDetail'+index} user={data.name} address={data.address} handleNext={()=>handleNext(index)} handlePrev={()=>handlePrev(index)} state={data.state} avatar={data.logoUrl ? data.logoUrl : data.coverImageUrl} orderRequest={data.orderRequest} orderDateTime={data.orderDateTime} orderStatus={data.orderStatus} orderQuantity={data.orderQuantity} email={data.email} deliveryDate={data.deliveryDate} contactPerson={data.contactPerson} contactInfo={data.contactInfo} />
+                })}
+            </>
+            :
+            <>
+                {modalData && modalData.map((data, index)=>{
+                    return <InnerPopPrRequest id={data.id} index={currentIndex} setCurrentIndex={setCurrentIndex} allRequests={allRequests} moveToModal={moveToModal} dataLength={dataLength} key={'prModalDetail'+index} user={data.name} address={data.address} handleNext={()=>handleNext(index)} handlePrev={()=>handlePrev(index)} state={data.state} avatar={data.logoUrl ? data.logoUrl : data.coverImageUrl} fullName={data.fullName} bagType={data.bagType} phoneNo={data.phone} agentName={data.agentName} email={data.email} deliveryDate={data.deliveryDate} orderDate={data.orderDate} contactInfo={data.contactInfo} orderQuantity={data.orderQuantity} availableProducers={data.availableProducers} />
+                })}
+            </>
+        }
+    </PopUpWrap>
   )
 }
 

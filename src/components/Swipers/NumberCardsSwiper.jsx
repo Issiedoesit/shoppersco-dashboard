@@ -30,7 +30,7 @@ const NumberCardsSwiper = ( {cardDataSet, cardType, fetchedStats} ) => {
         className="lg:hidden pb-12 grid"
     >
       {cardDataSet.map((item, index)=>{
-        return  <SwiperSlide className=''><NumbersCards keyprop={`${cardType}Card${index+1}`} id={`${cardType}Card${index+1}`} header={item.header} metric={item.metric} amount={fetchedStats ? fetchedStats[item.id] : item.amount} trend={item.trend} percent={item.percent} link={item.link} linkText={item.linkText}/></SwiperSlide>
+        return  <SwiperSlide className=''><NumbersCards key={`${cardType}Card${index+1}`} id={`${cardType}Card${index+1}`} header={item.header} metric={item.metric} amount={fetchedStats ? fetchedStats[item.id] : item.amount} trend={item.trend} percent={item.percent} link={item.link} linkText={item.linkText}/></SwiperSlide>
             })}
         </Swiper>
   )

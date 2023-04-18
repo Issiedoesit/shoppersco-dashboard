@@ -1,22 +1,22 @@
 const BrandMetricsData = [
-    {
-        header:"Number of",
-        metric:"Partnering brands by Country",
-        amount:"3,421",
-        trend:'up',
-        percent: '25%',
-        link:'',
-        linkText: ''
-    },
-    {
-        header:"Number of",
-        metric:"Partnering brands by City",
-        amount:"3003",
-        trend:'up',
-        percent: '25%',
-        link:'',
-        linkText: ''
-    },
+    // {
+    //     header:"Number of",
+    //     metric:"Partnering brands by Country",
+    //     amount:"3,421",
+    //     trend:'up',
+    //     percent: '25%',
+    //     link:'',
+    //     linkText: ''
+    // },
+    // {
+    //     header:"Number of",
+    //     metric:"Partnering brands by City",
+    //     amount:"3003",
+    //     trend:'up',
+    //     percent: '25%',
+    //     link:'',
+    //     linkText: ''
+    // },
     {
         header:"Number of",
         metric:"Completed Campaigns",
@@ -24,7 +24,8 @@ const BrandMetricsData = [
         trend:'',
         percent: '25%',
         link:'',
-        linkText: ''
+        linkText: '',
+        id:"completedCampaigns"
     },
     {
         header:"Number of",
@@ -33,7 +34,8 @@ const BrandMetricsData = [
         trend:'',
         percent: '25%',
         link:'',
-        linkText: ''
+        linkText: '',
+        id:"numberOfRewards"
     },
     {
         header:"Number of",
@@ -42,7 +44,8 @@ const BrandMetricsData = [
         trend:'',
         percent: '25%',
         link:'#',
-        linkText: 'Click to approve'
+        linkText: 'Click to approve',
+        id:"numberOfPendingKYC"
     }
 ]
 

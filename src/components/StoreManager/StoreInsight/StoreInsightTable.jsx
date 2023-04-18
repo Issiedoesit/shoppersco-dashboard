@@ -1,53 +1,54 @@
 import React from 'react'
 import StoreInsightData from '../../../data/StoreManager/StoreInsightData'
+import formatDate from '../../../utils/Dates/FormatDate'
 import StoreInsightRow from './StoreInsightRow'
 
 
-const StoreInsightTable = ({rows}) => {
+const StoreInsightTable = ({rows, data, handleKYCModal}) => {
 
-    let slicedRows = StoreInsightData.slice(0, rows)
+    let slicedRows = data.slice(0, rows)
     
 
   return (
     <table id='storeInsightTable' className='table table-auto w-full text-left'>
         <thead className='text-sm font-avenirMedium'>
         <tr tr className='border-b-0.5 border-b-brandGray27x'>
-           <td className='py-2 px-2 whitespace-nowrap'>
+           <td className='py-2 pl-2 pr-5 whitespace-nowrap'>
 
                 <input type="checkbox" name="master-check-store-insight" id="masterCheckStoreInsight" className="accent-brandGreen4x focus:outline-none focus:ring-none"  />
             </td>
-            <td className='py-2 px-2 whitespace-nowrap'>
+            <td className='py-2 pl-2 pr-5 whitespace-nowrap'>
 
             </td>
-            <td className='py-2 px-2 whitespace-nowrap'>
+            <td className='py-2 pl-2 pr-5 whitespace-nowrap'>
 
             Name
             </td>
-            <td className='py-2 px-2 whitespace-nowrap'>
+            <td className='py-2 pl-2 pr-5 whitespace-nowrap'>
 
             Status
             </td>
-            <td className='py-2 px-2 whitespace-nowrap'>
+            <td className='py-2 pl-2 pr-5 whitespace-nowrap'>
 
             KYC Status
             </td>
-            <td className='py-2 px-2 whitespace-nowrap'>
+            <td className='py-2 pl-2 pr-5 whitespace-nowrap'>
 
             Badge
             </td>
-            <td className='py-2 px-2 whitespace-nowrap'>
+            <td className='py-2 pl-2 pr-5 whitespace-nowrap'>
               Location
             </td>
-            <td className='py-2 px-2 whitespace-nowrap'>
+            <td className='py-2 pl-2 pr-5 whitespace-nowrap'>
               Date
             </td>
-            <td className='py-2 px-2 whitespace-nowrap'>
+            <td className='py-2 pl-2 pr-5 whitespace-nowrap'>
               Orders
             </td>
-            <td className='py-2 px-2 whitespace-nowrap'>
+            <td className='py-2 pl-2 pr-5 whitespace-nowrap'>
 
             </td>
-            <td className='py-2 px-2 whitespace-nowrap'>
+            <td className='py-2 pl-2 pr-5 whitespace-nowrap'>
 
             </td>
            </tr>
@@ -57,8 +58,8 @@ const StoreInsightTable = ({rows}) => {
         </thead>
         <tbody>
 
-            {slicedRows.map((data, index)=>{
-                return <StoreInsightRow id={data.id} keyprop={data.id} name={data.name} points={data.points} rate={data.rate} status={data.status} kyc={data.kyc} badge={data.badge} location={data.location} date={data.date} orders={data.orders} approval={data.approval} />
+            {slicedRows.map((insight, index)=>{
+                return <StoreInsightRow key={index} id={insight.id} avatar={insight.logoUrl} name={insight.name} status={insight.status} kyc={insight.kyc} badge={insight.badge} location={insight.city} date={formatDate(insight.createdAt)} orders={insight.orders} approval={insight.approval} handleKYCModal={()=>handleKYCModal(insight.id)} />
             })}
             
         </tbody>

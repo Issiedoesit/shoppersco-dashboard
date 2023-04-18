@@ -10,99 +10,97 @@ import useModalStore from '../../../customHooks/Stores/modalStore'
 
 
 
-const StoreInsightRow = (props) => {
+const StoreInsightRow = ({id, avatar, name, partnerName, handleKYCModal, status, approval, kyc, date, badge, location, orders, handleDelete, handleEdit }) => {
     // const [tag, setTag] = useState('')
     // const [kyc, setKyc] = useState('')
     // const [badge, setBadge] = useState('')
-    const setStoreId = useStoreInsightStore(state => state.setStoreId)
-    const setModalStoreState = useModalStore(state => state.changeIsModalOpen)
 
     let tag;
 
-    if(props.status.toLowerCase() === 'active'){
-       tag =  <ActiveTag borderRadius={'rounded-forty'}  bgColor={'bg-brandLightGreen1x'} />
-    }else if(props.status.toLowerCase() === 'inactive'){
-       tag =  <InactiveTag />
-    }else if(props.status.toLowerCase() === 'banned'){
-       tag =  <BannedTag />
+    if(status){
+        if(status.toLowerCase() === 'active'){
+            tag =  <ActiveTag borderRadius={'rounded-forty'}  bgColor={'bg-brandLightGreen1x'} />
+         }else if(status.toLowerCase() === 'inactive'){
+            tag =  <InactiveTag />
+         }else if(status.toLowerCase() === 'banned'){
+            tag =  <BannedTag />
+         }
     }
 
-    let kyc;
-    if(props.kyc.toLowerCase() === 'verified'){
-       kyc =  <VerifiedTag />
-    }else if(props.kyc.toLowerCase() === 'inactive'){
-       kyc =  <InactiveTag />
+    let kycTag;
+    if(kyc){
+        if(kyc.toLowerCase() === 'verified'){
+            kycTag =  <VerifiedTag />
+        }else if(kyc.toLowerCase() === 'inactive'){
+            kycTag =  <InactiveTag />
+        }
     }
   
-    let badge;
+    let badgeTag;
 
-    if(props.badge.toLowerCase() === 'eco-friendly'){
-        badge = <EcoFriendlyTag />
-     }else{
-        badge = ''
-     }
+    if(badge){
+        if(badge.toLowerCase() === 'eco-friendly'){
+            badgeTag = <EcoFriendlyTag />
+         }else{
+            badgeTag = ''
+         }
+    }
 
     //  fetches the store details based on the id
-    const handleStoreId = (id) => {
-        setStoreId(id)
+    const handleModal = (id) => {
+        handleKYCModal()
     }
 
-    // sets the modal to open or close
-    const handleModal = () => {
-        setModalStoreState()
-    }
-
-    // uses the handleStoreId and handleModal functions on btn click
-    const handleBtnClick = (id) => {
-        handleStoreId(id)
-        handleModal()
-    }
 
 
 
   return (
-    <tr id={props.id} key={props.keyprop} className=' odd:bg-brandGray28x store-insight-row'>
-        <td className="py-3 px-1 whitespace-nowrap">
+    <tr id={id} className=' odd:bg-brandGray28x store-insight-row'>
+        <td className="py-3 pl-1 pr-3 whitespace-nowrap">
             <input type="checkbox" name="check-store-insight" id="checkStoreInsight" className="accent-brandGreen4x focus:outline-none focus:ring-none"  />
         </td>
-        <td className="py-3 px-1 whitespace-nowrap">
-            <img src={dummyAvatar} alt="avatar" className='h-8 w-8 min-w-8 aspect-square min-h-8' />
-        </td>
-        <td className="py-3 px-1 whitespace-nowrap">
-            <div>
-                <button type='button' onClick={()=>handleBtnClick(props.id)} className="text-xs hover:text-brandBlue1x transition-color duration-300 ease-in-out">{props.name}</button>
-                <p className='text-xxs text-brandGray27x'>Points: {props.points} . Rate: {props.rate}</p>
+        <td className="py-3 pl-1 pr-3 whitespace-nowrap">
+            <div className='w-fit h-fit relative'>
+                <img src={avatar ? avatar : dummyAvatar} alt="avatar" className='h-8 w-8 min-w-8 aspect-square min-h-8 rounded-full skeleton object-cover' />
+                <div className='h-2.5 w-2.5 rounded-full bg-brandRed5x border border-white absolute -right-1 top-fiftyPercent -translate-y-fiftyPercent'></div>
             </div>
         </td>
-        <td className="py-3 px-1 whitespace-nowrap">
-            {tag}
+        <td className="py-3 pl-1 pr-3 whitespace-nowrap">
+            <div>
+                <button type='button' onClick={()=>handleModal(id)} className="text-xs hover:text-brandBlue1x transition-color duration-300 ease-in-out">{name}</button>
+                <p className='text-xxs text-brandGray27x'>{partnerName}</p>
+            </div>
         </td>
-        <td className="py-3 px-1 whitespace-nowrap">
-            {kyc}
+        <td className="py-3 pl-1 pr-3 whitespace-nowrap">
+            {tag || '---'}
         </td>
-        <td className="py-3 px-1 whitespace-nowrap">
-            {badge}
+        <td className="py-3 pl-1 pr-3 whitespace-nowrap">
+            {kycTag  || '---'}
         </td>
-        <td className="py-3 px-1 whitespace-nowrap">
-            <p className='text-xs'>{props.location}</p>
+        <td className="py-3 pl-1 pr-3 whitespace-nowrap">
+            {badgeTag  || '---'}
         </td>
-        <td className="py-3 px-1 whitespace-nowrap">
-            <p className="text-brandGray29x text-xs">{props.date}</p>
+        <td className="py-3 pl-1 pr-3 whitespace-nowrap">
+            <p className='text-xs'>{location  || '---'}</p>
         </td>
-        <td className="py-3 px-1 whitespace-nowrap">
-            <p className="text-xs font-avenirLight">{props.orders}</p>
+        <td className="py-3 pl-1 pr-3 whitespace-nowrap">
+            <p className="text-brandGray29x text-xs">{date  || '---'}</p>
         </td>
-        <td className="py-3 px-1 whitespace-nowrap">
+        <td className="py-3 pl-1 pr-3 whitespace-nowrap">
+            <p className="text-xs font-avenirLight">{orders  || '---'}</p>
+        </td>
+        <td className="py-3 pl-1 pr-3 whitespace-nowrap">
             {
-                props.approval.toLowerCase() === 'approved'
+                approval &&
+                approval.toLowerCase() === 'approved'
                 ?
-                <p className="text-xs text-brandGreen1x capitalize">{props.approval}</p>
+                <p className="text-xs text-brandGreen1x capitalize">{approval}</p>
                 :
-                <p className="text-xs text-brandGray31x capitalize">{props.approval}</p>
+                <p className="text-xs text-brandGray31x capitalize">{approval}</p>
             }
         </td>
-        <td className="py-3 px-1 whitespace-nowrap">
-            <button type='button'>
+        <td className="py-3 pl-1 pr-3 whitespace-nowrap">
+            <button type='button' onClick={()=>handleDelete(id)} aria-label={`Delete ${name}`}>
             <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M14 4.48665C11.78 4.26665 9.54667 4.15332 7.32 4.15332C6 4.15332 4.68 4.21999 3.36 4.35332L2 4.48665" stroke="#3992CC" stroke-linecap="round" stroke-linejoin="round"/>
                 <path opacity="0.34" d="M5.66667 3.81325L5.81334 2.93992C5.92001 2.30659 6 1.83325 7.12667 1.83325H8.87334C10 1.83325 10.0867 2.33325 10.1867 2.94659L10.3333 3.81325" stroke="#3992CC" stroke-linecap="round" stroke-linejoin="round"/>
@@ -113,8 +111,8 @@ const StoreInsightRow = (props) => {
             <p className='hidden'>Delete</p>
             </button>
         </td>
-        <td className="py-3 px-1 whitespace-nowrap">
-            <button type='button'>
+        <td className="py-3 pl-1 pr-3 whitespace-nowrap">
+            <button type='button' onClick={()=>handleEdit(id)} aria-label={`Edit ${name}`}>
                 <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path opacity="0.4" d="M7.33333 1.83325H5.99999C2.66666 1.83325 1.33333 3.16659 1.33333 6.49992V10.4999C1.33333 13.8333 2.66666 15.1666 5.99999 15.1666H9.99999C13.3333 15.1666 14.6667 13.8333 14.6667 10.4999V9.16658" stroke="#3992CC" stroke-linecap="round" stroke-linejoin="round"/>
                     <path d="M10.6933 2.51326L5.44 7.76659C5.24 7.96659 5.04 8.35992 5 8.64659L4.71333 10.6533C4.60666 11.3799 5.12 11.8866 5.84666 11.7866L7.85333 11.4999C8.13333 11.4599 8.52666 11.2599 8.73333 11.0599L13.9867 5.80659C14.8933 4.89992 15.32 3.84659 13.9867 2.51326C12.6533 1.17992 11.6 1.60659 10.6933 2.51326Z" stroke="#3992CC" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>

@@ -30,7 +30,7 @@ const ActionCardSwiper = ({cardDataSet}) => {
         className="lg:hidden pb-12"
     >
       {cardDataSet.map((data, index)=>{
-        return  <SwiperSlide><ActionWithImage id={data.id} keyprop={index} text={data.text} bgColor={data.bgColor} textColor={data.textColor} fontSize={data.fontSize} fontWeight={data.fontWeight} img={data.img} altImg={data.altImg} /></SwiperSlide>
+        return  <SwiperSlide><ActionWithImage id={data.id} key={index} text={data.text} bgColor={data.bgColor} textColor={data.textColor} fontSize={data.fontSize} fontWeight={data.fontWeight} img={data.img} altImg={data.altImg} /></SwiperSlide>
             })}
     </Swiper>
   )

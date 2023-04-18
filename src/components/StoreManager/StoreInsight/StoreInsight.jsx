@@ -4,20 +4,21 @@ import StoreInsightTable from './StoreInsightTable'
 import $ from 'jquery'
 import useStoreInsightStore from '../../../customHooks/Stores/storeInsightStore'
 import { useSearchTables } from '../../../customHooks/SearchTables'
+import KYCPopUp from '../../PopUps/KYC/KYCPop'
+import UserPopUp from '../../PopUps/User/UserPopUp'
 
 
 
 
 
 
-const StoreInsight = () => {
+const StoreInsight = ({data}) => {
 
   const [rows, setRows] = useState(8)
-  const [listLength] = useState(StoreInsightData.length)
-  // const [storeId, setStoreId] = useState('')
-  // const [storeDetail, setStoreDetail] = useState([])
-  const storeId = useStoreInsightStore(state => state.storeId)
+  const [listLength] = useState(data.length)
   const [ handleSearch, handleBlur ] = useSearchTables('', 'store-insight-row')
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [modalData, setModalData] = useState([])
 
 
 
@@ -27,25 +28,13 @@ const StoreInsight = () => {
   }
 
 
-  // useMemo(() => 
-  // StoreInsightData.filter(data => {
-  //   if(data.id == storeId){
-  //       setStoreDetail(data)
-  //   }
-  // })
-  // , 
-  // [storeId])
-
-  // const handleStore = (id) => {
-  //   setStoreId(id)
-  //   console.log(storeId);
-  //   console.log(storeDetail);
-  // }
-
-  
+  const handleModalOpen = (id) => {
+    setIsModalOpen(true)
+    const tempData = data.filter(insight => insight.id == id)
+    setModalData(tempData)
+  }
 
 
-  
   return (
     <div className='col-span-3 bg-white rounded-ten p-7'>
       <div className='flex flex-col sm:flex-row pb-10 justify-between sm:items-center gap-5'>
@@ -59,13 +48,16 @@ const StoreInsight = () => {
             </label>
       </div>
       <div className='overflow-x-auto w-full'>
-        <StoreInsightTable rows={rows} />
+        <StoreInsightTable rows={rows} data={data} handleKYCModal={handleModalOpen} />
       </div>
       <div className='w-full pt-5 flex justify-center'>
         <button onClick={()=>moreRows(5)} type='button' className={`mx-auto w-fit font-avenirMedium text-sm text-brandBlue1x ${rows < listLength ? 'cursor-pointer' : 'cursor-not-allowed'}`} title={`${rows < listLength ? 'show more rows' : 'no more rows'}`}>
           See more
         </button>
       </div>
+
+      {/* Pop Up */}
+      <UserPopUp modalState={isModalOpen} closeModal={()=>setIsModalOpen(false)} modalData={modalData} />
     </div>
   )
 }

@@ -8,9 +8,9 @@ import ApprovalBtn from '../Buttons/ApprovalBtn'
 import RejectBtn from '../Buttons/RejectBtn'
 
 
-const CampaignPopUpInner = ({keyprop}) => {
+const CampaignPopUpInner = ({key}) => {
   return (
-    <section key={keyprop} className='bg-white z-50 rounded-ten w-ninetyFivePercent sm:w-eightyPercent lg:w-sixtyPercent h-fit m-auto'>
+    <section key={key} className='bg-white z-50 rounded-ten w-ninetyFivePercent sm:w-eightyPercent lg:w-sixtyPercent h-fit m-auto'>
             <div className='bg-brandBlue1x text-white flex items-center justify-between w-full rounded-t-ten py-2.5 px-5 sm:px-10 md:px-14'>
                <div className='flex items-center flex-wrap 2xl:flex-nowrap gap-2 text-xs'>
                     <button type='button'>
