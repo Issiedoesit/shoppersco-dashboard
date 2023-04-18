@@ -30,7 +30,7 @@ const Insight = () => {
         <div className='grid xs:grid-cols-1 grid-cols-2 md:grid-cols-3 lg:grid-cols-5 pb-5 gap-2 auto-cols-fr gap-y-5 2xl:gap-5 pt-10 auto-rows-fr'>
               
             {InsightMetricsData.map((item, index)=>{
-              return <NumbersCards keyprop={`${index+1}`} id={`metricCard${index+1}`} header={item.header} metric={item.metric} amount={item.amount} trend={item.trend} percent={item.percent} extraClasses={'insight-cards'} />
+              return <NumbersCards key={`${index+1}`} id={`metricCard${index+1}`} header={item.header} metric={item.metric} amount={item.amount} trend={item.trend} percent={item.percent} extraClasses={'insight-cards'} />
             }) }
 
         </div>

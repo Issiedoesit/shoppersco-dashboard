@@ -7,9 +7,9 @@ import ActiveTag from '../../StatusTags/ActiveTag';
 import UserPopUpTable from './UserPopUpTable';
 import Restrict from './Restrict';
 
-const UserPopUpInner = ({keyprop, user, location}) => {
+const UserPopUpInner = ({id, modalData, user, address, state, fullName, userId, registeredDate, phoneNo, totalPurcahse, noOfBagsTracked, status, agent, agentAvatar, points, userAvatar}) => {
   return (
-    <section key={keyprop} className='bg-white z-50 rounded-ten w-ninetyFivePercent sm:w-eightyPercent lg:w-sixtyPercent h-fit m-auto'>
+    <section id={id} className='bg-white z-50 rounded-ten w-ninetyFivePercent sm:w-eightyPercent lg:w-sixtyPercent h-fit m-auto'>
             <div className='bg-brandGreen4x text-white flex items-center justify-between w-full rounded-t-ten py-2.5 px-5 sm:px-10 md:px-14'>
                <div className='flex items-center flex-wrap lg:flex-nowrap gap-5 text-xs'>
                     <label htmlFor="">
@@ -26,21 +26,21 @@ const UserPopUpInner = ({keyprop, user, location}) => {
                 
                 <div className='flex flex-col-reverse sm:flex-row w-full sm:w-auto gap-5 border-b-0.5 border-b-brandGray27x py-2.5 justify-between sm:items-center'>
                     <div className='space-y-3'>
-                        <h1 className='text-2xl md:text-4xl font-avenirBlack'>{user}</h1>
-                        <p className='font-avenirLight text-sm'>672 Sabbath Street, Rukpokwu, Port Harcourt.</p>
+                        <h1 className='text-2xl md:text-4xl font-avenirBlack'>{user  || '---'}</h1>
+                        <p className='font-avenirLight text-sm'>{address || '---'}</p>
                         <div className='flex xs:flex-col xs:items-start items-center text-sm font-avenirMedium gap-3'>
-                            <p>{location}</p>
+                            <p>{state || '---'}</p>
                             <div className='flex flex-row flex-wrap gap-3'>
                                 <ActiveTag borderRadius={'rounded-eight'} />
                                 <VerifiedTag borderRadius={'rounded-eight'} />
                                 <EcoFriendlyTag borderRadius={'rounded-eight'} />
                             </div>
                         </div>
-                        <button type='button' className='text-xs text-brandGray27x'>Remove Eco-friendly badge</button>
+                        <button type='button' className='text-xs text-brandGray27x underline underline-offset-2'>Remove Eco-friendly badge</button>
                     </div>
                     <div className='space-y-2 flex flex-col items-start sm:items-end w-full sm:w-fit'>
-                        <img src={dummyAvatar} alt="avatar" className='w-16 h-16 sm:w-20 sm:h-20 lg:w-auto lg:h-auto'/>
-                        <p className='text-right lg:text-center font-avenirBlack sm:text-lg lg:text-xl text-brandGreen4x'>10,000,000 Pts</p>
+                        <img src={userAvatar ? userAvatar : dummyAvatar} alt="avatar" className='w-16 h-16 sm:w-20 sm:h-20 lg:w-36 lg:h-36 rounded-full object-cover'/>
+                        <p className='text-right lg:text-center font-avenirBlack sm:text-lg lg:text-xl text-brandGreen4x'>{points   || '---'} pts</p>
                     </div>
                 </div>
 
@@ -49,7 +49,7 @@ const UserPopUpInner = ({keyprop, user, location}) => {
                 </div>
                 
                 <div className='py-5 border-b-0.5 border-b-brandGray27x overflow-x-auto'>
-                    <UserPopUpTable />
+                    <UserPopUpTable data={modalData} fullName={fullName} userId={userId} registeredDate={registeredDate} phoneNo={phoneNo} totalPurcahse={totalPurcahse} noOfBagsTracked={noOfBagsTracked} status={status} agent={agent} agentAvatar={agentAvatar} />
                 </div>
 
                 <div className='pt-5'>

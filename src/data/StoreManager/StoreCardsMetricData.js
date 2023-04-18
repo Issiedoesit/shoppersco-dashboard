@@ -1,22 +1,22 @@
 const StoreMetricsData = [
-    {
-        header:"Total Number of",
-        metric:"Stores in a Country",
-        amount:"3,421",
-        trend:'up',
-        percent: '25%',
-        link:'',
-        linkText: ''
-    },
-    {
-        header:"Total Number of",
-        metric:"Stores in a City",
-        amount:"3003",
-        trend:'up',
-        percent: '25%',
-        link:'',
-        linkText: ''
-    },
+    // {
+    //     header:"Total Number of",
+    //     metric:"Stores in a Country",
+    //     amount:"3,421",
+    //     trend:'up',
+    //     percent: '25%',
+    //     link:'',
+    //     linkText: ''
+    // },
+    // {
+    //     header:"Total Number of",
+    //     metric:"Stores in a City",
+    //     amount:"3003",
+    //     trend:'up',
+    //     percent: '25%',
+    //     link:'',
+    //     linkText: ''
+    // },
     {
         header:"Total Number of",
         metric:"Active Campaigns",
@@ -24,7 +24,8 @@ const StoreMetricsData = [
         trend:'',
         percent: '25%',
         link:'',
-        linkText: ''
+        linkText: '',
+        id:"activeCampaigns"
     },
     {
         header:"Number of",
@@ -33,7 +34,8 @@ const StoreMetricsData = [
         trend:'',
         percent: '25%',
         link:'',
-        linkText: ''
+        linkText: '',
+        id:"approvedKYC"
     },
     {
         header:"Number of",
@@ -42,7 +44,8 @@ const StoreMetricsData = [
         trend:'',
         percent: '25%',
         link:'#',
-        linkText: 'Click to approve'
+        linkText: 'Click to approve',
+        id:"pendingKYC"
     }
 ]
 

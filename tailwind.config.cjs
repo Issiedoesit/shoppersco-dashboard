@@ -28,6 +28,7 @@ module.exports = {
         brandRed2x: '#E75E79',
         brandRed3x: '#FF3A441A',
         brandRed4x: '#B31919',
+        brandRed5x: '#D03333',
         brandLightRed1x: '#FFD8DA',
         brandLightRed2x: '#F5C1C4',
         brandBlue1x: '#3992CC',

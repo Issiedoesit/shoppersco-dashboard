@@ -4,7 +4,7 @@ import ActiveTag from '../../StatusTags/ActiveTag'
 import InactiveTag from '../../StatusTags/InactiveTag'
 import BannedTag from '../../StatusTags/BannedTag'
 
-const UserInsightRow = ({id, avatar, status, name, points, rate, location, date}) => {
+const UserInsightRow = ({id, avatar, status, name, points, rate, location, date, handleDelete, handleEdit}) => {
     let tag;
 
     if(status.toLowerCase() === 'active'){
@@ -17,29 +17,29 @@ const UserInsightRow = ({id, avatar, status, name, points, rate, location, date}
     
   return (
     <tr id={id} className='odd:bg-brandGray28x user-insight-row'>
-        <td className="py-3 px-1 whitespace-nowrap">
+        <td className="py-3 pl-1 pr-3 whitespace-nowrap">
             <input type="checkbox" name="check-user-insight" id="checkUserInsight" className="accent-brandGreen4x focus:outline-none focus:ring-none"  />
         </td>
-        <td className="py-3 px-1 whitespace-nowrap">
-        <img src={avatar || dummyAvatar} alt="avatar" className='skeleton rounded-full h-8 w-8 min-w-8 aspect-square min-h-8' />
+        <td className="py-3 pl-1 pr-3 whitespace-nowrap">
+        <img src={avatar ? avatar : dummyAvatar} alt={name} className='skeleton rounded-full h-8 w-8 min-w-8 aspect-square min-h-8' />
         </td>
-        <td className="py-3 px-1 whitespace-nowrap">
+        <td className="py-3 pl-1 pr-3 whitespace-nowrap">
             <div>
-                <h5 className="text-xs">{name}</h5>
-                <p className='text-xxs text-brandGray27x'>Points: {points} . Rate: {rate}</p>
+                <h5 className="text-xs">{name  || '---'}</h5>
+                <p className='text-xxs text-brandGray27x'>Points: {points  || '---'} . Rate: {rate  || '---'}</p>
             </div>
         </td>
-        <td className="py-3 px-1 whitespace-nowrap">
+        <td className="py-3 pl-1 pr-3 whitespace-nowrap">
             {tag}
         </td>
-        <td className="py-3 px-1 whitespace-nowrap">
-            <p className='text-xs'>{location}</p>
+        <td className="py-3 pl-1 pr-3 whitespace-nowrap">
+            <p className='text-xs'>{location  || '---'}</p>
         </td>
-        <td className="py-3 px-1 whitespace-nowrap">
-            <p className="text-brandGray29x text-xs">{date}</p>
+        <td className="py-3 pl-1 pr-3 whitespace-nowrap">
+            <p className="text-brandGray29x text-xs">{date  || '---'}</p>
         </td>
-        <td className="py-3 px-1 whitespace-nowrap">
-            <button type='button'>
+        <td className="py-3 pl-1 pr-3 whitespace-nowrap">
+            <button type='button' onClick={()=>handleDelete(id)} aria-label={`Delete ${name}`}>
             <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M14 4.48665C11.78 4.26665 9.54667 4.15332 7.32 4.15332C6 4.15332 4.68 4.21999 3.36 4.35332L2 4.48665" stroke="#3992CC" stroke-linecap="round" stroke-linejoin="round"/>
                 <path opacity="0.34" d="M5.66667 3.81325L5.81334 2.93992C5.92001 2.30659 6 1.83325 7.12667 1.83325H8.87334C10 1.83325 10.0867 2.33325 10.1867 2.94659L10.3333 3.81325" stroke="#3992CC" stroke-linecap="round" stroke-linejoin="round"/>
@@ -50,8 +50,8 @@ const UserInsightRow = ({id, avatar, status, name, points, rate, location, date}
             <p className='hidden'>Delete</p>
             </button>
         </td>
-        <td className="py-3 px-1 whitespace-nowrap">
-            <button type='button'>
+        <td className="py-3 pl-1 pr-3 whitespace-nowrap">
+            <button type='button' onClick={()=>handleEdit(id)} aria-label={`Edit ${name}`}>
                 <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path opacity="0.4" d="M7.33333 1.83325H5.99999C2.66666 1.83325 1.33333 3.16659 1.33333 6.49992V10.4999C1.33333 13.8333 2.66666 15.1666 5.99999 15.1666H9.99999C13.3333 15.1666 14.6667 13.8333 14.6667 10.4999V9.16658" stroke="#3992CC" stroke-linecap="round" stroke-linejoin="round"/>
                     <path d="M10.6933 2.51326L5.44 7.76659C5.24 7.96659 5.04 8.35992 5 8.64659L4.71333 10.6533C4.60666 11.3799 5.12 11.8866 5.84666 11.7866L7.85333 11.4999C8.13333 11.4599 8.52666 11.2599 8.73333 11.0599L13.9867 5.80659C14.8933 4.89992 15.32 3.84659 13.9867 2.51326C12.6533 1.17992 11.6 1.60659 10.6933 2.51326Z" stroke="#3992CC" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>

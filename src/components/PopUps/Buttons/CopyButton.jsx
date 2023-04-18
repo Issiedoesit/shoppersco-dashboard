@@ -1,20 +1,40 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 function CopyButton({ copyText }) {
   const tooltipBoxRef = useRef(null);
   const tooltipTextRef = useRef(null);
   const tooltipTriangleRef = useRef(null);
-  const handleCopy = async () => {
-    await navigator.clipboard.writeText(copyText);
-    tooltipTextRef.current.innerHTML = 'Copied Successfully';
-    tooltipTextRef.current.style.color = '#28A952';
-    tooltipTriangleRef.current.style.display = 'block';
-    setTimeout(() => {
-      tooltipTextRef.current.innerHTML = 'Copy to Clipboard';
-      tooltipTextRef.current.style.color = '#7E7E7E';
-      tooltipTriangleRef.current.style.display = 'none';
-    }, 1000);
+  const [copied, setCopied] = useState(false)
+
+
+  const handleCopy = () => {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(copyText)
+        .then(() => {
+          setCopied(true);
+          setTimeout(() => {
+            setCopied(false);
+          }, 1000);
+        })
+        .catch((err) => {
+          console.error('Failed to copy text: ', err);
+        });
+    } else {
+      const textArea = document.createElement('textarea');
+      textArea.defaultValue = copyText;
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textArea);
+      setCopied(true);
+      setTimeout(() => {
+        setCopied(false);
+      }, 1000);
+    }
   };
+
+  
   
   return (
     <div className="relative">
@@ -27,8 +47,8 @@ function CopyButton({ copyText }) {
         <svg ref={tooltipTriangleRef} id="tooltip_triangle1" className="z-120 tooltip-triangle absolute top-5 right-1 hidden peer-hover:block fill-white" width="20" height="20" viewBox="0 0 22 22" fill="white" xmlns="http://www.w3.org/2000/svg">
             <path d="M10.9994 20.4103H4.93944C1.46944 20.4103 0.0194446 17.9303 1.69944 14.9003L4.81944 9.28027L7.75944 4.00027C9.53944 0.790273 12.4594 0.790273 14.2394 4.00027L17.1794 9.29027L20.2994 14.9103C21.9794 17.9403 20.5194 20.4203 17.0594 20.4203H10.9994V20.4103Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>     
-        <div ref={tooltipBoxRef}  id="tooltip_box1" className="w-fit whitespace-nowrap z-120 tooltip-box border-0.5 border-brandGray24x h-fit rounded-four px-4 py-3 text-text15 hidden peer-hover:block bg-white absolute top-7 right-0 shadow-md">
-            <p ref={tooltipTextRef}  id="tooltip_text1" className="text-brandGray8x font-avenirRegular tooltip-text">Copy to Clipboard</p>
+        <div ref={tooltipBoxRef}  id="tooltip_box1" className={`w-fit whitespace-nowrap z-120 tooltip-box border-0.5 border-brandGray24x h-fit rounded-four px-4 py-3 text-text15 ${copied ? 'block' : 'hidden'} peer-hover:block bg-white absolute top-7 right-0 shadow-md`}>
+            <p ref={tooltipTextRef}  id="tooltip_text1" className={`${copied ? 'text-brandGreen1x' : 'text-brandGray8x'} font-avenirRegular tooltip-text`}>{copied ? 'Copied Successfully' : 'Copy to Clipboard'}</p>
         </div>
     </div>
   );

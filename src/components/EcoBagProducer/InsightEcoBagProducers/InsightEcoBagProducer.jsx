@@ -2,16 +2,76 @@ import React, { useState } from 'react'
 import {useDocTitle} from '../../../customHooks/DocumentTitle'
 import TableEcoBagProducerInsight from './TableEcoBagProducerInsight'
 import { useSearchTables } from '../../../customHooks/SearchTables'
+import OrderPopUp from '../../PopUps/Order/OrderPopUp'
 
 
 
 
 
-const EcoBagProducerInsight = () => {
+const EcoBagProducerInsight = ({data}) => {
   useDocTitle('ShoppersBag | Brand Manager')
   const [isAdmin, setIsAdmin] = useState(true)
   const [ handleSearch, handleBlur ] = useSearchTables('', 'ecobag-insight-row')
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [modalData, setModalData] = useState([])
+  const [tab, setTab] = useState('incoming')
+  const [rows, setRows] = useState(8)
+  const [isDropDownOpen, setIsDropDownOpen] = useState(false)
+  const [listLength] = useState(data.length)
 
+  const moreRows = (add) =>{
+    setRows((prevRows) => prevRows + add)
+
+  }
+
+  const tabData = [
+    {
+      id:"incoming",
+      text:"Incoming Orders"
+    },
+    {
+      id:"processed",
+      text:"Processed Orders"
+    },
+    {
+      id:"completed",
+      text:"Completed Orders"
+    }
+  ]
+
+  const handleModalOpen = (id) => {
+    setIsModalOpen(true)
+    const tempData = data.filter(insight => insight.id == id)
+    setModalData(tempData)
+  }
+
+  const tabTogglers = document.querySelectorAll('.toggle-btn');
+
+    tabTogglers && tabTogglers.forEach(toggler => {
+    toggler.addEventListener('click', () => {
+        const currentTab = toggler.getAttribute('data-tab');
+
+        // scroll to the active tab toggler's element horizontally
+        const activeToggler = document.querySelector(`[data-tab="${currentTab}"]`);
+        activeToggler.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+    });
+
+  const handleBadgeAssign = (id) => {
+
+  }
+  const handleProfileView = (id) => {
+
+  }
+  const handleQRCodeView = (id) => {
+
+  }
+  const historyView = (id) => {
+
+  }
+  const cancelOrder = (id) => {
+
+  }
   
   return (
     <div className='col-span-3 min-h-screen bg-white rounded-ten p-7'>
@@ -26,10 +86,27 @@ const EcoBagProducerInsight = () => {
             </label>
       </div>
 
-
-      <div className='overflow-x-auto w-full pb-40'>
-        <TableEcoBagProducerInsight isAdmin={isAdmin}/>
+      <div className=' w-full  overflow-auto'>
+        <div className='w-fit flex mx-auto items-center pb-10'>
+            {
+              tabData.map((data, idx)=>{
+                return <button key={idx} data-tab={data.id} onClick={()=>setTab(data.id)} className={`px-3 pb-1 ${tab == data.id ? 'border-b-brandGreen5x text-brandGreen5x' : 'border-b-brandGray27x'} toggle-btn transition-all ease-in-out duration-500 whitespace-nowrap text-sm border-b-2 `} aria-label={`Switch to ${data.text}`}>{data.text}</button>
+              })
+            }
+        </div>
       </div>
+
+
+      <div className={`overflow-x-auto w-full ${isDropDownOpen ? 'pb-40' : ''} transition-all ease-in-out duration-200 overflow-y-hidden`}>
+        <TableEcoBagProducerInsight isAdmin={isAdmin} data={data} rows={rows} setIsDropDownOpen={setIsDropDownOpen} handleModalOpen={handleModalOpen} handleBadgeAssign={handleBadgeAssign} handleProfileView={handleProfileView} handleQRCodeView={handleQRCodeView} historyView={historyView} cancelOrder={cancelOrder} />
+      </div>
+      <div className='w-full pt-5 flex justify-center'>
+        <button onClick={()=>moreRows(5)} type='button' className={`mx-auto w-fit font-avenirMedium text-sm text-brandBlue1x ${rows < listLength ? 'cursor-pointer' : 'cursor-not-allowed'}`} title={`${rows < listLength ? 'show more rows' : 'no more rows'}`}>
+          See more
+        </button>
+      </div>
+
+      <OrderPopUp modalState={isModalOpen} closeModal={()=>setIsModalOpen(false)} modalData={modalData}  />
     </div>
   )
 }

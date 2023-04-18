@@ -14,7 +14,7 @@ const StateImpactAside = () => {
 
       <div className='hidden lg:grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-rows-2 lg:grid-cols-1 gap-5 auto-rows-fr auto-cols-fr'>
           {cards.map((data, index)=>{
-              return <ActionWithImage id={data.id} keyprop={index} text={data.text} bgColor={data.bgColor} textColor={data.textColor} fontSize={data.fontSize} fontWeight={data.fontWeight} img={data.img} altImg={data.altImg} />
+              return <ActionWithImage id={data.id} key={index} text={data.text} bgColor={data.bgColor} textColor={data.textColor} fontSize={data.fontSize} fontWeight={data.fontWeight} img={data.img} altImg={data.altImg} />
           })}
       </div>
       
