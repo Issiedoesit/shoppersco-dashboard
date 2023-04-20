@@ -59,7 +59,10 @@ const StoreInsightTable = ({rows, data, handleKYCModal}) => {
         <tbody>
 
             {slicedRows.map((insight, index)=>{
-                return <StoreInsightRow key={index} id={insight.id} avatar={insight.logoUrl} name={insight.name} status={insight.status} kyc={insight.kyc} badge={insight.badge} location={insight.city} date={formatDate(insight.createdAt)} orders={insight.orders} approval={insight.approval} handleKYCModal={()=>handleKYCModal(insight.id)} />
+                const partner = insight.partner
+                const user = partner.user
+                const kyc = partner.kyc
+                return <StoreInsightRow key={index} id={insight.id} avatar={insight.logoUrl || insight.coverImageUrl } name={insight.name} status={insight.status} kyc={kyc.status} badge={insight.badge} location={insight.city} date={formatDate(insight.createdAt)} orders={insight.orders} approval={insight.approval} handleKYCModal={()=>handleKYCModal(insight.id)} />
             })}
             
         </tbody>
