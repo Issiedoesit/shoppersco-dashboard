@@ -62,7 +62,7 @@ const StoreInsightRow = ({id, avatar, name, partnerName, handleKYCModal, status,
         <td className="py-3 pl-1 pr-3 whitespace-nowrap">
             <div className='w-fit h-fit relative'>
                 <img src={avatar ? avatar : dummyAvatar} alt="avatar" className='h-8 w-8 min-w-8 aspect-square min-h-8 rounded-full skeleton object-cover' />
-                <div className='h-2.5 w-2.5 rounded-full bg-brandRed5x border border-white absolute -right-1 top-fiftyPercent -translate-y-fiftyPercent'></div>
+                {kyc == 'pending' && <div className='h-2.5 w-2.5 rounded-full bg-brandRed5x border border-white absolute -right-1 top-fiftyPercent -translate-y-fiftyPercent'></div>}
             </div>
         </td>
         <td className="py-3 pl-1 pr-3 whitespace-nowrap">
