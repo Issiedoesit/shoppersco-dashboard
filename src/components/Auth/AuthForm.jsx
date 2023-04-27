@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import SocialBtn from './Buttons/SocialBtn'
 import logo from './../../assets/images/logos/logo.png'
 import { NavLink } from 'react-router-dom'
+import mail from './../../../src/assets/images/icons/vuesax/sms.svg'
 
 
 const AuthForm = ({ handleSubmit, handleChange,btnDisabled, authHeaderText, authPageType }) => {
@@ -90,7 +91,7 @@ const AuthForm = ({ handleSubmit, handleChange,btnDisabled, authHeaderText, auth
             </label>
 
             <div>
-                <SocialBtn disable={btnDisabled} buttonType={'submit'} handleClick={handleSubmit} id={`${authPageType === 'signup' ? 'signUpBtn' : 'signInBtn'}`} type={'mail'} bgColor={'bg-brandGreen7x'} textColor={'text-white'} font={'font-avenirBlack'} text={`${authPageType === 'signup' ? 'Sign up with Email' : 'Sign in with Email'}`} imgSrc={'/src/assets/images/icons/vuesax/sms.svg'} />
+                <SocialBtn disable={btnDisabled} buttonType={'submit'} handleClick={handleSubmit} id={`${authPageType === 'signup' ? 'signUpBtn' : 'signInBtn'}`} type={'mail'} bgColor={'bg-brandGreen7x'} textColor={'text-white'} font={'font-avenirBlack'} text={`${authPageType === 'signup' ? 'Sign up with Email' : 'Sign in with Email'}`} imgSrc={mail} />
             </div>
 
 
