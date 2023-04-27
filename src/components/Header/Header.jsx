@@ -3,6 +3,7 @@ import useMobileNav from '../../customHooks/Stores/useMobileNav'
 import avatar from './../../assets/images/avatars/avatar-1.png'
 import $ from 'jquery';
 import { NavLink } from 'react-router-dom';
+import UseGetUser from '../../utils/UseGetUser';
 
 
 const Header = ({page, logo}) => {
@@ -10,8 +11,9 @@ const Header = ({page, logo}) => {
   const toggleNav = useMobileNav(state => state.toggleMobileNav)
   const menuRef = useRef('')
 
-  const closeNav = useMobileNav(state => state.closeMobileNav)
+  const { user } = UseGetUser()
 
+  const closeNav = useMobileNav(state => state.closeMobileNav)
 
   const handleNav = () =>{
     toggleNav()
@@ -44,10 +46,10 @@ const Header = ({page, logo}) => {
             
             {/* user details */}
            <div className='flex items-center gap-4'>
-           <NavLink to='/profile' className='flex flex-row items-center font-avenirHeavy gap-3 w-fit'>
-                <img src={avatar} alt="avatar" className='xs:h-7 xs:w-7 h-10 w-10'/>
+           <NavLink to='/dashboard/profile' className='flex flex-row items-center font-avenirHeavy gap-3 w-fit'>
+                <img src={user ? user.avatarUrl ? user.avatarUrl : avatar : avatar} alt="avatar" className='xs:h-7 xs:w-7 h-10 w-10'/>
                 <div className='hidden sm:flex items-center gap-3'>
-                  <h2>Etia Nwaenang</h2>
+                  <h2>{user ? user.name : ''}</h2>
                 </div>
             </NavLink>
 

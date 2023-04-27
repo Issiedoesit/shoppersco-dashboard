@@ -10,6 +10,7 @@ import axios from 'axios'
 import useSWR from 'swr'
 import Loading from '../Elements/Loaders/Loading'
 import FetchErrorPage from '../Elements/Sections/FetchError/FetchErrorPage'
+import UseAuth from '../../utils/UseAuth'
 
 
 
@@ -17,7 +18,9 @@ import FetchErrorPage from '../Elements/Sections/FetchError/FetchErrorPage'
 const BrandManager = () => {
   useDocTitle('ShoppersBag | Brand Manager')
 
-  const fetcher = async(url) => axios.get(url, {headers : {"Authorization":`Bearer ${import.meta.env.VITE_BEARER_TOKEN}`}})
+  const {token} = UseAuth()
+
+  const fetcher = async(url) => axios.get(url, {headers : {"Authorization":`Bearer ${token}`}})
   const fetchedBrandStats = useSWR(`${import.meta.env.VITE_BASE_URL}admin/brands/stats`, fetcher)
   const fetchedBrandInsights = useSWR(`${import.meta.env.VITE_BASE_URL}admin/brands/insights`, fetcher)
 

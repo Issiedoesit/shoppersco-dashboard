@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import './App.css'
 import NavBar from './components/Nav/NavBar'
 import Overview from './components/Overview/Overview'
@@ -50,6 +50,8 @@ function App() {
 
           {/* to access dashboard currently, go to <PrivateRoute /> and set user to true */}
         <Routes>
+
+            <Route path='/' element={<Navigate to={'/dashboard'} replace />} />
 
             {authLevel === 'superAdmin' && 
                 <Route path='/dashboard' element={<PrivateRoute />}>

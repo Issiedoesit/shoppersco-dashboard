@@ -14,6 +14,7 @@ import axios from 'axios'
 import useSWR from 'swr'
 import FetchErrorPage from '../Elements/Sections/FetchError/FetchErrorPage'
 import Loading from '../Elements/Loaders/Loading'
+import UseAuth from '../../utils/UseAuth'
 
 
 
@@ -28,7 +29,9 @@ const Overview = () => {
     setOpenModal(false)
   }
 
-  const fetcher = async(url) => axios.get(url, {headers : {"Authorization":`Bearer ${import.meta.env.VITE_BEARER_TOKEN}`}})
+  const {token} = UseAuth()
+
+  const fetcher = async(url) => axios.get(url, {headers : {"Authorization":`Bearer ${token}`}})
   const stats = useSWR(`${import.meta.env.VITE_BASE_URL}admin/overview/stats`, fetcher)
   const userStats = useSWR(`${import.meta.env.VITE_BASE_URL}admin/overview/users`, fetcher)
   const countries = useSWR(`${import.meta.env.VITE_BASE_URL}countries`, fetcher)
@@ -39,9 +42,10 @@ const Overview = () => {
   // console.log("stats", "=>", stats);
   // console.log("userStats", "=>", userStats);
   // console.log("countries", "=>", countries);
-  stats.data && console.log("stats.data", "=>", stats.data);
-  userStats.data && console.log("userStats.data", "=>", userStats.data);
-  userStats.data && console.log("countries.data", "=>", countries.data);
+  // stats.data && console.log("stats.data", "=>", stats.data);
+  // userStats.data && console.log("userStats.data", "=>", userStats.data);
+  // userStats.data && console.log("countries.data", "=>", countries.data);
+
   const statData = stats.data.data.data
   const userStatsData = userStats.data.data.data
   const countriesData = countries.data.data.data
@@ -60,7 +64,7 @@ const Overview = () => {
 
       {/* to swipe cards on mobile  */}
 
-      {statData && <NumberCardsSwiper cardDataSet={CardMetricsData} fetchedStats={statData} cardType={'overviewMetric'} />}
+      {statData && <NumberCardsSwiper key={'overviewStatSwiper'} cardDataSet={CardMetricsData} fetchedStats={statData} cardType={'overviewMetric'} />}
 
       {/* to swipe cards on mobile  */}
 
