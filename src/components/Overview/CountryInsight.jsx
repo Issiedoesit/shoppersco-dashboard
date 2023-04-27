@@ -4,30 +4,33 @@ import map from './../../assets/images/map/map.svg';
 import axios from 'axios'
 import useSWR from 'swr'
 import { BeatLoader, FadeLoader } from 'react-spinners';
+import UseAuth from '../../utils/UseAuth';
 
 const CountryInsight = ({countries}) => {
 
  
 
-  const [country, setCountry] = useState('nigeria')
-  // const [countryData, setCountryData] = useState(`${import.meta.env.VITE_BASE_URL}admin/overview/insights/country/${country}`)
+  const [currentCountry, setCurrentCountry] = useState('nigeria')
+  // const [countryData, setCountryData] = useState(`${import.meta.env.VITE_BASE_URL}admin/overview/insights/country/${currentCountry}`)
   // const [url, setUrl] = useState('')
+
+  const {token} = UseAuth()
 
 
   const fetchCountryStat = (e) => {
     const countrySelected = e.target.value.toLowerCase()
-    setCountry(countrySelected)
+    setCurrentCountry(countrySelected)
   }
 
-  let url = `${import.meta.env.VITE_BASE_URL}admin/overview/insights/country/${country}`
+  let url = `${import.meta.env.VITE_BASE_URL}admin/overview/insights/country/${currentCountry}`
 
-  const fetcher = async(url) => axios.get(url, {headers : {"Authorization":`Bearer ${import.meta.env.VITE_BEARER_TOKEN}`}})
+  const fetcher = async(url) => axios.get(url, {headers : {"Authorization":`Bearer ${token}`}})
   const fetchedCountryStat = useSWR(url, fetcher)
 
   if(!fetchedCountryStat.data) return <div className='col-span-2 bg-white rounded-ten px-7 py-24'><FadeLoader color="#009933" className='mx-auto' /></div>
   if(fetchedCountryStat.error) return <div className='col-span-2 bg-white rounded-ten px-7 py-24 text-brandGreen1x'>Failed to load ...</div>
   const countryData = fetchedCountryStat.data.data.data
-  console.log(`fetchedCountryStat for ${country}  =>`, fetchedCountryStat);
+  // console.log(`fetchedCountryStat for ${currentCountry}  =>`, fetchedCountryStat);
   
   
 
@@ -39,7 +42,7 @@ const CountryInsight = ({countries}) => {
             <select onChange={fetchCountryStat} name="country-insight" id="countryInsight" className='rounded-fifty pr-2 xs:w-full sm:pr-5 lg:pr-10 focus:ring-inset focus:ring-2 focus:ring-offset-2 focus:ring-brandGreen4x focus:outline-none bg-brandWhite1x text-sm text-brandGray34x py-2 md:py-2.5 h-38px sm:h-11 border-0.5 pl-2 border-brandGray34x'>
               <option key={0} value="Select country" disabled>Select country</option>
               {countries && countries.map((country, idx)=>{
-                return <option key={idx+1} selected={country.name.toLowerCase() == country} value={country.name}>{country.name}</option>
+                return <option key={idx+1} selected={country.name.toLowerCase() == currentCountry} value={country.name}>{country.name}</option>
               })}
             </select>
           </label>
@@ -56,7 +59,7 @@ const CountryInsight = ({countries}) => {
             <img src={map} alt="map" className='w-full'/>
           </div> */}
           
-          <div className='text-xs pt-8'>
+          <div className='text-xs pt-8 w-full'>
               {CountryInsightData.map((data, index)=>{
                 return <div key={`countryInsight${index}`} id={`countryInsight${index}`} className='border-b-0.5 border-b-brandGray28x  w-full last:border-b-0 py-2 flex xs:gap-2 justify-between items-end gap-5'>
                     <p>{data.insight}</p>

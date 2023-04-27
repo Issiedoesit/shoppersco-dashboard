@@ -1,13 +1,19 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Navigate, Outlet, useLocation } from 'react-router-dom'
+import UseAuth from './UseAuth'
 
 const PrivateRoute = () => {
-    const [user, setUser] = useState(true)
+
+    const {token} = UseAuth()
+
 
     const location = useLocation()
+    
+
+
   return (
     <div>
-        {user ? <Outlet /> : <Navigate to={'/login'} state={{ from: location }} />}
+        {token ? <Outlet /> : <Navigate to={'/login'} state={{ from: location }} />}
     </div>
   )
 }

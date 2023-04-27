@@ -4,7 +4,7 @@ import logo from './../../assets/images/logos/logo.png'
 import { NavLink } from 'react-router-dom'
 
 
-const AuthForm = ({ handleSubmit, authHeaderText, authPageType }) => {
+const AuthForm = ({ handleSubmit, handleChange,btnDisabled, authHeaderText, authPageType }) => {
 
     const [showPassword, setShowPassword] = useState(false)
 
@@ -40,19 +40,19 @@ const AuthForm = ({ handleSubmit, authHeaderText, authPageType }) => {
                     <label htmlFor={`orgName`} className='bg-brandGray28x flex flex-col focus-within:outline focus-within:outline-1 focus-within:outline-brandGreen7x px-10 py-3 rounded-thirty'>
                         <p  className='text-brandGray31x'>Name of Organization</p>
                         <div>
-                            <input type="text" name="orgName" id={`orgName`} placeholder='E.g Etia Organisation' className='bg-transparent focus:outline-none'/>
+                            <input required type="text" name="orgName" id={`orgName`} onChange={handleChange} placeholder='E.g Etia Organisation' className='bg-transparent focus:outline-none'/>
                         </div>
                     </label>
                     <label htmlFor={`address`} className='bg-brandGray28x flex flex-col focus-within:outline focus-within:outline-1 focus-within:outline-brandGreen7x px-10 py-3 rounded-thirty'>
                         <p  className='text-brandGray31x'>Enter Address</p>
                         <div>
-                            <input type="text" name="address" id={`address`} placeholder='e.g 123 Street, Udom City' className='bg-transparent focus:outline-none'/>
+                            <input required type="text" name="address" id={`address`} onChange={handleChange} placeholder='e.g 123 Street, Udom City' className='bg-transparent focus:outline-none'/>
                         </div>
                     </label>
                     <label htmlFor={`phone`} className='bg-brandGray28x flex flex-col focus-within:outline focus-within:outline-1 focus-within:outline-brandGreen7x px-10 py-3 rounded-thirty'>
                         <p  className='text-brandGray31x'>Enter Phone Number</p>
                         <div>
-                            <input type="tel" name="phone" id={`phone`} placeholder='e.g +2348170000000' className='bg-transparent focus:outline-none'/>
+                            <input required type="tel" name="phone" id={`phone`} onChange={handleChange} placeholder='e.g +2348170000000' className='bg-transparent focus:outline-none'/>
                         </div>
                     </label>
                 </>
@@ -61,7 +61,7 @@ const AuthForm = ({ handleSubmit, authHeaderText, authPageType }) => {
             <label htmlFor={`${authPageType === 'signup' ? 'signUpEmail' : 'signInEmail'}`} className='bg-brandGray28x flex flex-col focus-within:outline focus-within:outline-1 focus-within:outline-brandGreen7x px-10 py-3 rounded-thirty'>
                 <p  className='text-brandGray31x'>{authPageType === 'signup' ? 'Enter Your Email Address' : 'Your email'}</p>
                 <div>
-                    <input type="email" name="" id={`${authPageType === 'signup' ? 'signUpEmail' : 'signInEmail'}`} placeholder='johndoe@email.com' className='bg-transparent focus:outline-none'/>
+                    <input required type="email" name="email" onChange={handleChange} id={`${authPageType === 'signup' ? 'signUpEmail' : 'signInEmail'}`} placeholder='johndoe@email.com' className='bg-transparent focus:outline-none'/>
                 </div>
             </label>
 
@@ -71,7 +71,7 @@ const AuthForm = ({ handleSubmit, authHeaderText, authPageType }) => {
                     <label htmlFor={`city`} className='bg-brandGray28x flex flex-col focus-within:outline focus-within:outline-1 focus-within:outline-brandGreen7x px-10 py-3 rounded-thirty'>
                         <p  className='text-brandGray31x'>Enter your City</p>
                         <div>
-                            <input type="text" name="city" id={`city`} placeholder='e.g Uyo' className='bg-transparent focus:outline-none'/>
+                            <input required type="text" name="city" id={`city`} onChange={handleChange} placeholder='e.g Uyo' className='bg-transparent focus:outline-none'/>
                         </div>
                     </label>
                 </>
@@ -79,7 +79,7 @@ const AuthForm = ({ handleSubmit, authHeaderText, authPageType }) => {
 
             <label htmlFor={`${authPageType === 'signup' ? 'signUpPassword' : 'signInPassword'}`} className='relative bg-brandGray28x flex flex-col focus-within:outline focus-within:outline-1 focus-within:outline-brandGreen7x px-10 py-3 rounded-thirty'>
                 <p  className='text-brandGray31x'>{authPageType === 'signup' ? 'Enter Your Password' : 'Your password'}</p>
-                <input type={`${showPassword ? 'text' : 'password'}`} name="" id={`${authPageType === 'signup' ? 'signUpPassword' : 'signInPassword'}`} placeholder='Enter Password here' className='bg-transparent focus:outline-none w-full pr-8 authPassword'/>
+                <input required type={`${showPassword ? 'text' : 'password'}`} onChange={handleChange} name="password" id={`${authPageType === 'signup' ? 'signUpPassword' : 'signInPassword'}`} placeholder='Enter Password here' className='bg-transparent focus:outline-none w-full pr-8 authPassword'/>
                 <button type='button' onClick={togglePassword} className='absolute right-8 top-fiftyPercent -translate-y-fiftyPercent group'>
                         <svg className='group' width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path className='group-hover:stroke-brandGreen7x' opacity="0.4" d="M15.58 12C15.58 13.98 13.98 15.58 12 15.58C10.02 15.58 8.41998 13.98 8.41998 12C8.41998 10.02 10.02 8.42 12 8.42C13.98 8.42 15.58 10.02 15.58 12Z" stroke="#797979" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -90,7 +90,7 @@ const AuthForm = ({ handleSubmit, authHeaderText, authPageType }) => {
             </label>
 
             <div>
-                <SocialBtn id={`${authPageType === 'signup' ? 'signUpBtn' : 'signInBtn'}`} type={'mail'} bgColor={'bg-brandGreen7x'} textColor={'text-white'} font={'font-avenirBlack'} text={`${authPageType === 'signup' ? 'Sign up with Email' : 'Sign in with Email'}`} imgSrc={'/src/assets/images/icons/vuesax/sms.svg'} />
+                <SocialBtn disable={btnDisabled} buttonType={'submit'} handleClick={handleSubmit} id={`${authPageType === 'signup' ? 'signUpBtn' : 'signInBtn'}`} type={'mail'} bgColor={'bg-brandGreen7x'} textColor={'text-white'} font={'font-avenirBlack'} text={`${authPageType === 'signup' ? 'Sign up with Email' : 'Sign in with Email'}`} imgSrc={'/src/assets/images/icons/vuesax/sms.svg'} />
             </div>
 
 

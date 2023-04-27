@@ -3,11 +3,14 @@ import { NavLink, useLocation } from 'react-router-dom'
 import useMobileNav from '../../customHooks/Stores/useMobileNav'
 import Logo from './../../assets/images/logos/logo.png'
 import NavData from '../../data/Nav/NavData'
+import UseAuth from '../../utils/UseAuth'
 
 
 
 
 const NavBar = ({ isAuthPage, userType }) => {
+
+  const {setToken} = UseAuth()
   const navState = useMobileNav(state => state.showMobileNav)
   const [visibility, setVisibility] = useState(true)
   const navRef = useRef()
@@ -20,12 +23,18 @@ const NavBar = ({ isAuthPage, userType }) => {
     setVisibility(isAuthPage)
   }, [isAuthPage])
 
+  const logOut = () => {
+    localStorage.removeItem('token')
+    setToken(null)
+    window.location.href = '/login'
+  }
+
  
 
   return (
     <div ref={navRef} id="navBar" className={`fixed top-0 ${visibility && 'hidden'} h-full xl:h-screen left-0 z-50 ${navState ? '' : '-translate-x-oneFiftyPercent'} shadow-md xl:shadow-none xl:-translate-x-0 transition-transform duration-500 ease-in-out xl:static lg:col-span-3 2xl:col-span-2 xs:max-w-171px w-64`}>
       <div  className='transition-transform duration-500 ease-in-out bg-white h-full max-h-screen font-avenirRegular max-w-sm flex flex-col w-full'>
-          <NavLink to="/" className='xs:px-4 px-9 pt-10'>
+          <NavLink to="/dashboard" className='xs:px-4 px-9 pt-10'>
             <img src={Logo} alt='logo' className='xs:w-32 w-44' />
           </NavLink>
           <div className='h-full flex flex-col justify-between pb-5 xs:pt-5 pt-10 overflow-y-auto xs:text-xs'>
@@ -42,8 +51,8 @@ const NavBar = ({ isAuthPage, userType }) => {
           </div>
 
           <div className='bg-brandLightRed1x text-brandRed1x xs:pl-4 pl-16 pr-9 2xl:pl-12 xs:py-2 py-5 justify-self-end'>
-            <NavLink to="/logout" className="flex flex-row gap-10 items-center">
-              <p>Logout</p>
+            <button type='button' onClick={logOut} className="flex flex-row gap-10 items-center">
+              <span>Logout</span>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g opacity="0.4">
                 <path d="M17.4395 14.62L19.9995 12.06L17.4395 9.5" stroke="#FF3A44" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
@@ -51,7 +60,7 @@ const NavBar = ({ isAuthPage, userType }) => {
                 </g>
                 <path d="M11.76 20C7.34001 20 3.76001 17 3.76001 12C3.76001 7 7.34001 4 11.76 4" stroke="#FF3A44" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
-            </NavLink>
+            </button>
           </div>
       </div>
     </div>

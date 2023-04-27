@@ -12,6 +12,7 @@ import axios from 'axios'
 import useSWR from 'swr'
 import Loading from '../Elements/Loaders/Loading'
 import FetchErrorPage from '../Elements/Sections/FetchError/FetchErrorPage'
+import UseAuth from '../../utils/UseAuth'
 
 
 
@@ -21,9 +22,11 @@ import FetchErrorPage from '../Elements/Sections/FetchError/FetchErrorPage'
 
 const StoreManager = () => {
   useDocTitle('ShoppersBag | Store Manager')
+
+  const {token} = UseAuth()
  
 
-  const fetcher = async(url) => axios.get(url, {headers : {"Authorization":`Bearer ${import.meta.env.VITE_BEARER_TOKEN}`}})
+  const fetcher = async(url) => axios.get(url, {headers : {"Authorization":`Bearer ${token}`}})
   const fetchedStoreStats = useSWR(`${import.meta.env.VITE_BASE_URL}admin/stores/stats`, fetcher)
   const fetchedStoreInsights = useSWR(`${import.meta.env.VITE_BASE_URL}admin/stores/insights`, fetcher)
 
