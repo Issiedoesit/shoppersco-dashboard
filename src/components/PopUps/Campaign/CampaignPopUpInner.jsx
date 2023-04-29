@@ -6,11 +6,12 @@ import VerifiedTag from '../../StatusTags/VerifiedTag'
 import Restrict from '../User/Restrict'
 import ApprovalBtn from '../Buttons/ApprovalBtn'
 import RejectBtn from '../Buttons/RejectBtn'
+import LinkNoIcon from '../../Links/LinkNoIcon'
 
 
-const CampaignPopUpInner = ({key}) => {
+const CampaignPopUpInner = ({id}) => {
   return (
-    <section key={key} className='bg-white z-50 rounded-ten w-ninetyFivePercent sm:w-eightyPercent lg:w-sixtyPercent h-fit m-auto'>
+    <section id={id} className='bg-white z-50 rounded-ten w-ninetyFivePercent sm:w-eightyPercent lg:w-sixtyPercent h-fit m-auto'>
             <div className='bg-brandBlue1x text-white flex items-center justify-between w-full rounded-t-ten py-2.5 px-5 sm:px-10 md:px-14'>
                <div className='flex items-center flex-wrap 2xl:flex-nowrap gap-2 text-xs'>
                     <button type='button'>
@@ -55,8 +56,11 @@ const CampaignPopUpInner = ({key}) => {
                         </div>
 
                     </div>
-                    <div className='space-y-2 flex flex-col items-start sm:items-end w-full sm:w-fit'>
-                        <img src={dummyAvatar} alt="avatar" className='w-16 h-16 sm:w-20 sm:h-20 lg:w-auto lg:h-auto'/>
+                    <div className='flex flex-col md:flex-row gap-6 justify-between'>
+                        <div className='space-y-2 flex flex-col items-start sm:items-end w-full sm:w-fit'>
+                            <img src={dummyAvatar} alt="avatar" className='w-16 h-16 sm:w-20 sm:h-20 lg:w-auto lg:h-auto'/>
+                        </div>
+                        <LinkNoIcon link={'./campaign-activity'} text={'View Campaign Activities'} paddingX={'px-3 h-fit w-fit self-end'} font={'font-avenirMedium'} fontSize={'text-sm md:text-base'} textColor={'text-white'} bgColor={'bg-brandGreen4x'} />
                     </div>
                 </div>
 

@@ -4,7 +4,7 @@ import NewCampaignModalInner from './NewCampaignModalInner'
 
 const NewCampaignModal = ({isModalOpen, closeModal}) => {
   return (
-    <PopUpWrap id={'newCampaignModal'} modalStoreState={isModalOpen} handleModal={closeModal}>
+    <PopUpWrap id={'newCampaignModal'} modalState={isModalOpen} closeModal={closeModal}>
         <NewCampaignModalInner />
     </PopUpWrap>
   )

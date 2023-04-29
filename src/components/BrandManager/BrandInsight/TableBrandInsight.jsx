@@ -56,7 +56,7 @@ const BrandInsightTable = ({rows, data, handleModalOpen}) => {
         <tbody>
 
             {slicedRows.map((insight, index)=>{
-                return <BrandInsightRow id={insight.id} avatar={insight.logoUrl ? insight.logoUrl : insight.coverImageUrl} key={index} name={insight.name} owner={insight.owner} badge={insight.badge} location={insight.city} date={formatDate(insight.createdAt)} orders={insight.orders} handlePrModalOpen={()=>handleModalOpen(insight.id, index)} />
+                return <BrandInsightRow id={insight.id} avatar={insight.logoUrl ? insight.logoUrl : insight.coverImageUrl} key={index} name={insight.name} owner={insight.owner} badge={insight.badge} location={insight.city} date={formatDate(insight.createdAt)} orders={insight.orders} handlePrModalOpen={()=>handleModalOpen(insight.id)} />
             })}
             
         </tbody>

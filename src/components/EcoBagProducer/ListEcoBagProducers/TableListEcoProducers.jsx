@@ -1,10 +1,15 @@
 import React, { useState } from 'react'
-import RowEcoBagProducerInsight from './RowEcoBagProducerInsight'
+import RowListEcoProducers from './RowListEcoProducers'
 
 
-const TableEcoBagProducerInsight = ({isAdmin, data, rows, setIsDropDownOpen, handleModalOpen, handleBadgeAssign, handleProfileView, handleQRCodeView, historyView, cancelOrder}) => {
+const TableListEcoProducers = ({isAdmin, filter, data, rows, setIsDropDownOpen, handleModalOpen, handleBadgeAssign, handleProfileView, handleQRCodeView, historyView, cancelOrder}) => {
 
-  let slicedRows = data.slice(0, rows)
+    const filteredData = data.filter(insight => insight.status == filter)
+
+
+  let slicedRows = filteredData.slice(0, rows)
+
+
   
 
   return (
@@ -20,26 +25,26 @@ const TableEcoBagProducerInsight = ({isAdmin, data, rows, setIsDropDownOpen, han
             </td>
             <td className='py-2 pl-2 pr-5 whitespace-nowrap'>
 
-            Name
+                Name
             </td>
             <td className='py-2 pl-2 pr-5 whitespace-nowrap'>
-            Verify KYC
-            </td>
-            <td className='py-2 pl-2 pr-5 whitespace-nowrap'>
-
-            KYC Status
+                {/* modal */}
             </td>
             <td className='py-2 pl-2 pr-5 whitespace-nowrap'>
 
-            Badges
+                Badge
             </td>
             <td className='py-2 pl-2 pr-5 whitespace-nowrap'>
 
-            Location
+                KYC Status
             </td>
             <td className='py-2 pl-2 pr-5 whitespace-nowrap'>
 
-                Qty of total order
+                Location
+            </td>
+            <td className='py-2 pl-2 pr-5 whitespace-nowrap'>
+
+                Quantity
             </td>
             <td className='py-2 pl-2 pr-5 whitespace-nowrap'>
 
@@ -56,9 +61,9 @@ const TableEcoBagProducerInsight = ({isAdmin, data, rows, setIsDropDownOpen, han
 
           {slicedRows.map((insight, idx)=>{
             const partner = insight.partner
+            const producer = insight.producer
             const user = insight.partner.user
-            const kyc = insight.partner.kyc
-            return <RowEcoBagProducerInsight key={idx} setIsDropDownOpen={setIsDropDownOpen} kycID={kyc.id} index={idx} isAdmin={isAdmin} handleKYCModal={()=>handleModalOpen(insight.id, idx)} name={insight.name} user={user.name} handleBadgeAssign={handleBadgeAssign} handleProfileView={handleProfileView} handleQRCodeView={handleQRCodeView} historyView={historyView} cancelOrder={cancelOrder} kycStatus={partner.kyc.status} location={insight.city} />
+            return <RowListEcoProducers key={idx} setIsDropDownOpen={setIsDropDownOpen} index={idx} isAdmin={isAdmin} handleKYCModal={()=>handleModalOpen(insight.id, idx)} name={partner.name} quantity={insight.quantity} user={producer.name} handleBadgeAssign={handleBadgeAssign} handleProfileView={handleProfileView} handleQRCodeView={handleQRCodeView} historyView={historyView} cancelOrder={cancelOrder} kycStatus={'partner.kyc.status'} location={insight.city} />
           })}
             
         </tbody>
@@ -66,4 +71,4 @@ const TableEcoBagProducerInsight = ({isAdmin, data, rows, setIsDropDownOpen, han
   )
 }
 
-export default TableEcoBagProducerInsight
+export default TableListEcoProducers

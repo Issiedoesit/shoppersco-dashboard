@@ -19,6 +19,9 @@ import NoMatchPage from './components/NoMatchPage'
 import CampaignActivity from './components/CampaignManager/CampaignMain/Activity/CampaignActivity'
 import Profile from './components/Profile/Profile'
 import PrivateRoute from './utils/PrivateRoute'
+import ListEcoBagProducers from './components/EcoBagProducer/ListEcoBagProducers/ListEcoBagProducers'
+import CampaignMain from './components/CampaignManager/CampaignMain/InsightCampaign/InsightCampaign'
+import MainCampaign from './components/CampaignManager/CampaignMain/MainCampaign/MainCampaign'
 
 function App() {
   const campaignState = useCampaignStore(state => state.currentCampaignState)
@@ -56,14 +59,17 @@ function App() {
                   <Route path='brand-manager' element={<BrandManager />} />
 
                   <Route path='campaign-manager'>
-                    <Route index element={<CampaignManager />}/>
-                    <Route path='' element={<CampaignManager />}/>
+                    <Route index element={<MainCampaign />}/>
+                    <Route path='' element={<MainCampaign />}/>
                     <Route path='campaign-activity' element={<CampaignActivity />}/>
-                    <Route path={`state/abuja`} element={<StateCampaign />} />
+                    {/* <Route path={`state/abuja`} element={<StateCampaign />} /> */}
                     {/* <Route path={`state/${campaignState}`} element={<StateCampaign />} /> */}
                   </Route>
 
-                  <Route path='eco-bag-producer' element={<EcoBagProducer />} />
+                  <Route path='eco-bag-producer'  >
+                    <Route path='' element={<EcoBagProducer />} />
+                    <Route path='production-orders' element={<ListEcoBagProducers />} />
+                  </Route>
 
                   <Route path='impact'>
                     <Route index element={<Impact />}/>
