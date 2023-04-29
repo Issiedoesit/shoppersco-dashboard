@@ -8,6 +8,7 @@ import useSWR from 'swr'
 import Loading from '../Elements/Loaders/Loading'
 import FetchErrorPage from '../Elements/Sections/FetchError/FetchErrorPage'
 import UseAuth from '../../utils/UseAuth'
+import LinkIcon from '../Links/LinkIcon'
 
 
 const EcoBagProducer = () => {
@@ -28,6 +29,10 @@ const EcoBagProducer = () => {
 
   return (
     <TemplatePage headerTitle={'Eco-bag Producers'}>
+        <div className='flex justify-end py-5'>
+          
+            <LinkIcon link={'./production-orders'} text={'All Production Orders'} textColor={'text-white'} paddingX={'px-2 sm:px-5 lg:px-8'} bgColor={'bg-brandGreen4x'} flexDirection={'flex-row'} fontSize={'text-sm md:text-base'} />
+        </div>
 
         <EcoBagProducerInsight data={producersInsightsData} />
 

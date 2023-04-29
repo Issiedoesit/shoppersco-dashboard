@@ -4,6 +4,7 @@ import {useDocTitle} from '../../../customHooks/DocumentTitle'
 import BrandInsightData from '../../../data/BrandManager/BrandInsightData'
 import { useSearchTables } from '../../../customHooks/SearchTables'
 import PrRequestPop from '../../PopUps/ProductionRequest/PrRequestPop'
+import OrderPopUp from '../../PopUps/Order/OrderPopUp'
 
 
 
@@ -18,7 +19,6 @@ const BrandInsight = ({data}) => {
   const [ handleSearch, handleBlur ] = useSearchTables('', 'brand-insight-row')
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [modalData, setModalData] = useState([])
-  const [modalDataIndex, setModalDataIndex] = useState(0)
   
 
 
@@ -28,12 +28,10 @@ const BrandInsight = ({data}) => {
   }
 
 
-  const handleModalOpen = (id, index) => {
+  const handleModalOpen = (id) => {
     setIsModalOpen(true)
     const tempData = data.filter(insight => insight.id == id)
     setModalData(tempData)
-    setModalDataIndex(index)
-    console.log('PRmodalData =>', modalData);
   }
   
 
@@ -62,8 +60,8 @@ const BrandInsight = ({data}) => {
       </div>
 
       {/* pop up */}
+      <OrderPopUp modalData={modalData} modalState={isModalOpen} closeModal={()=>setIsModalOpen(false)} />
 
-      <PrRequestPop modalState={isModalOpen} allRequests={data} setCurrentIndex={setModalDataIndex} moveToModal={setModalData} dataLength={listLength} currentIndex={modalDataIndex} closeModal={()=>setIsModalOpen(false)} modalData={modalData} />
     </div>
   )
 }

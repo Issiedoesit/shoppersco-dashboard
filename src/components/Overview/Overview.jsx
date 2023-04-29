@@ -15,18 +15,28 @@ import useSWR from 'swr'
 import FetchErrorPage from '../Elements/Sections/FetchError/FetchErrorPage'
 import Loading from '../Elements/Loaders/Loading'
 import UseAuth from '../../utils/UseAuth'
+import NewOrderPopUp from '../PopUps/NewOrder/NewOrderPopUp'
 
 
 
 const Overview = () => {
   useDocTitle('ShoppersBag | Overview')
   const [openModal, setOpenModal] = useState(false)
+  const [openOrderModal, setOpenOrderModal] = useState(false)
 
-  const handleModalOpen = () => {
+  const handleCampaignModalOpen = () => {
     setOpenModal(true)
   }
-  const handleModalClose = () => {
+  const handleCampaignModalClose = () => {
     setOpenModal(false)
+  }
+
+  const handleOrderModalOpen = () => {
+    setOpenOrderModal(true)
+  }
+
+  const handleOrderModalClose = () => {
+    setOpenOrderModal(false)
   }
 
   const {token} = UseAuth()
@@ -52,7 +62,7 @@ const Overview = () => {
 
   return (
     <TemplatePage headerTitle={'Overview'}>
-        <Greeting useBtns={true} headBtns={<HeroBtns btn3Action={handleModalOpen} />} />
+        <Greeting useBtns={true} headBtns={<HeroBtns btn1Action={handleOrderModalOpen} btn2Action={handleCampaignModalOpen} />} />
 
       {stats.data.status == 200 && stats.data && statData && <div className='hidden lg:grid xs:grid-cols-1 grid-cols-2 md:grid-cols-3 lg:grid-cols-5 pb-5 gap-2 2xl:gap-5 auto-cols-fr auto-rows-fr'>
         
@@ -73,7 +83,9 @@ const Overview = () => {
           <CountryInsight countries={countriesData} />
       </section>
 
-      <NewCampaignModal isModalOpen={openModal} closeModal={handleModalClose} />
+      <NewOrderPopUp isModalOpen={openOrderModal} closeModal={handleOrderModalClose}  />
+
+      <NewCampaignModal isModalOpen={openModal} closeModal={handleCampaignModalClose} />
 
     </TemplatePage>
 
