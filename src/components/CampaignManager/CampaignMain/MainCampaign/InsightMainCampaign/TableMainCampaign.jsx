@@ -1,7 +1,8 @@
 import React from 'react'
+import formatDate from '../../../../../utils/Dates/FormatDate'
 import RowMainCampaign from './RowMainCampaign'
 
-const TableMainCampaign = ({handleModalOpen}) => {
+const TableMainCampaign = ({handleModalOpen, campaignData}) => {
   return (
     <table id='campaignInsightTable' className='table table-auto w-full text-left'>
         <thead className='text-sm font-avenirMedium border-b border-b-brandGray30x'>
@@ -34,9 +35,12 @@ const TableMainCampaign = ({handleModalOpen}) => {
         </thead>
 
         <tbody>
-
-            <RowMainCampaign handleModalOpen={handleModalOpen} id={'campaign1'} key={'0'} name={'Mk'} state={'Rivers State'} performance={'4,000g'} participants={'231,231,342'} startDate={'08-10-2022'} endDate={'08-12-2022'} rewardType={'Raffle'}/>
-            <RowMainCampaign handleModalOpen={handleModalOpen} id={'campaign2'} key={'1'} name={'Mk'} state={'Rivers State'} performance={'4,000g'} participants={'231,231,342'} startDate={'08-10-2022'} endDate={'08-12-2022'} rewardType={'Discount'}/>
+            
+            {campaignData.map((data, idx)=>{
+                const campaign = data.campaign
+                const partner = data.partner
+                return <RowMainCampaign handleModalOpen={()=>handleModalOpen(data.id, idx)} id={data.id} key={idx} campaign={campaign.title} avatar={campaign.featuredPhotoUrl && campaign.featuredPhotoUrl} location={campaign.location} performance={campaign.pointsAccrued} participants={campaign.participantCount} startDate={formatDate(campaign.startDate)} endDate={formatDate(campaign.endDate)} rewardType={'Raffle'}/>
+            })}
 
         </tbody>
         
