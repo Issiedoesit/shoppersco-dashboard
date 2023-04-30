@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import RowEcoBagProducerInsight from './RowEcoBagProducerInsight'
 
 
-const TableEcoBagProducerInsight = ({isAdmin, data, rows, setIsDropDownOpen, handleModalOpen, handleBadgeAssign, handleProfileView, handleQRCodeView, historyView, cancelOrder}) => {
+const TableEcoBagProducerInsight = ({isAdmin, data, rows, setIsDropDownOpen, handleApprove, handleReject, handleModalOpen, handleBadgeAssign, handleProfileView, handleQRCodeView, historyView, cancelOrder}) => {
 
   let slicedRows = data.slice(0, rows)
   
@@ -58,7 +58,7 @@ const TableEcoBagProducerInsight = ({isAdmin, data, rows, setIsDropDownOpen, han
             const partner = insight.partner
             const user = insight.partner.user
             const kyc = insight.partner.kyc
-            return <RowEcoBagProducerInsight key={idx} setIsDropDownOpen={setIsDropDownOpen} kycID={kyc.id} index={idx} isAdmin={isAdmin} handleKYCModal={()=>handleModalOpen(insight.id, idx)} name={insight.name} user={user.name} handleBadgeAssign={handleBadgeAssign} handleProfileView={handleProfileView} handleQRCodeView={handleQRCodeView} historyView={historyView} cancelOrder={cancelOrder} kycStatus={partner.kyc.status} location={insight.city} />
+            return <RowEcoBagProducerInsight key={idx} setIsDropDownOpen={setIsDropDownOpen} kycID={kyc.id} index={idx} isAdmin={isAdmin} handleKYCModal={()=>handleModalOpen(insight.id, idx)} name={insight.name} user={user.name} handleBadgeAssign={handleBadgeAssign} handleProfileView={handleProfileView} handleQRCodeView={handleQRCodeView} historyView={historyView} cancelOrder={cancelOrder} kycStatus={partner.kyc.status} location={insight.city} handleApprove={handleApprove} handleReject={handleReject} />
           })}
             
         </tbody>

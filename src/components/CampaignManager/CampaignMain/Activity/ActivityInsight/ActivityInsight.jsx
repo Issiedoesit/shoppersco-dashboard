@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useLocation, useSearchParams } from 'react-router-dom'
 import dummyAvatar from './../../../../../assets//images/avatars/avatar-1.png'
 
 
 
 const ActivityRow = () => {
+
+    
     return(
         <tr className='border-b-0.5 border-brandGray43x last:border-b-0'>
             <td className="py-3 px-2 whitespace-nowrap">
@@ -31,33 +34,39 @@ const ActivityRow = () => {
 
 
 
-const ActivityInsight = () => {
+const ActivityInsight = ({activityData}) => {
+
+
   return (
     <div className='rounded-ten bg-white col-span-4 py-9 px-6'>
-        <div className='sm:px-4 space-y-4 pb-10'>
-            <div className='flex flex-row gap-4 items-center pb-4 border-b-0.5 border-brandGray27x'>
-                <img src={dummyAvatar} alt="user" className='h-10 w-10 min-w-8 min-h-8'/>
-                <h2 className='font-avenirBlack'>Mother Earth Campaign</h2>
+        {activityData && activityData.map((activity, idx)=>{
+            const campaign = activity.campaign
+            const partner = activity.partner
+            return <div className='sm:px-4 space-y-4 pb-10'>
+                <div className='flex flex-row gap-4 items-center pb-4 border-b-0.5 border-brandGray27x'>
+                    <img src={campaign.featuredPhotoUrl ? campaign.featuredPhotoUrl : dummyAvatar} alt={campaign.title} className='h-10 w-10 min-w-8 min-h-8 rounded-full'/>
+                    <h2 className='font-avenirBlack'>{campaign.title}</h2>
+                </div>
+
+
+                <div className='w-full px-2 overflow-x-auto'>
+                    <table className='w-full'>
+                        <thead></thead>
+                        <tbody>
+                        <ActivityRow />
+                        <ActivityRow />
+                        <ActivityRow />
+                        <ActivityRow />
+                        <ActivityRow />
+                        <ActivityRow />
+                        <ActivityRow />
+                        <ActivityRow />
+                        </tbody>
+
+                    </table>
+                </div>
             </div>
-
-
-            <div className='w-full px-2 overflow-x-auto'>
-                <table className='w-full'>
-                    <thead></thead>
-                    <tbody>
-                       <ActivityRow />
-                       <ActivityRow />
-                       <ActivityRow />
-                       <ActivityRow />
-                       <ActivityRow />
-                       <ActivityRow />
-                       <ActivityRow />
-                       <ActivityRow />
-                    </tbody>
-
-                </table>
-            </div>
-        </div>
+        })}
     </div>
   )
 }

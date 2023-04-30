@@ -40,10 +40,12 @@ const RowEcoBagProducerInsight = ({id, kycID, avatar, name, user,  handleKYCModa
             <p className="text-xs font-avenirLight">{orders || '---'}</p>
         </td>
         <td className="py-3 pl-1 pr-3 whitespace-nowrap">
-            {kycStatus == 'pending' && <button type='button' onClick={()=>handleApprove(kycID)} className="text-xs text-brandGreen1x capitalize">Approve</button>}
+            {/* {kycStatus !== 'verified' && <button type='button' onClick={()=>handleApprove(kycID)} className="text-xs text-brandGreen1x capitalize">Approve</button>} */}
+            {(kycStatus == 'pending' || kycStatus == 'rejected') && <button type='button' onClick={()=>handleApprove(kycID)} className="text-xs text-brandGreen1x capitalize">Approve</button>}
         </td>
         <td className="py-3 pl-1 pr-3 whitespace-nowrap">
-            {kycStatus == 'pending' && <button type='button' onClick={()=>handleReject(kycID)} className="text-xs text-brandRed1x capitalize">Reject</button>}
+            {/* {kycStatus !== 'verified' && <button type='button' onClick={()=>handleReject(kycID)} className="text-xs text-brandRed1x capitalize">Reject</button>} */}
+            {(kycStatus == 'pending' || kycStatus == 'verified' || kycStatus == 'rejected') && <button type='button' onClick={()=>handleReject(kycID)} className="text-xs text-brandRed1x capitalize">Reject</button>}
         </td>
     </tr>
   )

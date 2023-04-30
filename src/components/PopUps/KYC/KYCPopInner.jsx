@@ -9,7 +9,7 @@ import Request from './../Request'
 
 
 
-const KYCPopUpInner = ({id, index, allRequests, dataLength, moveToModal, setCurrentIndex, kycID, avatar, user, location, address, fullName, utilityBillLink, bizRegLink, imageLink, handleApprove, handleReject, handleRestrict}) => {
+const KYCPopUpInner = ({id, index, allRequests, dataLength, moveToModal, setCurrentIndex, kycID, avatar, user, location, address, fullName, utilityBillLink, bizRegLink, imageLink, handleApprove, handleReject, kycStatus, handleRestrict}) => {
 
 
 
@@ -55,7 +55,7 @@ const KYCPopUpInner = ({id, index, allRequests, dataLength, moveToModal, setCurr
                             <p>{location}</p>
                             <div className='flex flex-row flex-wrap gap-3'>
                                 <ActiveTag borderRadius={'rounded-eight'} />
-                                <VerifiedTag borderRadius={'rounded-eight'} />
+                                {kycStatus == 'verified' && <VerifiedTag borderRadius={'rounded-eight'} />}
                                 <EcoFriendlyTag borderRadius={'rounded-eight'} />
                             </div>
                         </div>
@@ -69,7 +69,7 @@ const KYCPopUpInner = ({id, index, allRequests, dataLength, moveToModal, setCurr
                     <KYCPopUpTable fullName={fullName} utilityBillLink={utilityBillLink} bizRegLink={bizRegLink} imageLink={imageLink} />
                 </div>
                 
-                <Request handleApproval={()=>handleApprove(kycID)} handleReject={()=>handleReject(kycID)} buttons={true} paddingB={'pb-16'} reqName={'Eco-friendly bag production request'} actionBtnText={'Approve KYC'} secBtnText={'Reject'} secBtnTextColor={'text-brandRed1x'} actionBtnBgColor={'bg-brandGreen6x'} />
+                <Request handleApproval={()=>handleApprove(kycID)} handleReject={()=>handleReject(kycID)} consumerType={'kyc'} showApprove={(kycStatus == 'pending' || kycStatus == 'rejected')} showReject={(kycStatus == 'pending' || kycStatus == 'verified' || kycStatus == 'rejected')} buttons={true} paddingB={'pb-16'} reqName={'Eco-friendly bag production request'} actionBtnText={'Approve KYC'} secBtnText={'Reject'} secBtnTextColor={'text-brandRed1x'} actionBtnBgColor={'bg-brandGreen6x'} />
                 
 
                 <div className='pt-5'>

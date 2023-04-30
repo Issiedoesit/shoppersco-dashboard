@@ -5,7 +5,7 @@ import KYCPopUpInner from './KYCPopInner';
 
 
 
-const KYCPopUp = ({modalState, allRequests, closeModal, modalData, dataLength, currentIndex, setCurrentIndex, moveToModal}) => {    
+const KYCPopUp = ({modalState, handleApprove, handleReject, allRequests, closeModal, modalData, dataLength, currentIndex, setCurrentIndex, moveToModal}) => {    
 
   return (
     <PopUpWrap modalState={modalState} closeModal={closeModal}>
@@ -13,7 +13,7 @@ const KYCPopUp = ({modalState, allRequests, closeModal, modalData, dataLength, c
             const partner = data.partner
             const user = partner.user
             const kyc = partner.kyc
-            return <KYCPopUpInner key={'kycModal'+index} id={data.id} allRequests={allRequests} index={currentIndex} moveToModal={moveToModal} dataLength={dataLength} setCurrentIndex={setCurrentIndex} avatar={data.logoUrl ? data.logoUrl : data.coverImageUrl} user={data.name} location={data.city} address={data.address} fullName={user.name} imageLink={kyc.idCard} kycID={kyc.id} utilityBillLink={kyc.utilityBill} bizRegLink={kyc.businessRegistration} />
+            return <KYCPopUpInner key={'kycModal'+index} id={data.id} kycID={kyc.id} kycStatus={kyc.status} handleApprove={handleApprove} handleReject={handleReject} allRequests={allRequests} index={currentIndex} moveToModal={moveToModal} dataLength={dataLength} setCurrentIndex={setCurrentIndex} avatar={data.logoUrl ? data.logoUrl : data.coverImageUrl} user={data.name} location={data.city} address={data.address} fullName={user.name} imageLink={kyc.idCard} utilityBillLink={kyc.utilityBill} bizRegLink={kyc.businessRegistration} />
         })}
     </PopUpWrap>
   )
